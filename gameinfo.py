@@ -14,6 +14,8 @@
 #   You should have received a copy of the GNU Affero General Public License
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import dictionary
+
 class gameInfo:
 
     ## Keeping the below several lines just in case...
@@ -51,7 +53,8 @@ class gameInfo:
     ## species (str)
     ## subspecies (str) (used only for Draconians)
     ## speciesShort (str)
-    ## 
+    ## background
+    ## backgroundShort
 
   
     def __init__(self, data):
@@ -121,6 +124,15 @@ class gameInfo:
         self.background = lineSplit[wordIndex]
         if lineSplit[wordIndex+1] != "on":
             self.background += " " + lineSplit[wordIndex+1]
-        
+        self.backgroundShort = dictionary.dBackground[self.background]
+
+        # Extract god information
+        lineIndex += 1
+        lineSplit = self.hiscore[lineIndex].split()
+        wordIndex = 0
+        if lineSplit[wordIndex] != "Was": self.god = ""
+        else:
+            while lineSplit[wordIndex] != "of": wordIndex += 1
+            
         
         
