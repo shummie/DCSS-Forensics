@@ -49,12 +49,9 @@ class gameInfo:
     ## name
     ## title
     ## species (str)
-    #
-    species = ""
-
-    ## speciesAbbrev
-    # 
-    speciesAbb = ""
+    ## subspecies (str) (used only for Draconians)
+    ## speciesShort (str)
+    ## 
 
   
     def __init__(self, data):
@@ -105,11 +102,25 @@ class gameInfo:
             self.title += " " + lineSplit[wordIndex]
             wordIndex += 1
 
+        # Extract species information
         lineIndex = 1
         lineSplit = self.hiscore[lineIndex].split()
         wordIndex = 3
         self.species += lineSplit[wordIndex]
-        ### todo, some species have two words in their names, need to add
-        ## if statements to account for this fact.
+        wordIndex += 1
+        if lineSplit[wordIndex] == "Draconian":
+            self.species = "Draconian"
+            self.subspecies = lineSplit[wordIndex - 1]
+            wordIndex += 1
+        elif lineSplit[wordIndex] in ["Elf", "Dwarf", "Orc"]:
+            self.species += " " + lineSplit[wordIndex]
+            wordIndex += 1
+        self.speciesShort = dictionary.dSpecies[self.species]
 
+        # Extract background information
+        self.background = lineSplit[wordIndex]
+        if lineSplit[wordIndex+1] != "on":
+            self.background += " " + lineSplit[wordIndex+1]
+        
+        
         
