@@ -1,11 +1,21 @@
 ## Parser v2
 
+import gameinfo
+
+## this function reads the game record and returns a gameinfo object with
+## the data fields populated. In theory, this part can be restructured such
+## that the gameinfo object data is populated within the gameinfo class.
+## For now, I'll keep this part separate.
+
 def readGameRecord(filePath):
 
     # open/read in the morgue files
     f = open(filePath)
     rawData = f.readlines()
     f.close()
+
+    # Create a gameInfo object
+    gameInfoObject = gameinfo.gameInfo(rawData)
 
     # list declaration. 
     header = []
@@ -152,25 +162,30 @@ def readGameRecord(filePath):
             # Should never trigger if all components are active
             lineNum += 1
         
-        ### DEBUG
-        if (sectionID != "unknown") and (sectionID != "blank"):
-            print (str(lineNum) + "  " + sectionID)
-    print(header)
-    print(hiscore)
-    print(stats)
-    print(misc)
-    print(notes)
-    print(inventory)
-    print(turns_by_place)
-    print(skills)
-    print(spells)
-    print(overview)
-    print(mutations)
-    print(monlist)
-    
-                    
-                    
+    # Now that each section has been separated, need to call the functions
+    # in order to create the gameInfo object that stores each game's information.
 
+    gameInfoObject.header = header
+    gameInfoObject.hiscore = hiscore
+    gameInfoObject.stats = stats
+    gameInfoObject.misc = misc
+    gameInfoObject.notes = notes
+    gameInfoObject.inventory = inventory
+    gameInfoObject.turns_by_place = turns_by_place
+    gameInfoObject.skills = skills
+    gameInfoObject.spells = spells
+    gameInfoObject.overview = overview
+    gameInfoObject.mutations = mutations
+    gameInfoObject.monlist = monlist
+
+    gameInfoObject.extractData()
+
+    return gameInfoObject
+                    
+                    
+## This function is utilized by the readGameRecord function
+## parameter is a single line of raw data
+## returns a section heading if line is the first line of that section
 
 def sectionParser(line):
 
