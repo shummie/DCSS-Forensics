@@ -15,14 +15,14 @@
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-## Parser v2
-
-import gameinfo
 
 ## this function reads the game record and returns a gameinfo object with
 ## the data fields populated. In theory, this part can be restructured such
 ## that the gameinfo object data is populated within the gameinfo class.
 ## For now, I'll keep this part separate.
+
+import gameinfo
+
 
 def readGameRecord(filePath):
 
