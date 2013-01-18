@@ -28,10 +28,10 @@ class gameInfo:
     mutations = []
     monlist = []
 
+    ### Hiscore variables
     ## score (int)
-    # 
-    score = -1
-
+    ## name
+    ## title
     ## species (str)
     #
     species = ""
@@ -73,18 +73,27 @@ class gameInfo:
         self.score = self.hiscore[0].split()[0]
 
         # name may have spaces in it. need to search until 'the' is found
-        lineIndex = 1
-        lineSplit = self.hiscore[0].split()
-        self.name = lineSplit[lineIndex]
-        lineIndex += 1
-        while lineSplit[lineIndex] != "the":
-            self.name += " " + lineSplit[lineIndex]
+        lineIndex = 0
+        wordIndex = 1
+        lineSplit = self.hiscore[lineIndex].split()
+        self.name = lineSplit[wordIndex]
+        wordIndex += 1
+        while lineSplit[wordIndex] != "the":
+            self.name += " " + lineSplit[wordIndex]
             lineIndex += 1
 
-        lineIndex += 1
-        self.title = lineSplit[lineIndex]
-        lineIndex += 1
-        while lineSplit[lineIndex] != "(level":
-            self.title += " " + lineSplit[lineIndex]
-            lineIndex += 1
+        wordIndex += 1
+        self.title = lineSplit[wordIndex]
+        wordIndex += 1
+        while lineSplit[wordIndex] != "(level":
+            self.title += " " + lineSplit[wordIndex]
+            wordIndex += 1
+
+        lineIndex = 1
+        lineSplit = self.hiscore[lineIndex].split()
+        wordIndex = 3
+        self.species += lineSplit[wordIndex]
+        ### todo, some species have two words in their names, need to add
+        ## if statements to account for this fact.
+
         
