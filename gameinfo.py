@@ -109,7 +109,7 @@ class gameInfo:
         lineIndex = 1
         lineSplit = self.hiscore[lineIndex].split()
         wordIndex = 3
-        self.species += lineSplit[wordIndex]
+        self.species = lineSplit[wordIndex]
         wordIndex += 1
         if lineSplit[wordIndex] == "Draconian":
             self.species = "Draconian"
