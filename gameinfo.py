@@ -135,12 +135,13 @@ class gameInfo:
         if lineSplit[wordIndex] != "Was": self.god = ""
         else:
             self.god = self.hiscore[lineIndex][self.hiscore[lineIndex].find("of")+3:-2]
+            lineIndex += 1  # Note, line increment done here in case no god exists
+            
 
         # End information can be extracted in this next section
         # This is a future todo after reviewing source to determine exact format
         # in which the end data is displayed.
         # For now, will use this section to set the winFlag
-        lineIndex += 1
         wordIndex = 0
         if self.hiscore[lineIndex].split()[0] == "Escaped": self.winFlag = True
         else: self.winFlag = False
