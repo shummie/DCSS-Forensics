@@ -55,6 +55,8 @@ class gameInfo:
     ## speciesShort (str)
     ## background
     ## backgroundShort
+    ## god
+    ## winFlag
 
   
     def __init__(self, data):
@@ -132,7 +134,15 @@ class gameInfo:
         wordIndex = 0
         if lineSplit[wordIndex] != "Was": self.god = ""
         else:
-            while lineSplit[wordIndex] != "of": wordIndex += 1
-            
+            self.god = self.hiscore[lineIndex][self.hiscore[lineIndex].find("of")+3:-2]
+
+        # End information can be extracted in this next section
+        # This is a future todo after reviewing source to determine exact format
+        # in which the end data is displayed.
+        # For now, will use this section to set the winFlag
+        lineIndex += 1
+        wordIndex = 0
+        if self.hiscore[lineIndex].split()[0] == "Escaped": self.winFlag = True
+        else: self.winFlag = False
         
         
