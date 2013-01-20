@@ -63,6 +63,7 @@ class gameInfo:
     ## timeTakenLong (str)
     ## level (int)
     ## levelLong (float)
+    ## numRunes (int)
     
 
   
