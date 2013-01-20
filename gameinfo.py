@@ -58,6 +58,13 @@ class gameInfo:
     ## god
     ## winFlag
 
+    ### stats variables
+    ## turnsTaken (int)
+    ## timeTakenLong (str)
+    ## level (int)
+    ## levelLong (float)
+    
+
   
     def __init__(self, data):
         self.rawData = data
@@ -69,6 +76,7 @@ class gameInfo:
 
         if len(self.header) != 0: self.extractHeader()
         if len(self.hiscore) != 0: self.extractHiscore()
+        if len(self.stats) != 0: self.extractStats()
         
 
     ## header information stored in the following format
@@ -88,7 +96,7 @@ class gameInfo:
     ##         ... on Level 1 of the Orcish Mines on Jan 17, 2013.
     ##         The game lasted 01:28:44 (24313 turns).
     def extractHiscore(self):
-        self.score = self.hiscore[0].split()[0]
+        self.score = int(self.hiscore[0].split()[0])
 
         # name may have spaces in it. need to search until 'the' is found
         lineIndex = 0
@@ -145,5 +153,43 @@ class gameInfo:
         wordIndex = 0
         if self.hiscore[lineIndex].split()[0] == "Escaped": self.winFlag = True
         else: self.winFlag = False
+
+    ## stats extraction information
+
+    def extractStats(self):
         
+        ## Line 0:
+        ## Ray the Unseen (Kobold Berserker)                  Turns: 24313, Time: 01:28:45
+        lineSplit = self.stats[0].split()
+        wordSplit = 0
+        self.turnsTaken = int(lineSplit[lineSplit.index("Turns:")+1][:-1])
+        self.timeTakenLong = lineSplit[-1]
         
+        ## Line 2:
+        ## HP  -2/92        AC 16     Str 17      XL: 14   Next: 90%
+        lineSplit = self.stats[2].split()
+        self.level = int(lineSplit[-3])
+        self.levelLong = int(lineSplit[-1][:-1])/100 + self.level
+
+'''
+MP  27/27        EV 25     Int  8      God: Trog [******]
+Gold 1668        SH 16     Dex 21      Spells:  0 memorised, 14 levels left
+
+Res.Fire  : + . .   See Invis. : +   D - +7 quick blade {god gift}
+Res.Cold  : . . .   Warding    : .   F - +3 leather armour of the Wild Haggis {rEle
+Life Prot.: . . .   Conserve   : .   N - +0 buckler
+Res.Poison: +       Res.Corr.  : .   (no helmet)
+Res.Elec. : +       Clarity    : .   u - +1 cloak {MR}
+Sust.Abil.: . .     Spirit.Shd : .   S - +0 pair of gauntlets
+Res.Mut.  : .       Stasis     : .   t - +2 pair of boots of Texzo {Str-1 Acc+2 Stl
+Res.Rott. : .       Ctrl.Telep.: .   V - amulet "Laeto" {Faith Contam Dex+2 SInv, u
+Saprovore : + + .   Flight     : .   l - +2 ring of protection
+                                     b - ring of regeneration
+
+@: regenerating, exhausted, studying Armour, very slightly contaminated, slowed,
+very slow, incredibly resistant to hostile enchantments, incredibly stealthy
+A: disease resistance, carnivore 3, poison resistance, saprovore 2, AC +2, Dex
++2
+a: Burn Spellbooks, Berserk, Trog's Hand, Brothers in Arms, Renounce Religion
+'''
+
