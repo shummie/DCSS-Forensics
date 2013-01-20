@@ -171,7 +171,7 @@ class gameInfo:
         self.level = int(lineSplit[-3])
         self.levelLong = int(lineSplit[-1][:-1])/100 + self.level
 
-'''
+        '''
 MP  27/27        EV 25     Int  8      God: Trog [******]
 Gold 1668        SH 16     Dex 21      Spells:  0 memorised, 14 levels left
 
@@ -191,5 +191,21 @@ very slow, incredibly resistant to hostile enchantments, incredibly stealthy
 A: disease resistance, carnivore 3, poison resistance, saprovore 2, AC +2, Dex
 +2
 a: Burn Spellbooks, Berserk, Trog's Hand, Brothers in Arms, Renounce Religion
-'''
+}: 2/15 runes: barnacled, gossamer
+        '''
 
+        ## extracting rune information if it exists.
+        lineIndex = 3
+        self.numRunes = 0
+        while (lineIndex < len(self.stats)) and (self.numRunes == 0):
+            if len(self.stats[lineIndex]) < 2: lineIndex += 1
+            else:
+                if self.stats[lineIndex].split()[0] == "}:":
+                    loop = False
+                    runeString = self.stats[lineIndex].split()[1]
+                    self.numRunes = int(runeString[:runeString.find("/")])
+                lineIndex += 1
+
+        
+        
+        

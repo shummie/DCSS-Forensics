@@ -32,7 +32,7 @@ def readGameRecord(filePath):
     f.close()
 
     # Create a gameInfo object
-    gameInfoObject = gameinfo.gameInfo(rawData)
+    gameInfoObject = gameInfo.gameInfo(rawData)
 
     # list declaration. 
     header = []
@@ -72,7 +72,7 @@ def readGameRecord(filePath):
         elif sectionID == "stats":
             statsStart = lineNum
             breakCheck = 0
-            while breakCheck != 3:
+            while breakCheck != 4:
                 lineNum += 1
                 if rawData[lineNum] == "\n": breakCheck += 1
             statsEnd = lineNum
