@@ -21,7 +21,7 @@
 ## that the gameinfo object data is populated within the gameinfo class.
 ## For now, I'll keep this part separate.
 
-import gameinfo
+import gameInfo
 
 
 def readGameRecord(filePath):
