@@ -1,0 +1,29 @@
+V0.01
+=====
+First full alpha version of the DCSS Forensics program.
+
+Currently, this program will allow the user to run a python script to parse & compile their morgue files into an cvs output usable for import into Excel for pivots. (basic use, other uses are possible).
+
+Reads in all *.txt files in a morgue directory. The PATH variable in the forensicsMain.py file points to the main crawl directory, NOT the morgue directory. 
+
+Currently works for v0.11 and above (up to 0.12-a0 trunk). Has not been fully tested, but works on developer's current sample set.
+
+Outputs the following variables into a csv file.
+
+Name
+Version
+Score
+Title
+Level
+Species
+Background
+SpeciesShort
+BackgroundShort
+God
+WinFlag
+RealTime
+TurnsTaken
+NumRunes
+DungeonLevel
+DungeonLocation
+DungeonPlace
