@@ -46,6 +46,15 @@ class gameInfo:
     mutations = []
     monlist = []
 
+    ## Filename is used to extract the date/time info, assuming the standard
+    ## naming convention is used.
+    filename = ""
+
+    ## ID variabges
+    ## date (str)
+    ## time (str)
+    ## id (str)
+
     ### Hiscore variables
     ## score (int)
     ## name
@@ -79,12 +88,25 @@ class gameInfo:
     ## It will populate data only if the data element field is not empty.
         
     def extractData(self):
-
+        
+        if self.filename != "": self.extractID()
         if len(self.header) != 0: self.extractHeader()
         if len(self.hiscore) != 0: self.extractHiscore()
         if len(self.stats) != 0: self.extractStats()
         if len(self.misc) != 0: self.extractMisc()
-        
+
+    def extractID(self):
+        # morgue-Ray-20130122-083257.txt
+        datetimeList = self.filename.split("-")
+        if len(datetimeList) == 4:        
+            self.date = datetimeList[2]
+            self.time = datetimeList[3][:-4]
+            self.id = self.date + self.time
+        else:
+            self.date = ""
+            self.time = ""
+            # Still import, but establish a unique time identifier
+            self.id = time.clock()
 
     ## header information stored in the following format
     ##  Dungeon Crawl Stone Soup version 0.12-a0-1616-ge3ef79a (tiles) character file.
@@ -176,9 +198,7 @@ class gameInfo:
         ## HP  -2/92        AC 16     Str 17      XL: 14   Next: 90%
         ## HP 224/224 (225) AC 55     Str 16      XL: 27
         lineSplit = self.stats[2].split()
-        if self.stats[2][-1] != "%":
-
-            
+        if self.stats[2][-1] != "%":            
             self.level = int(lineSplit[-3])
             self.levelLong = int(lineSplit[-1][:-1])/100 + self.level
         else:
@@ -265,7 +285,7 @@ You collected 1648 gold pieces.
     # outputs select variables into a list, useful for debugging purposes.
     def outputList(self):
         # outList = []
-        outList = [self.name, self.versionShort, self.score, self.title,
+        outList = [self.ID, self.name, self.versionShort, self.score, self.title,
                    self.levelLong, self.species, self.background, self.speciesShort,
                    self.backgroundShort, self.god, self.winFlag, self.timeTakenLong,
                    self.turnsTaken, self.numRunes, self.dungeonLevel, self.dungeonLocation,
