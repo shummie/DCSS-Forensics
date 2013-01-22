@@ -49,7 +49,8 @@ class gameCollection:
         outputFormat = []
         for game in self.gameList:
             csvLine = ""
-            for i in game:
+            gameRecord = game.outputList()
+            for i in gameRecord:
                 csvList += str(i) + ","
             outputFormat.append(csvList[:-1]+"\n")
 
