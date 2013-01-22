@@ -21,7 +21,7 @@
 ## that the gameinfo object data is populated within the gameinfo class.
 ## For now, I'll keep this part separate.
 
-import gameInfo
+import forensicsGameInfo
 
 
 def readGameRecord(filePath):
@@ -32,7 +32,7 @@ def readGameRecord(filePath):
     f.close()
 
     # Create a gameInfo object
-    gameInfoObject = gameInfo.gameInfo(rawData)
+    gameInfoObject = forensicsGameInfo.gameInfo(rawData)
 
     # list declaration. 
     header = []

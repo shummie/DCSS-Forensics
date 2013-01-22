@@ -14,7 +14,7 @@
 #   You should have received a copy of the GNU Affero General Public License
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import dictionary
+import forensicsDictionary
 
 class gameInfo:
 
@@ -135,13 +135,13 @@ class gameInfo:
         elif lineSplit[wordIndex] in ["Elf", "Dwarf", "Orc"]:
             self.species += " " + lineSplit[wordIndex]
             wordIndex += 1
-        self.speciesShort = dictionary.dSpecies[self.species]
+        self.speciesShort = forensicsDictionary.dSpecies[self.species]
 
         # Extract background information
         self.background = lineSplit[wordIndex]
         if lineSplit[wordIndex+1] != "on":
             self.background += " " + lineSplit[wordIndex+1]
-        self.backgroundShort = dictionary.dBackground[self.background]
+        self.backgroundShort = forensicsDictionary.dBackground[self.background]
 
         # Extract god information
         lineIndex += 1
