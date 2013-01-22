@@ -29,5 +29,26 @@ gameCollection = []
 for files in glob.glob("*.txt"):
     gameCollection.append(forensicsParser.readGameRecord(files))
 
+outputList = []
+listHeaders = ["Name", "Version", "Score", "Title", "Level", "Species", "Background",
+               "SP", "BG", "God", "WinFlag", "realTime", "turnsTaken", "numRunes",
+               "DLevel", "DLocation", "DPlace"]
+outputList.append(listHeaders)
+for game in gameCollection: outputList.append(game.outputList())
+
+outputFormat = []
+for item in outputList:
+    csvList = ""
+    for a in item:
+        csvList += str(a) + ","
+    outputFormat.append(csvList[:-1]+"\n")
+
+f = open(OUTFILE, "w")
+for i in range(0, len(outputFormat)):
+    f.write(outputFormat[i])
+f.close()
+
+print("Successfully completed.")
+print(str(len(outputList)-1) + " records exported to \n" + PATH + "/morgue/" + OUTFILE)
 
     
