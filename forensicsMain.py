@@ -19,7 +19,8 @@ import os
 import glob
 
 ## Enter path below to main DCSS directory
-PATH = "C:/Users/shumr/Documents/Ray/stone_soup-tiles-0.11"
+# PATH = "C:/Users/shumr/Documents/Ray/stone_soup-tiles-0.11"
+PATH = "C:/Users/shumr/Documents/Ray/crawl_tiles-0.12-a0-1684"
 OUTFILE = "test.csv"
 
 os.chdir(PATH + "/morgue")
@@ -27,7 +28,9 @@ os.chdir(PATH + "/morgue")
 gameCollection = []
 
 for files in glob.glob("*.txt"):
+    # files = morgue-Ray-20121211-213939.txt
     gameCollection.append(forensicsParser.readGameRecord(files))
+    
 
 outputList = []
 listHeaders = ["Name", "Version", "Score", "Title", "Level", "Species", "Background",
