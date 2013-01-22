@@ -14,6 +14,7 @@
 #   You should have received a copy of the GNU Affero General Public License
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import forensicsGameCollection
 import forensicsParser
 import os
 import glob
@@ -25,31 +26,14 @@ OUTFILE = "test.csv"
 
 os.chdir(PATH + "/morgue")
 
-gameCollection = []
+gameCollection = forensicsGameCollection.gameCollection()
 
 for files in glob.glob("*.txt"):
     # files = morgue-Ray-20121211-213939.txt
-    gameCollection.append(forensicsParser.readGameRecord(files))
+    print(files)
+    gameCollection.addGame(forensicsParser.readGameRecord(files))
     
-
-outputList = []
-listHeaders = ["Name", "Version", "Score", "Title", "Level", "Species", "Background",
-               "SP", "BG", "God", "WinFlag", "realTime", "turnsTaken", "numRunes",
-               "DLevel", "DLocation", "DPlace"]
-outputList.append(listHeaders)
-for game in gameCollection: outputList.append(game.outputList())
-
-outputFormat = []
-for item in outputList:
-    csvList = ""
-    for a in item:
-        csvList += str(a) + ","
-    outputFormat.append(csvList[:-1]+"\n")
-
-f = open(OUTFILE, "w")
-for i in range(0, len(outputFormat)):
-    f.write(outputFormat[i])
-f.close()
+gameCollection.outputCSVFile(OUTFILE)
 
 print("Successfully completed.")
 print(str(len(outputList)-1) + " records exported to \n" + PATH + "/morgue/" + OUTFILE)
