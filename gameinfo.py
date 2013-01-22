@@ -234,10 +234,10 @@ a: Burn Spellbooks, Berserk, Trog's Hand, Brothers in Arms, Renounce Religion
             self.dungeonLevel = int(lineSplit[lineSplit.index("level")+1])
             self.dungeonLocation = self.misc[lineIndex][self.misc[lineIndex].find("the")+4:-2]
         elif lineSplit[2] == "in":
-            self.dungeonLevel == 0
+            self.dungeonLevel = 0
             self.dungeonLocation = self.misc[lineIndex][self.misc[lineIndex].find("a"):-2]
         else:
-            self.dungeonLevel == -1
+            self.dungeonLevel = -1
             self.dungeonLocation == "ERROR"
 
         if self.dungeonLevel == 0: self.dungeonPlace = self.dungeonLocation
