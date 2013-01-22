@@ -285,7 +285,7 @@ You collected 1648 gold pieces.
     # outputs select variables into a list, useful for debugging purposes.
     def outputList(self):
         # outList = []
-        outList = [self.ID, self.name, self.versionShort, self.score, self.title,
+        outList = [self.id, self.name, self.versionShort, self.score, self.title,
                    self.levelLong, self.species, self.background, self.speciesShort,
                    self.backgroundShort, self.god, self.winFlag, self.timeTakenLong,
                    self.turnsTaken, self.numRunes, self.dungeonLevel, self.dungeonLocation,

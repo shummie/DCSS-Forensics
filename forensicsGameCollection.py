@@ -30,6 +30,8 @@
 ## morgue files are read, so this is NOT a failsafe substitute for the morgue
 ## files themselves.
 
+import forensicsParser
+
 class gameCollection:
 
     def __init__(self):
@@ -47,10 +49,11 @@ class gameCollection:
 
     def addFile(self, filename):
         # Reads the file and adds the game to the gameList.
-
-        # First, parse the filename (assumes default name structure)
         
-        
+        game = forensicsParser.readGameRecord(filename)
+        if game.id not in self.gameID:
+            self.gameList.append(game)
+            self.gameID.append(game.id)
         
 
     def outputCSVFile(self, OUTFILE):

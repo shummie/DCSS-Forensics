@@ -31,7 +31,7 @@ gameCollection = forensicsGameCollection.gameCollection()
 for files in glob.glob("*.txt"):
     # files = morgue-Ray-20121211-213939.txt
     # DEBUG:: print(files)
-    gameCollection.addFile(forensicsParser.readGameRecord(files))
+    gameCollection.addFile(files)
     
 gameCollection.outputCSVFile(OUTFILE)
 
