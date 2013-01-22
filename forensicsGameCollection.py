@@ -47,6 +47,11 @@ class gameCollection:
     def outputCSVFile(self, OUTFILE):
         # Saves a CSV file with the name OUTFILE in the standard directory
         outputFormat = []
+        listHeaders = ["Name", "Version", "Score", "Title", "Level", "Species", "Background",
+                       "SP", "BG", "God", "WinFlag", "realTime", "turnsTaken", "numRunes",
+                       "DLevel", "DLocation", "DPlace"]
+        outputList.append(listHeaders)
+        
         for game in self.gameList:
             csvLine = ""
             gameRecord = game.outputList()
