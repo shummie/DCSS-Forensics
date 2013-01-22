@@ -64,6 +64,11 @@ class gameInfo:
     ## level (int)
     ## levelLong (float)
     ## numRunes (int)
+
+    ### misc variables
+    ## dungeonLevel (int)
+    ## dungeonLocation (str)
+    ## dungeonPlace (str)
     
 
   
@@ -78,6 +83,7 @@ class gameInfo:
         if len(self.header) != 0: self.extractHeader()
         if len(self.hiscore) != 0: self.extractHiscore()
         if len(self.stats) != 0: self.extractStats()
+        if len(self.misc) != 0: self.extractMisc()
         
 
     ## header information stored in the following format
@@ -207,6 +213,43 @@ a: Burn Spellbooks, Berserk, Trog's Hand, Brothers in Arms, Renounce Religion
                     self.numRunes = int(runeString[:runeString.find("/")])
                 lineIndex += 1
 
-        
-        
-        
+    ## extract misc information
+                
+    def extractMisc(self):
+
+        ## Line 0: You were on level 1 of the Orcish Mines.
+        lineIndex = 0
+        lineSplit = self.misc[lineIndex].split()
+        if lineSplit[1] == "escaped.":
+            self.dungeonLevel = 0
+            if self.winFlag == True: self.dungeonLocation = "Won"
+            else: self.dungeonLocation = "Dungeon" # Occurs when exit w/o Orb
+        elif lineSplit[-1] == "Abyss.":
+            self.dungeonLevel = 0
+            self.dungeonLocation = "Abyss"
+        elif lineSplit[-1] == "Blades.":
+            self.dungeonLevel = 0
+            self.dungeonLocation = "Blades"
+        elif lineSplit[2] == "on":
+            self.dungeonLevel = int(lineSplit[lineSplit.index("level")+1])
+            self.dungeonLocation = self.misc[lineIndex][self.misc[lineIndex].find("the")+4:-2]
+        elif lineSplit[2] == "in":
+            self.dungeonLevel == 0
+            self.dungeonLocation = self.misc[lineIndex][self.misc[lineIndex].find("a"):-2]
+        else:
+            self.dungeonLevel == -1
+            self.dungeonLocation == "ERROR"
+
+        if self.dungeonLevel == 0: self.dungeonPlace = self.dungeonLocation
+        else: self.dungeonPlace = self.dungeonLocation + ":" + str(self.dungeonLevel)
+            
+    '''
+You worshipped Trog.
+Trog was exalted by your worship.
+You were very full.
+
+You visited 3 branches of the dungeon, and saw 23 of its levels.
+You also visited: Labyrinth, Sewer, Ossuary, Bailey and Volcano.
+
+You collected 1648 gold pieces.        
+    '''        
