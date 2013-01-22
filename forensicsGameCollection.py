@@ -34,6 +34,7 @@ class gameCollection:
 
     def __init__(self):
         self.gameList = []
+        self.gameID = []
 
     def addGame(self, gameInfoObject):
         # First, check if this game exists in the database.
@@ -44,10 +45,18 @@ class gameCollection:
         # Assumes that the game record is unique:...
         self.gameList.append(gameInfoObject)
 
+    def addFile(self, filename):
+        # Reads the file and adds the game to the gameList.
+
+        # First, parse the filename (assumes default name structure)
+        
+        
+        
+
     def outputCSVFile(self, OUTFILE):
         # Saves a CSV file with the name OUTFILE in the standard directory
         outputFormat = []
-        listHeaders = ["Name", "Version", "Score", "Title", "Level", "Species", "Background",
+        listHeaders = ["ID", "Name", "Version", "Score", "Title", "Level", "Species", "Background",
                        "SP", "BG", "God", "WinFlag", "realTime", "turnsTaken", "numRunes",
                        "DLevel", "DLocation", "DPlace"]
         csvLine = ""

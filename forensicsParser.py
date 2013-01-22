@@ -195,6 +195,10 @@ def readGameRecord(filePath):
     gameInfoObject.mutations = mutations
     gameInfoObject.monlist = monlist
 
+    gameInfoObject.filename = filePath
+
+    
+
     gameInfoObject.extractData()
 
     return gameInfoObject
