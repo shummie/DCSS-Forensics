@@ -68,7 +68,7 @@ class gameCollection:
         f.close()
 
         print("Successfully completed.")
-        print(str(len(outputList)-1) + " records exported to \n" + PATH + "/morgue/" + OUTFILE)
+        print(str(len(self.gameList)) + " records exported to " + OUTFILE)
 
             
 

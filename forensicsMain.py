@@ -30,12 +30,10 @@ gameCollection = forensicsGameCollection.gameCollection()
 
 for files in glob.glob("*.txt"):
     # files = morgue-Ray-20121211-213939.txt
-    print(files)
+    # DEBUG:: print(files)
     gameCollection.addGame(forensicsParser.readGameRecord(files))
     
 gameCollection.outputCSVFile(OUTFILE)
 
-print("Successfully completed.")
-print(str(len(outputList)-1) + " records exported to \n" + PATH + "/morgue/" + OUTFILE)
 
     
