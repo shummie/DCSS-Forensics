@@ -33,7 +33,7 @@
 class gameCollection:
 
     def __init__(self):
-        gameList = []
+        self.gameList = []
 
     def addGame(self, gameInfoObject):
         # First, check if this game exists in the database.
@@ -50,19 +50,26 @@ class gameCollection:
         listHeaders = ["Name", "Version", "Score", "Title", "Level", "Species", "Background",
                        "SP", "BG", "God", "WinFlag", "realTime", "turnsTaken", "numRunes",
                        "DLevel", "DLocation", "DPlace"]
-        outputList.append(listHeaders)
+        csvLine = ""
+        for i in listHeaders:
+            csvLine += str(i) + ","
+        outputFormat.append(csvLine[:-1]+"\n")
         
         for game in self.gameList:
             csvLine = ""
             gameRecord = game.outputList()
             for i in gameRecord:
-                csvList += str(i) + ","
-            outputFormat.append(csvList[:-1]+"\n")
+                csvLine += str(i) + ","
+            outputFormat.append(csvLine[:-1]+"\n")
 
         f = open(OUTFILE, "w")
         for i in range(0, len(outputFormat)):
             f.write(outputFormat[i])
         f.close()
+
+        print("Successfully completed.")
+        print(str(len(outputList)-1) + " records exported to \n" + PATH + "/morgue/" + OUTFILE)
+
             
 
     
