@@ -25,11 +25,11 @@ class gameInfo:
 
     ## version (string)
     # infomation found in the header
-    # examples: 0.10, 0.11, 0.12a
+    # examples: 0.10, 0.11, 0.12a0
     # will need to truncate from full version information
     # in two formats: versionLong and versionShort
     # versionLong contains the full version information
-    # versionShort keeps it at the first 6 characters
+    # versionShort keeps it at the first 7 characters
 
 
     rawData = []
@@ -90,7 +90,7 @@ class gameInfo:
     ##  Dungeon Crawl Stone Soup version 0.12-a0-1616-ge3ef79a (tiles) character file.
     def extractHeader(self):
         self.versionLong = self.header[0].split()[5]
-        self.versionShort = self.versionLong[0:6]
+        self.versionShort = self.versionLong[0:7]
         # Note: future add - webtile/tile/console version can also be extracted
 
     ## hiscore information stored in the following format
