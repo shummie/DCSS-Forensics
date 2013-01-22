@@ -174,9 +174,16 @@ class gameInfo:
         
         ## Line 2:
         ## HP  -2/92        AC 16     Str 17      XL: 14   Next: 90%
-        lineSplit = self.stats[2].split()
-        self.level = int(lineSplit[-3])
-        self.levelLong = int(lineSplit[-1][:-1])/100 + self.level
+        ## HP 224/224 (225) AC 55     Str 16      XL: 27
+        if self.stats[2][-2] != "%":
+            lineSplit = self.stats[2].split()
+            
+            self.level = int(lineSplit[-3])
+            self.levelLong = int(lineSplit[-1][:-1])/100 + self.level
+        else:
+            self.level = int(lineSplit[-1])
+            self.levelLong = self.level + 0.0
+            
 
         '''
 MP  27/27        EV 25     Int  8      God: Trog [******]
