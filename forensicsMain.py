@@ -39,7 +39,7 @@ def outputCSV():
     gameCollection.outputCSVFile(OUTFILE)
 
 # Loads the gameCollection object with the morgue files
-def loadGameData():
+def readGameData():
     for files in glob.glob("*.txt"):
     # files = morgue-Ray-20121211-213939.txt
     # DEBUG:: print(files)
