@@ -23,7 +23,6 @@
 
 import forensicsGameInfo
 
-
 def readGameRecord(filePath):
 
     # open/read in the morgue files
@@ -33,6 +32,15 @@ def readGameRecord(filePath):
 
     # Create a gameInfo object
     gameInfoObject = forensicsGameInfo.gameInfo(rawData)
+    gameInfoObject.filename = filePath
+    parseGameInfoObject(gameInfoObject)
+    return gameInfoObject
+
+
+
+def parseGameInfoObject(gameInfoObject):
+
+    rawData = gameInfoObject.rawData
 
     # list declaration. 
     header = []
@@ -195,13 +203,7 @@ def readGameRecord(filePath):
     gameInfoObject.mutations = mutations
     gameInfoObject.monlist = monlist
 
-    gameInfoObject.filename = filePath
-
-    
-
     gameInfoObject.extractData()
-
-    return gameInfoObject
                     
                     
 ## This function is utilized by the readGameRecord function
