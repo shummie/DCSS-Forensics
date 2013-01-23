@@ -19,7 +19,7 @@ import forensicsParser
 import forensicsConfig
 import os
 import glob
-
+import pickle
 
 
 os.chdir(forensicsConfig.PATH + "/morgue")
