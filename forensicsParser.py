@@ -22,6 +22,7 @@
 ## For now, I'll keep this part separate.
 
 import forensicsGameInfo
+import forensicsConfig
 
 def readGameRecord(filePath):
 
@@ -278,6 +279,10 @@ def sectionParser(line):
     # Check if action_counts
     elif line.find("Action") == 0:
         sectionType = "action_counts"
+
+    if forensicsConfig.verbosity >= 5:
+        print ("line = " + line)
+        print ("sectionType = " + sectionType)
 
     return sectionType
 

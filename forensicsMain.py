@@ -16,15 +16,13 @@
 
 import forensicsGameCollection
 import forensicsParser
+import forensicsConfig
 import os
 import glob
 
-## Enter path below to main DCSS directory
-# PATH = "C:/Users/shumr/Documents/Ray/stone_soup-tiles-0.11"
-PATH = "C:/Users/shumr/Documents/Ray/crawl_tiles-0.12-a0-1616"
-OUTFILE = "test.csv"
 
-os.chdir(PATH + "/morgue")
+
+os.chdir(forensicsConfig.PATH + "/morgue")
 
 gameCollection = forensicsGameCollection.gameCollection()
 
@@ -36,14 +34,15 @@ gameCollection = forensicsGameCollection.gameCollection()
 
 # outputs the CSV file
 def outputCSV():
-    gameCollection.outputCSVFile(OUTFILE)
+    gameCollection.outputCSVFile(forensicsConfig.OUTFILE)
 
 # Loads the gameCollection object with the morgue files
 def readGameData():
     for files in glob.glob("*.txt"):
     # files = morgue-Ray-20121211-213939.txt
-    # DEBUG:: print(files)
-        gameCollection.addFile(files)  
+        if forensicsConfig.verbosity >= 2:
+            print(files)
+        gameCollection.addFile(files)
 
 # Saves the gameCollection object into filename
 def saveGameData(filename):

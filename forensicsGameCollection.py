@@ -31,6 +31,7 @@
 ## files themselves.
 
 import forensicsParser
+import forensicsConfig
 
 class gameCollection:
 
