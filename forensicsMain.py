@@ -21,19 +21,39 @@ import glob
 
 ## Enter path below to main DCSS directory
 # PATH = "C:/Users/shumr/Documents/Ray/stone_soup-tiles-0.11"
-PATH = "C:/Users/shumr/Documents/Ray/crawl_tiles-0.12-a0-1684"
+PATH = "C:/Users/shumr/Documents/Ray/crawl_tiles-0.12-a0-1616"
 OUTFILE = "test.csv"
 
 os.chdir(PATH + "/morgue")
 
 gameCollection = forensicsGameCollection.gameCollection()
 
-for files in glob.glob("*.txt"):
+# Note, for now, ALL data and functions utilize the main gameCollection object
+# I can alter the below later to deal with multiple databases, but currently
+# assumes a single database and will never need to worry about passing a
+# gameCollection object as a parameter for any values.
+
+
+# outputs the CSV file
+def outputCSV():
+    gameCollection.outputCSVFile(OUTFILE)
+
+# Loads the gameCollection object with the morgue files
+def loadGameData():
+    for files in glob.glob("*.txt"):
     # files = morgue-Ray-20121211-213939.txt
     # DEBUG:: print(files)
-    gameCollection.addFile(files)
-    
-gameCollection.outputCSVFile(OUTFILE)
+        gameCollection.addFile(files)  
 
+# Saves the gameCollection object into filename
+def saveGameData(filename):
+    output = open(filename, "wb")
+    pickle.dump(gameCollection, output)
+    output.close()
+
+# returns the gameCollection object
+def loadGameData(filename):
+    inputfile = open(filename, "rb")
+    return pickle.load(inputfile)
 
     
