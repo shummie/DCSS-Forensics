@@ -200,7 +200,7 @@ class gameInfo:
         ## HP  -2/92        AC 16     Str 17      XL: 14   Next: 90%
         ## HP 224/224 (225) AC 55     Str 16      XL: 27
         lineSplit = self.stats[2].split()
-        if self.stats[2][-1] != "%":            
+        if self.stats[2][-2] == "%":            
             self.level = int(lineSplit[-3])
             self.levelLong = int(lineSplit[-1][:-1])/100 + self.level
         else:
