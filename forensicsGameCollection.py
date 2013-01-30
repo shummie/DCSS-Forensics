@@ -38,6 +38,7 @@ class gameCollection:
     def __init__(self):
         self.gameList = []
         self.gameID = []
+        self.achievementList = [False]*3
 
     def addGame(self, gameInfoObject):
         # Check if this game exists in the database, if not, add it.

@@ -70,3 +70,15 @@ dBackground = {
     "Reaver" : "Re",
     "Thief" : "Th"
     }
+
+
+## Achievements
+## Format is the following:
+## InternalID : [AlternativeID : Short Desc : Long Desc]
+
+dAchievementList = {
+    0 : [0, "A Winner is You", "Escaped with the Orb"],
+    1 : [1, "Maximum Level", "Hit level 27 with at least one character"],
+    2 : [2, "Game Complete", "Escaped with the Orb and 15 runes"]
+
+    }
