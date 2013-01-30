@@ -18,7 +18,7 @@
 
 ## Enter path below to main DCSS directory
 # PATH = "C:/Users/shumr/Documents/Ray/stone_soup-tiles-0.11"
-PATH = "C:/Users/shumr/Documents/Ray/crawl_tiles-0.12-a0-1616"
+PATH = "C:/Users/shumr/Documents/Ray/crawl_tiles-0.12-a0-1684"
 
 ## Output file for the csv dump
 OUTFILE = "test.csv"
