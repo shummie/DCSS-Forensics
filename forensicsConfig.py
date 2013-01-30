@@ -29,4 +29,4 @@ OUTFILE = "test.csv"
 # 3 = verbose
 # 5 = FULL verbosity
 
-verbosity = 2
+verbosity = 1

@@ -21,32 +21,36 @@
 ## achievementList. The list consists of a series of True/False by ID
 ## which corresponds to the dictionary dAchievementList InternalID number.
 
+import forensicsDictionary
 
 def forensicsAchievement(gameCollection):
 
+    while len(gameCollection.achievementList) < len(forensicsDictionary.dAchievementList):
+        gameCollection.achievementList.append(False)
+
     if gameCollection.achievementList[0] == False:
-        gameCollection.achievementList[0] = achCheckAnyWin(gameCollection)
+        gameCollection.achievementList[0] = 0_CheckAnyWin(gameCollection)
     if gameCollection.achievementList[1] == False:
-        gameCollection.achievementList[1] = achCheckAnyLevel27(gameCollection)
+        gameCollection.achievementList[1] = 1_CheckAnyLevel27(gameCollection)
     if gameCollection.achievementList[2] == False:
-        gameCollection.achievementList[2] = achCheckAny15RuneWin(gameCollection)
+        gameCollection.achievementList[2] = 2_CheckAny15RuneWin(gameCollection)
 
 
-def achCheckAnyWin(gameCollection):
+def 0_CheckAnyWin(gameCollection):
     # InternalID: 0
     # Has the player won the game?
     for game in gameCollection.gameList:
         if game.winFlag == True: return True
     return False
 
-def achCheckAnyLevel27(gameCollection):
+def 1_CheckAnyLevel27(gameCollection):
     # InternalID: 1
     # Has the player reached level 27 in any game?
     for game in gameCollection.gameList:
         if game.level == 27: return True
     return False
 
-def achCheckAny15RuneWin(gameCollection):
+def 2_CheckAny15RuneWin(gameCollection):
     # InternalID: 2
     # Has the player won the game with 15 runes?
     for game in gameCollection.gameList:
