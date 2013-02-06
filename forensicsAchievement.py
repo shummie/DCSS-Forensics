@@ -29,28 +29,28 @@ def forensicsAchievement(gameCollection):
         gameCollection.achievementList.append(False)
 
     if gameCollection.achievementList[0] == False:
-        gameCollection.achievementList[0] = 0_CheckAnyWin(gameCollection)
+        gameCollection.achievementList[0] = _0_CheckAnyWin(gameCollection)
     if gameCollection.achievementList[1] == False:
-        gameCollection.achievementList[1] = 1_CheckAnyLevel27(gameCollection)
+        gameCollection.achievementList[1] = _1_CheckAnyLevel27(gameCollection)
     if gameCollection.achievementList[2] == False:
-        gameCollection.achievementList[2] = 2_CheckAny15RuneWin(gameCollection)
+        gameCollection.achievementList[2] = _2_CheckAny15RuneWin(gameCollection)
 
 
-def 0_CheckAnyWin(gameCollection):
+def _0_CheckAnyWin(gameCollection):
     # InternalID: 0
     # Has the player won the game?
     for game in gameCollection.gameList:
         if game.winFlag == True: return True
     return False
 
-def 1_CheckAnyLevel27(gameCollection):
+def _1_CheckAnyLevel27(gameCollection):
     # InternalID: 1
     # Has the player reached level 27 in any game?
     for game in gameCollection.gameList:
         if game.level == 27: return True
     return False
 
-def 2_CheckAny15RuneWin(gameCollection):
+def _2_CheckAny15RuneWin(gameCollection):
     # InternalID: 2
     # Has the player won the game with 15 runes?
     for game in gameCollection.gameList:
