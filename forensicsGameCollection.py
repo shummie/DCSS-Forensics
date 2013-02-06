@@ -134,31 +134,36 @@ class gameCollection:
         
     def comboMaxLevel(self):
         # Returns a table with the max level of each species/background combo.
-        statTable = []
-        for i in range(0, len(forensicsDictionary.dBackgroundShortTableList)):
-            dummyList = [0]*len(forensicsDictionary.dSpeciesShortTableList)
-            statTable.append(dummyList)
+        statTable = self.blankStatTable()
         for game in self.gameList:
-            spIndex = forensicsDictionary.dSpeciesTableIndex[game.species]
-            bgIndex = forensicsDictionary.dBackgroundTableIndex[game.background]
+            spIndex = forensicsDictionary.dSpeciesTableIndex[game.species]+1
+            bgIndex = forensicsDictionary.dBackgroundTableIndex[game.background]+1
             if game.level > statTable[spIndex][bgIndex]:
                 statTable[spIndex][bgIndex] = game.level
         return statTable			                
 
     def comboGamesWon(self):
         # Returns a table with the games won of each species/background combo.
-        statTable = []
-        for i in range(0, len(forensicsDictionary.dBackgroundShortTableList)):
-            dummyList = [0]*len(forensicsDictionary.dSpeciesShortTableList)
-            statTable.append(dummyList)
+        statTable = self.blankStatTable()
         for game in self.gameList:
             if game.winFlag == True:
-                spIndex = forensicsDictionary.dSpeciesTableIndex[game.species]
-                bgIndex = forensicsDictionary.dBackgroundTableIndex[game.background]
+                spIndex = forensicsDictionary.dSpeciesTableIndex[game.species]+1
+                bgIndex = forensicsDictionary.dBackgroundTableIndex[game.background]+1
                 statTable[spIndex][bgIndex] += 1
         return statTable                       
                     
             
+    def blankStatTable(self):
+        # Creates a blank statTable with headers
+        headerRow = [""]
+        headerRow.extend(forensicsDictionary.dBackgroundShortTableList)
+        statTable = []
+        statTable.append(headerRow)
+        for i in range(0, len(forensicsDictionary.dSpeciesShortTableList)):
+            dummyList = [0]*(len(forensicsDictionary.dBackgroundShortTableList)+1)
+            dummyList[0] = forensicsDictionary.dSpeciesShortTableList[i]
+            statTable.append(dummyList)
+        return statTable
         
         
         
