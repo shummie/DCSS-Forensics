@@ -82,3 +82,83 @@ dAchievementList = {
     2 : [2, "Game Complete", "Escaped with the Orb and 15 runes"]
 
     }
+
+## Table Index Format
+
+dSpeciesTableIndex = {
+    "Human" : 0,
+    "High Elf" : 1,
+    "Deep Elf" : 2,
+    "Sludge Elf" : 3,
+    "Deep Dwarf" : 4,
+    "Hill Orc" : 5,
+    "Merfolk" : 6,
+    "Halfling" : 7,
+    "Kobold" : 8,
+    "Spriggan" : 9,
+    "Naga" : 10,
+    "Centaur" : 11,
+    "Ogre" : 12,
+    "Troll" : 13,
+    "Minotaur" : 14,
+    "Tengu" : 15,
+    "Draconian" : 16,
+    "Demigod" : 17,
+    "Demonspawn" : 18,
+    "Mummy" : 19,
+    "Ghoul" : 20,
+    "Vampire" : 21,
+    "Felid" : 22,
+    "Octopode" : 23,
+    "Hill Dwarf" : 24,
+    "Elf" : 25,
+    "Ogre-mage" : 26,
+    "Grey Elf" : 27,
+    "Gnome" : 28,
+    "Mountain Dwarf" : 29
+    }
+
+dSpeciesShortTableList = ["Hu", "HE", "DE", "SE", "DD", "HO", "Mf", "Ha", "Ko",
+                          "Sp", "Na", "Ce", "Og", "Tr", "Mi", "Te", "Dr", "Dg",
+                          "Ds", "Mu", "Gh", "Vp", "Fe", "Op", "HD", "El", "OM",
+                          "GE", "Gn", "MD"]
+
+
+dBackgroundTableIndex = {
+    "Fighter" : 0,
+    "Gladiator" : 1,
+    "Monk" : 2,
+    "Hunter" : 3,
+    "Assassin" : 4,
+    "Berserker" : 5,
+    "Abyssal Knight" : 6,
+    "Chaos Knight" : 7,
+    "Death Knight" : 8,
+    "Priest" : 9,
+    "Healer" : 10,
+    "Skald" : 11,
+    "Enchanter" : 12,
+    "Transmuter" : 13,
+    "Arcane Marksman" : 14,
+    "Stalker" : 15,
+    "Warper" : 16,
+    "Wizard" : 17,
+    "Conjurer" : 18,
+    "Summoner" : 19,
+    "Necromancer" : 20,
+    "Fire Elementalist" : 21,
+    "Ice Elementalist" : 22,
+    "Air Elementalist" : 23,
+    "Earth Elementalist" : 24,
+    "Venom Mage" : 25,
+    "Artificer" : 26,
+    "Wanderer" : 27,
+    "Paladin" : 28,
+    "Reaver" : 29,
+    "Thief" : 30
+    }
+
+dBackgroundShortTableList = ["Fi", "Gl", "Mo", "Hu", "As", "Be", "AK", "CK",
+                             "DK", "Pr", "He", "Sk", "En", "Tm", "AM", "St",
+                             "Wr", "Wz", "Cj", "Su", "Ne", "FE", "IE", "AE",
+                             "EE", "VM", "Ar", "Wn", "Pa", "Re", "Th"]
