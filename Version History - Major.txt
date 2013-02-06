@@ -1,4 +1,14 @@
-V0.01
+v0.02 - February 6, 2013
+=====
+Reorgnized the imports / gameInfo into a gameCollection class
+Added save/load functionality with the saveGameData(name) and loadGameData(name) functions
+Game data now only loads and adds in new games found in the morgue directory
+Configurations can now be found in the forensicsConfig.py file
+Added Achievements module! Currently only three test achievements are included. More to be added in a future release.
+topNScores currently implemented in an alpha version.
+
+
+V0.01 - January 22, 2013
 =====
 First full alpha version of the DCSS Forensics program.
 
