@@ -132,8 +132,31 @@ class gameCollection:
                 print ("  " + forensicsDictionary.dAchievementList[i][1] +
                        " : " + forensicsDictionary.dAchievementList[i][2])
         
-                
-                       
+    def comboMaxLevel(self):
+        # Returns a table with the max level of each species/background combo.
+        statTable = []
+        for i in range(0, len(forensicsDictionary.dBackgroundShortTableList)):
+            dummyList = [0]*len(forensicsDictionary.dSpeciesShortTableList)
+            statTable.append(dummyList)
+        for game in self.gameList:
+            spIndex = forensicsDictionary.dSpeciesTableIndex[game.species]
+            bgIndex = forensicsDictionary.dBackgroundTableIndex[game.background]
+            if game.level > statTable[spIndex][bgIndex]:
+                statTable[spIndex][bgIndex] = game.level
+        return statTable			                
+
+    def comboGamesWon(self):
+        # Returns a table with the games won of each species/background combo.
+        statTable = []
+        for i in range(0, len(forensicsDictionary.dBackgroundShortTableList)):
+            dummyList = [0]*len(forensicsDictionary.dSpeciesShortTableList)
+            statTable.append(dummyList)
+        for game in self.gameList:
+            if game.winFlag == True:
+                spIndex = forensicsDictionary.dSpeciesTableIndex[game.species]
+                bgIndex = forensicsDictionary.dBackgroundTableIndex[game.background]
+                statTable[spIndex][bgIndex] += 1
+        return statTable                       
                     
             
         
