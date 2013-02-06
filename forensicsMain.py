@@ -15,8 +15,10 @@
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import forensicsGameCollection
+import forensicsAchievement
 import forensicsParser
 import forensicsConfig
+import forensicsDictionary
 import os
 import glob
 import pickle

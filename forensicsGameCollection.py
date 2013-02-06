@@ -31,19 +31,23 @@
 ## files themselves.
 
 import forensicsParser
+import forensicsAchievement
 import forensicsConfig
+import forensicsDictionary
 
 class gameCollection:
 
     def __init__(self):
         self.gameList = []
         self.gameID = []
+        self.achievementList = [False]*3
 
     def addGame(self, gameInfoObject):
         # Check if this game exists in the database, if not, add it.
         if gameInfoObject.id not in self.gameID:
             self.gameList.append(gameInfoObject)
             self.gameID.append(gameInfoObject.id)
+        self.updateAchievements()
 
 
     def addFile(self, filename):
@@ -53,6 +57,7 @@ class gameCollection:
             self.gameList.append(game)
             self.gameID.append(game.id)
             if forensicsConfig.verbosity >= 3: print (filename, + " appended")
+        self.updateAchievements()
 
     def outputCSVFile(self, OUTFILE):
         # Saves a CSV file with the name OUTFILE in the standard directory
@@ -113,6 +118,23 @@ class gameCollection:
         if forensicsConfig.verbosity >= 2:
             print (topScoresOrdered)
             print (topScoresIndexOrdered)
+
+    def updateAchievements(self):
+        # runs the achievement module
+        forensicsAchievement.forensicsAchievement(self)
+    
+
+    def completedAchievements(self):
+        # Prints out the list of completed achievements
+        print ("Completed Achievements:")
+        for i in range(0, len(self.achievementList)):
+            if self.achievementList[i] == True:
+                print ("  " + forensicsDictionary.dAchievementList[i][1] +
+                       " : " + forensicsDictionary.dAchievementList[i][2])
+        
+                
+                       
+                    
             
         
         
