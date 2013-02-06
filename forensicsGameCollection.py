@@ -140,6 +140,8 @@ class gameCollection:
             bgIndex = forensicsDictionary.dBackgroundTableIndex[game.background]+1
             if game.level > statTable[spIndex][bgIndex]:
                 statTable[spIndex][bgIndex] = game.level
+
+        #for i in range(1, len(statTable))
         return statTable			                
 
     def comboGamesWon(self):
@@ -157,12 +159,23 @@ class gameCollection:
         # Creates a blank statTable with headers
         headerRow = [""]
         headerRow.extend(forensicsDictionary.dBackgroundShortTableList)
+        headerRow.extend([""])
+        headerRow.extend([""])
         statTable = []
         statTable.append(headerRow)
         for i in range(0, len(forensicsDictionary.dSpeciesShortTableList)):
             dummyList = [0]*(len(forensicsDictionary.dBackgroundShortTableList)+1)
             dummyList[0] = forensicsDictionary.dSpeciesShortTableList[i]
+            dummyList.extend([0])
+            dummyList.extend([forensicsDictionary.dSpeciesShortTableList[i]])
             statTable.append(dummyList)
+
+        totalRow = [""]
+        totalRow.extend([0]*len(forensicsDictionary.dBackgroundShortTableList))
+        totalRow.extend([""])
+        totalRow.extend([""])
+        statTable.append(totalRow)
+        statTable.append(headerRow)
         return statTable
         
         
