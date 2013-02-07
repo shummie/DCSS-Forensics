@@ -77,4 +77,9 @@ table.bordered td {
   border: 1px solid #ddd;
   vertical-align: top;
 }
+
+table.overall-stats th{
+  text-align: left;
+}
+
 </style>
