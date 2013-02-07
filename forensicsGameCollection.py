@@ -183,10 +183,34 @@ class gameCollection:
         for i in range(1, len(statTable)-1):
             for j in range(1, len(statTable[0])-1):
                 if statTable[i][j] == 0: statTable[i][j] = ""
-
-        
+                
         return statTable                       
-                    
+
+    def comboGamesPlayed(self):
+        # Returns a table with the games played for each sp/bg combo
+        statTable = self.blankStatTable()
+        for game in self.gameList:
+            spIndex = forensicsDictionary.dSpeciesTableIndex[game.species]+1
+            bgIndex = forensicsDictionary.dBackgroundTableIndex[game.background]+1
+            statTable[spIndex][bgIndex] += 1
+
+        for i in range(1, len(statTable)-2):
+            sumVal = 0
+            for j in range(1, len(statTable[i])-2):
+                sumVal += statTable[i][j]
+            statTable[i][-2] = sumVal
+
+        for j in range(1, len(statTable[0])-2):
+            sumVal = 0
+            for i in range(1, len(statTable)-2):
+                sumVal += statTable[i][j]
+            statTable[-2][j] = sumVal
+
+        for i in range(1, len(statTable)-1):
+            for j in range(1, len(statTable[0])-1):
+                if statTable[i][j] == 0: statTable[i][j] = ""
+                
+        return statTable             
             
     def blankStatTable(self):
         # Creates a blank statTable with headers
@@ -210,7 +234,72 @@ class gameCollection:
         statTable.append(totalRow)
         statTable.append(headerRow)
         return statTable
+
+    def overallStatsList(self):
+        # returns a list of stats in the following order:
+        # [0] Total Score, [1] # Games, [2] # Wins, [3] % Win, [4] Best XL,
+        # [5] Best Score, [6] Avg Score,
+        # [7] Favorite Species, [8] Favorite Background, [9] Favorite Combo
+
+        from collections import Counter
+
+        statList = [0, 0, 0, "", 0, 0, 0, "", "", ""]
+        spList = []
+        bgList = []
+        comboList = []
+            
+        for game in self.gameList:
+            statList[0] += game.score
+            statList[1] += 1
+            statList[2] += (1 if game.winFlag == True else 0)
+            if statList[4] != 27:
+                statList[4] = max(statList[4], game.levelLong)
+            statList[5] = max(statList[5], game.score)
+            spList.append(game.species)
+            bgList.append(game.background)
+            comboList.append(game.species + " " + game.background)
+
+        statList[3] = str(round(statList[2]/statList[1]*100, 2))+"%"
+        statList[6] = "{:,}".format(int(round(statList[0]/statList[1], 0)))
+        statList[0] = "{:,}".format(statList[0])
+        statList[1] = "{:,}".format(statList[1])
+        statList[2] = "{:,}".format(statList[2])
+        statList[5] = "{:,}".format(statList[5])
+
+        # Find the most common species/bg/combo
+        speciesCounter = Counter(spList)
+        spTuple = speciesCounter.most_common()
+        maxSpeciesCount = spTuple[0][1]
+        i = 0
+        while spTuple[i][1] == maxSpeciesCount:
+            if len(statList[7]) > 0: statList[7] += ", "
+            statList[7] += spTuple[i][0]
+            i += 1
+
+        backgroundCounter = Counter(bgList)
+        bgTuple = backgroundCounter.most_common()
+        maxBackgroundCount = bgTuple[0][1]
+        i = 0
+        while bgTuple[i][1] == maxBackgroundCount:
+            if len(statList[8]) > 0: statList[8] += ", "
+            statList[8] += bgTuple[i][0]
+            i += 1
         
+        comboCounter = Counter(comboList)
+        comboTuple = comboCounter.most_common()
+        maxComboCount = comboTuple[0][1]
+        i = 0
+        while comboTuple[i][1] == maxComboCount:
+            if len(statList[9]) > 0: statList[9] += ", "
+            statList[9] += comboTuple[i][0]
+            i += 1
+
+        return statList
+        
+                          
+            
+            
+            
         
         
 
