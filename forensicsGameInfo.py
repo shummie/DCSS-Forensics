@@ -16,7 +16,7 @@
 
 import forensicsConfig
 import forensicsDictionary
-
+import datetime
 
 class gameInfo:
 
@@ -52,10 +52,11 @@ class gameInfo:
     ## naming convention is used.
     filename = ""
 
-    ## ID variabges
+    ## ID variables
     ## date (str)
     ## time (str)
     ## id (str)
+    ## datetime (datetime object)
 
     ### Hiscore variables
     ## score (int)
@@ -104,11 +105,14 @@ class gameInfo:
             self.date = datetimeList[2]
             self.time = datetimeList[3][:-4]
             self.id = self.date + self.time
+            self.datetime = datetime.datetime(int(self.date[:4]), int(self.date[4:6]), int(self.date[6:]), int(self.time[:2]), int(self.time[2:4]), int(self.time[4:]))
+
         else:
             self.date = ""
             self.time = ""
             # Still import, but establish a unique time identifier
             self.id = time.clock()
+            self.datetime = datetime.datetime.now()
 
     ## header information stored in the following format
     ##  Dungeon Crawl Stone Soup version 0.12-a0-1616-ge3ef79a (tiles) character file.
