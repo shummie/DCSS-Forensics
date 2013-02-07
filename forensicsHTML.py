@@ -10,7 +10,8 @@ def createHTML(gc):
 
     # Outputs summary stats
     f.write('<h3>Overall Stats</h3>')
-    
+    statList = gc.overallStatsList()
+    writeOverallStats(f, statList)
 
 
     # Outputs the combo Tables
@@ -110,7 +111,14 @@ def writeComboTable(f, table, winTable):
     f.write("</table>\n")
     
     
-        
-    
+def writeOverallStats(f, statList):
+
+    f.write('<table class = "overall-stats bordered">\n')
+    f.write('<tr><th>Total Score</th><th>Games</th><th>Wins</th><th>Win%</th><th>Best XL</th><th>Best Score</th><th>Average Score</th><th>Favorite Species</th><th>Favorite Background</th><th>Favorite Combo</th></tr>\n')
+    f.write('<tr>')
+    for item in statList:
+        f.write('<td>'+str(item)+'</td>')
+    f.write('</tr>')
+    f.write('</table>\n')    
 
     
