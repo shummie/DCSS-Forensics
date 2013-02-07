@@ -186,7 +186,28 @@ class gameInfo:
         # in which the end data is displayed.
         # For now, will use this section to set the winFlag
         wordIndex = 0
-        if self.hiscore[lineIndex].split()[0] == "Escaped": self.winFlag = True
+        self.end = ""
+
+        # The below is probably VERY SLOW. Need to find a better way to
+        # optimize this.
+        while ((len(self.hiscore[lineIndex].strip()) != 0) and
+               (self.hiscore[lineIndex].find("... on ") == -1) and
+               (self.hiscore[lineIndex].find("... in ") == -1) and
+               (self.hiscore[lineIndex].find("The game lasted") == -1)):
+        
+            self.end += self.hiscore[lineIndex].strip()
+            # Keeping the below debug line for now... should probably convert
+            # to a verbosity trigger...
+            # print (self.hiscore[lineIndex])
+            lineIndex += 1
+        self.end = self.end.replace("...", "")
+
+        ## Collect all end information and place in one line. The formatting for this
+        ## varies quite a bit depending on how the player died/quit.
+        
+        if self.end.split()[0] == "Escaped":
+            self.winFlag = True
+            self.end = self.end[0:self.end.find("runes")+5] + "!"
         else: self.winFlag = False
 
     ## stats extraction information
