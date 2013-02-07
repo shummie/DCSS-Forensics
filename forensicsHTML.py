@@ -8,10 +8,21 @@ def createHTML(gc):
     writeHeaderStart(f)
     f.write("<body>\n")
 
+    # Outputs summary stats
+    f.write('<h3>Overall Stats</h3>')
+    
+
+
+    # Outputs the combo Tables
     f.write('<hr>\n')
     f.write('<h3>Winning Characters</h3>')
     winTable = gc.comboGamesWon()
     writeComboTable(f, winTable, winTable)
+
+    f.write('<hr>\n')
+    f.write('<h3>Games Played</h3>')
+    comboGamesPlayedTable = gc.comboGamesPlayed()
+    writeComboTable(f, comboGamesPlayedTable, winTable)    
 
     f.write('<hr>\n')
     f.write('<h3>Max Combo Level</h3>')
