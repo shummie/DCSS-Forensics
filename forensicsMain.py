@@ -19,6 +19,7 @@ import forensicsAchievement
 import forensicsParser
 import forensicsConfig
 import forensicsDictionary
+import forensicsHTML
 import os
 import glob
 import pickle
@@ -58,3 +59,5 @@ def loadGameData(filename):
     return pickle.load(inputfile)
 
     
+readGameData()
+forensicsHTML.createHTML(gameCollection)
