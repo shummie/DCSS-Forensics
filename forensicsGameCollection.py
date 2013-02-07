@@ -141,7 +141,22 @@ class gameCollection:
             if game.level > statTable[spIndex][bgIndex]:
                 statTable[spIndex][bgIndex] = game.level
 
-        #for i in range(1, len(statTable))
+        for i in range(1, len(statTable)-2):
+            maxVal = 0
+            for j in range(1, len(statTable[i])-2):
+                if statTable[i][j] > maxVal: maxVal = statTable[i][j]
+            statTable[i][-2] = maxVal
+
+        for j in range(1, len(statTable[0])-2):
+            maxVal = 0
+            for i in range(1, len(statTable)-2):
+                if statTable[i][j] > maxVal: maxVal = statTable[i][j]
+            statTable[-2][j] = maxVal
+
+        for i in range(1, len(statTable)-1):
+            for j in range(1, len(statTable[0])-1):
+                if statTable[i][j] == 0: statTable[i][j] = ""
+            
         return statTable			                
 
     def comboGamesWon(self):
@@ -152,6 +167,24 @@ class gameCollection:
                 spIndex = forensicsDictionary.dSpeciesTableIndex[game.species]+1
                 bgIndex = forensicsDictionary.dBackgroundTableIndex[game.background]+1
                 statTable[spIndex][bgIndex] += 1
+
+        for i in range(1, len(statTable)-2):
+            sumVal = 0
+            for j in range(1, len(statTable[i])-2):
+                sumVal += statTable[i][j]
+            statTable[i][-2] = sumVal
+
+        for j in range(1, len(statTable[0])-2):
+            sumVal = 0
+            for i in range(1, len(statTable)-2):
+                sumVal += statTable[i][j]
+            statTable[-2][j] = sumVal
+
+        for i in range(1, len(statTable)-1):
+            for j in range(1, len(statTable[0])-1):
+                if statTable[i][j] == 0: statTable[i][j] = ""
+
+        
         return statTable                       
                     
             
