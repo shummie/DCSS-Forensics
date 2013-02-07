@@ -50,14 +50,48 @@ def writeComboTable(f, table):
     f.write("</tr>\n")
 
     # Print the remaining rows
-    for i in range(1, len(table)):
+    for i in range(1, len(table)-2):
         f.write("<tr>")
+
+        # First column: Use Header formatting
         f.write("<th>"+table[i][0]+"</th>")
-        
+
         f.write('<td class = "wins">'+str(table[i][1])+'</td>')
-        for j in range(2, len(table[i])):
+        for j in range(2, len(table[i])-2):
             f.write('<td>'+str(table[i][j])+'</td>')
+
+        # second to last column (Grand Total Column): Use GT formatting
+        j += 1
+        f.write('<td class = "stat-total">'+str(table[i][j])+'</td>')
+
+        # Last column: Use Header formatting
+        j += 1
+        f.write("<th>"+table[i][j]+"</th>")
+
+        # End row
         f.write("</tr>\n")
+
+    # Second to last row: Grand Total Row
+    i += 1
+    f.write("<tr>")
+    f.write("<th>"+table[i][0]+"</th>")
+    f.write('<td class = "stat-total wins">'+str(table[i][1])+'</td>')
+    for j in range(2, len(table[i])-2):
+        f.write('<td class = "stat-total wins">'+str(table[i][j])+'</td>')
+
+    # Last two columns use header formatting
+    j += 1
+    f.write("<th>"+table[i][j]+"</th>")
+    j += 1
+    f.write("<th>"+table[i][j]+"</th>")
+    f.write("</tr>\n")
+
+    # Last row uses header formatting
+    lastrow = table[-1]
+    f.write("<tr>")
+    for item in header:
+        f.write("<th>"+item+"</th>")
+    f.write("</tr>\n")
 
     f.write("</table>\n")
     
