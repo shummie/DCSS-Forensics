@@ -78,7 +78,6 @@ def writeComboTable(f, table, winTable):
     i += 1
     f.write("<tr>")
     f.write("<th>"+table[i][0]+"</th>")
-    #f.write('<td class = "stat-total wins">'+str(table[i][1])+'</td>')
     for j in range(1, len(table[i])-2):
         f.write('<td class = "stat-total' + (' stat-win">' if winTable[i][j] != "" else '">')
                 +str(table[i][j])+'</td>')
