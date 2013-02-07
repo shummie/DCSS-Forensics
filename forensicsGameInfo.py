@@ -207,7 +207,11 @@ class gameInfo:
         
         if self.end.split()[0] == "Escaped":
             self.winFlag = True
-            self.end = self.end[0:self.end.find("runes")+5] + "!"
+            # I originally put the below so that when you win, it just shows:
+            # Escaped w/ the rune and X orbs! (removing the date at the end)
+            # Instead, I'll keep it and have the date removed if needed
+            # at another section.
+            # self.end = self.end[0:self.end.find("runes")+5] + "!"
         else: self.winFlag = False
 
     ## stats extraction information
