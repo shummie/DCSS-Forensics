@@ -11,12 +11,12 @@ def createHTML(gc):
     f.write('<hr>\n')
     f.write('<h3>Winning Characters</h3>')
     winTable = gc.comboGamesWon()
-    writeComboTable(f, winTable)
+    writeComboTable(f, winTable, winTable)
 
     f.write('<hr>\n')
     f.write('<h3>Max Combo Level</h3>')
     comboLevelTable = gc.comboMaxLevel()
-    writeComboTable(f, comboLevelTable)    
+    writeComboTable(f, comboLevelTable, winTable)    
 
     f.write("</body>\n")
     f.write("</html>")
@@ -38,7 +38,7 @@ def writeHeaderStart(f):
     f.write('<link rel="stylesheet" type="text/css" href="style.css">\n')
     f.write("</head>\n")
 
-def writeComboTable(f, table):
+def writeComboTable(f, table, winTable):
     # Assume the table has a header row and descriptor column
     f.write('<table class = "stat-table bordered">\n')
 
@@ -56,13 +56,16 @@ def writeComboTable(f, table):
         # First column: Use Header formatting
         f.write("<th>"+table[i][0]+"</th>")
 
-        f.write('<td class = "wins">'+str(table[i][1])+'</td>')
+        f.write(('<td class = "stat-win">' if winTable[i][1] != "" else '<td>')
+                +str(table[i][1])+'</td>')
         for j in range(2, len(table[i])-2):
-            f.write('<td>'+str(table[i][j])+'</td>')
+            f.write(('<td class="stat-win">' if winTable[i][j] != "" else '<td>')
+                    +str(table[i][j])+'</td>')
 
         # second to last column (Grand Total Column): Use GT formatting
         j += 1
-        f.write('<td class = "stat-total">'+str(table[i][j])+'</td>')
+        f.write('<td class = "stat-total' + (' stat-win">' if winTable[i][j] != "" else '">')
+                +str(table[i][j])+'</td>')
 
         # Last column: Use Header formatting
         j += 1
@@ -75,9 +78,10 @@ def writeComboTable(f, table):
     i += 1
     f.write("<tr>")
     f.write("<th>"+table[i][0]+"</th>")
-    f.write('<td class = "stat-total wins">'+str(table[i][1])+'</td>')
-    for j in range(2, len(table[i])-2):
-        f.write('<td class = "stat-total wins">'+str(table[i][j])+'</td>')
+    #f.write('<td class = "stat-total wins">'+str(table[i][1])+'</td>')
+    for j in range(1, len(table[i])-2):
+        f.write('<td class = "stat-total' + (' stat-win">' if winTable[i][j] != "" else '">')
+                +str(table[i][j])+'</td>')
 
     # Last two columns use header formatting
     j += 1
