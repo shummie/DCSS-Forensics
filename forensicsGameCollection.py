@@ -296,7 +296,14 @@ class gameCollection:
 
         return statList
         
-                          
+    def allGamesWonList(self):
+        # Returns a list of gameInfo objects which have a winFlag of True
+        # Will sort the list (oldest game with index 0) based on the date/time
+        gameWinList = []
+        for game in self.gameList:
+            if game.winFlag == True: gameWinList.append(game)
+        gameWinList.sort(key = lambda x: x.datetime)
+        return gameWinList
             
             
             
