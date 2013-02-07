@@ -31,6 +31,10 @@ def writeHtmlStart(f):
 def writeHeaderStart(f):
     f.write("<head>\n")
     f.write("<title>" + title + "</title>\n")
+
+    # Note, will either need to embed style sheet into the html file or
+    # figure out how to keep this separate since it references the sheet
+    # from the active directory.
     f.write('<link rel="stylesheet" type="text/css" href="style.css">\n')
     f.write("</head>\n")
 
