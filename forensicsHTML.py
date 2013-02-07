@@ -13,6 +13,10 @@ def createHTML(gc):
     statList = gc.overallStatsList()
     writeOverallStats(f, statList)
 
+    # output list of games won
+    f.write('<h3>Wins</h3>')
+    winList = gc.allGamesWonList()
+    writeGamesWonList(f, winList)
 
     # Outputs the combo Tables
     f.write('<hr>\n')
@@ -121,4 +125,25 @@ def writeOverallStats(f, statList):
     f.write('</tr>')
     f.write('</table>\n')    
 
-    
+def writeGamesWonList(f, winList):
+    # Note, winList is a list of gameInfo objects. The list should be sorted by
+    # date already. Need to iterate through the list and output the details.
+
+    f.write('<table class = "overall-stats bordered">\n')
+    f.write('<tr><th></th><th>Score</th><th>Character</th><th>End</th><th>Turns</th><th>Duration</th><th>God</th><th>Runes</th><th>Time</th><th>Version</th></tr>\n')
+    gameCount = 1
+    for game in winList:
+        f.write('<tr>')
+        f.write('<td>'+str(gameCount)+'</td>')
+        f.write('<td>'+str(game.score)+'</td>')
+        f.write('<td>'+game.speciesShort+game.backgroundShort+'</td>')
+        f.write('<td>'+game.end+'</td>')
+        f.write('<td>'+str(game.turnsTaken)+'</td>')
+        f.write('<td>'+game.timeTakenLong+'</td>')
+        f.write('<td>'+game.god+'</td>')
+        f.write('<td>'+str(game.numRunes)+'</td>')
+        f.write('<td>'+game.datetime.isoformat(' ')+'</td>')
+        f.write('<td>'+game.versionShort+'</td>')
+        f.write('</tr>\n')
+        gameCount += 1
+    f.write('</table>\n')
