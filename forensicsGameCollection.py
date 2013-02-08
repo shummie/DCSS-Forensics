@@ -48,7 +48,7 @@ class gameCollection:
             self.gameList.append(gameInfoObject)
             self.gameID.append(gameInfoObject.id)
         self.updateAchievements()
-
+        self.gameList.sort(key = lambda x: x.datetime)
 
     def addFile(self, filename):
         # Reads the file and adds the game to the gameList.
@@ -58,6 +58,7 @@ class gameCollection:
             self.gameID.append(game.id)
             if forensicsConfig.verbosity >= 3: print (filename, + " appended")
         self.updateAchievements()
+        self.gameList.sort(key = lambda x: x.datetime)
 
     def outputCSVFile(self, OUTFILE):
         # Saves a CSV file with the name OUTFILE in the standard directory
@@ -84,45 +85,15 @@ class gameCollection:
 
         print("Successfully completed.")
         print(str(len(self.gameList)) + " records exported to " + OUTFILE)
-
-    # Prints out (or saves in a csv?) the top N scores in the gameCollection
+            
     def topNScores(self, n):
-        topScores = []
-        topScoresIndex = []
-        # Find the top N scoring games first...
-        for i in range(0, len(self.gameList)):
-            if len(topScores) < n:
-                topScores.append(self.gameList[i].score)
-                topScoresIndex.append(i)
-            else:
-                if self.gameList[i].score > min(topScores):
-                    topScoresIndex.pop(topScores.index(min(topScores)))
-                    topScores.pop(topScores.index(min(topScores)))
-                    topScores.append(self.gameList[i].score)
-                    topScoresIndex.append(i)
-
-        if forensicsConfig.verbosity >= 2:
-            print (topScores)
-            print (topScoresIndex)
-
-        # Next, sort the list
-        topScoresIndexOrdered = []
-        topScoresOrdered = []
-        while len(topScores) > 0:
-            index = topScores.index(max(topScores))
-            topScoresOrdered.append(topScores[index])
-            topScoresIndexOrdered.append(topScoresIndex[index])
-            topScores.pop(index)
-            topScoresIndex.pop(index)
-
-        if forensicsConfig.verbosity >= 2:
-            print (topScoresOrdered)
-            print (topScoresIndexOrdered)
+        # Returns a list of the top N scoring games.
+        scoreSortedGameList = sorted(self.gameList, key = lambda x: x.score, reverse = True)
+        return scoreSortedGameList[0:n]
 
     def updateAchievements(self):
         # runs the achievement module
         forensicsAchievement.forensicsAchievement(self)
-    
 
     def completedAchievements(self):
         # Prints out the list of completed achievements
