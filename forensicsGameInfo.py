@@ -14,7 +14,6 @@
 #   You should have received a copy of the GNU Affero General Public License
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import forensicsConfig
 import forensicsDictionary
 import datetime
 
@@ -111,7 +110,7 @@ class gameInfo:
             self.date = ""
             self.time = ""
             # Still import, but establish a unique time identifier
-            self.id = time.clock()
+            self.id = datetime.datetime.now().isoformat(' ')
             self.datetime = datetime.datetime.now()
 
     ## header information stored in the following format
@@ -221,7 +220,6 @@ class gameInfo:
         ## Line 0:
         ## Ray the Unseen (Kobold Berserker)                  Turns: 24313, Time: 01:28:45
         lineSplit = self.stats[0].split()
-        wordSplit = 0
         self.turnsTaken = int(lineSplit[lineSplit.index("Turns:")+1][:-1])
         self.timeTakenLong = lineSplit[-1]
         
@@ -267,7 +265,6 @@ a: Burn Spellbooks, Berserk, Trog's Hand, Brothers in Arms, Renounce Religion
             if len(self.stats[lineIndex]) < 2: lineIndex += 1
             else:
                 if self.stats[lineIndex].split()[0] == "}:":
-                    loop = False
                     runeString = self.stats[lineIndex].split()[1]
                     self.numRunes = int(runeString[:runeString.find("/")])
                 lineIndex += 1
@@ -297,8 +294,7 @@ a: Burn Spellbooks, Berserk, Trog's Hand, Brothers in Arms, Renounce Religion
             self.dungeonLocation = self.misc[lineIndex][self.misc[lineIndex].find("a"):-2]
         else:
             self.dungeonLevel = -1
-            self.dungeonLocation == "ERROR"
-
+            self.dungeonLocation = "ERROR"
         if self.dungeonLevel == 0: self.dungeonPlace = self.dungeonLocation
         else: self.dungeonPlace = self.dungeonLocation + ":" + str(self.dungeonLevel)
             
