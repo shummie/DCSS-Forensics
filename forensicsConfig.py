@@ -20,8 +20,10 @@
 # PATH = "C:/Users/shumr/Documents/Ray/stone_soup-tiles-0.11"
 PATH = "C:/Users/shumr/Documents/Ray/crawl_tiles-0.12-a0-1684/morgue"
 
+
 ## Output file for the csv dump
-OUTFILE = "test.csv"
+#CSVOUTFILE = "test.csv"
+CSVOUTFILE = ""
 
 # Verbosity
 # 1 = standard output
@@ -29,9 +31,41 @@ OUTFILE = "test.csv"
 # 3 = verbose
 # 5 = FULL verbosity
 
-verbosity = 1
+#verbosity = 1
+verbosity = 0
 
 
 ## HTML FILE OUTPUT VARIABLES
-NUM_RECENT_GAMES = 15
-NUM_TOP_SCORES = 15
+#NUM_RECENT_GAMES = 15
+#NUM_TOP_SCORES = 15
+NUM_RECENT_GAMES = 2
+NUM_TOP_SCORES = 2
+
+
+import configparser
+
+def readConfigFile(filename):
+    try:
+        config = configparser.ConfigParser()
+        config.read(filename)
+        
+        ## Read VARIABLES data
+        global PATH
+        global CSVOUTFILE
+        global verbosity
+        PATH = config['VARIABLES']['PATH']
+        CSVOUTFILE = config['VARIABLES']['CSVOUTFILE']
+        verbosity = int(config['VARIABLES']['VERBOSITY'])
+        
+        ## Read HTMLOUTPUT data
+        global NUM_RECENT_GAMES
+        global NUM_TOP_SCORES
+        NUM_RECENT_GAMES = int(config['HTMLOUTPUT']['NUM_RECENT_GAMES'])
+        NUM_TOP_SCORES = int(config['HTMLOUTPUT']['NUM_TOP_SCORES'])
+    except:
+        print("Error reading config.ini file. Using default values.")
+    
+    
+    
+    
+    

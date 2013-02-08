@@ -31,7 +31,7 @@ import pickle
 
 # outputs the CSV file
 def outputCSV():
-    gameCollection.outputCSVFile(forensicsConfig.OUTFILE)
+    gameCollection.outputCSVFile(forensicsConfig.CSVOUTFILE)
 
 # Loads the gameCollection object with the morgue files
 def readGameData():
@@ -52,13 +52,14 @@ def loadGameData(filename):
     inputfile = open(filename, "rb")
     return pickle.load(inputfile)
 
-try:
-    os.chdir(forensicsConfig.PATH)
-    gameCollection = forensicsGameCollection.gameCollection()   
-    readGameData()
-    forensicsHTML.createHTML(gameCollection)
+#try:
+forensicsConfig.readConfigFile("config.ini")
+os.chdir(forensicsConfig.PATH)
+gameCollection = forensicsGameCollection.gameCollection()   
+readGameData()
+forensicsHTML.createHTML(gameCollection)
 
-except WindowsError:
-    print("Directory " + forensicsConfig.PATH + " does not exist.")
-except:
-    print("An unknown error has occurred, program halted.")
+#except WindowsError:
+    #print("Directory " + forensicsConfig.PATH + " does not exist.")
+#except:
+    #print("An unknown error has occurred, program halted.")
