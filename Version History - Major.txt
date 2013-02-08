@@ -1,3 +1,26 @@
+v0.03 - ???
+=====
+Many new features added!
+
+gameInfo class: 
+--End information extracted from hiscore
+--datetime variable created for sorting games
+
+gameCollection class:
+--Various report functions added
+----ComboMatrix report functions
+------gamesPlayedCombo
+------comboMaxLevel
+------comboGamesWon
+----allGamesWonList
+----overallStatsList
+
+automatic output of summarized gameCollection statistics into an html file!
+-- New module implemented: forensicsHTML.py
+---- Generates HTML code and outputs it into an html file that currently mimics the
+----   format seen on the crawl online servers.
+
+
 v0.02 - February 6, 2013
 =====
 Reorgnized the imports / gameInfo into a gameCollection class
