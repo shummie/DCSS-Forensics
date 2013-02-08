@@ -22,9 +22,6 @@ import glob
 import pickle
 
 
-os.chdir(forensicsConfig.PATH + "/morgue")
-
-gameCollection = forensicsGameCollection.gameCollection()
 
 # Note, for now, ALL data and functions utilize the main gameCollection object
 # I can alter the below later to deal with multiple databases, but currently
@@ -55,6 +52,13 @@ def loadGameData(filename):
     inputfile = open(filename, "rb")
     return pickle.load(inputfile)
 
-    
-readGameData()
-forensicsHTML.createHTML(gameCollection)
+try:
+    os.chdir(forensicsConfig.PATH)
+    gameCollection = forensicsGameCollection.gameCollection()   
+    readGameData()
+    forensicsHTML.createHTML(gameCollection)
+
+except WindowsError:
+    print("Directory " + forensicsConfig.PATH + " does not exist.")
+except:
+    print("An unknown error has occurred, program halted.")

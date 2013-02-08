@@ -18,7 +18,7 @@
 
 ## Enter path below to main DCSS directory
 # PATH = "C:/Users/shumr/Documents/Ray/stone_soup-tiles-0.11"
-PATH = "C:/Users/shumr/Documents/Ray/crawl_tiles-0.12-a0-1684"
+PATH = "C:/Users/shumr/Documents/Ray/crawl_tiles-0.12-a0-1684/morgue"
 
 ## Output file for the csv dump
 OUTFILE = "test.csv"
@@ -30,3 +30,8 @@ OUTFILE = "test.csv"
 # 5 = FULL verbosity
 
 verbosity = 1
+
+
+## HTML FILE OUTPUT VARIABLES
+NUM_RECENT_GAMES = 15
+NUM_TOP_SCORES = 15
