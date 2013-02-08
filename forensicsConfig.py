@@ -16,6 +16,9 @@
 
 ## Configuration File
 
+import configparser
+import os
+
 ## Enter path below to main DCSS directory
 # PATH = "C:/Users/shumr/Documents/Ray/stone_soup-tiles-0.11"
 PATH = "C:/Users/shumr/Documents/Ray/crawl_tiles-0.12-a0-1684/morgue"
@@ -40,9 +43,8 @@ verbosity = 0
 #NUM_TOP_SCORES = 15
 NUM_RECENT_GAMES = 2
 NUM_TOP_SCORES = 2
+HTML_OUTFILE_PATH = os.getcwd()
 
-
-import configparser
 
 def readConfigFile(filename):
     try:
@@ -60,8 +62,10 @@ def readConfigFile(filename):
         ## Read HTMLOUTPUT data
         global NUM_RECENT_GAMES
         global NUM_TOP_SCORES
+        global HTML_OUTFILE_PATH
         NUM_RECENT_GAMES = int(config['HTMLOUTPUT']['NUM_RECENT_GAMES'])
         NUM_TOP_SCORES = int(config['HTMLOUTPUT']['NUM_TOP_SCORES'])
+        HTML_OUTFILE_PATH = config['HTMLOUTPUT']['HTML_OUTFILE_PATH']
     except:
         print("Error reading config.ini file. Using default values.")
     

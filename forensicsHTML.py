@@ -17,11 +17,14 @@
 ## This file contains all the code required to output various statistics into an .HTML file
 
 import forensicsConfig
+import os
 
 title = "DCSS Forensics Output File"
 
 def createHTML(gc):
     # This function creates an HTML file with various statistics produced
+    
+    os.chdir(forensicsConfig.HTML_OUTFILE_PATH)
 
     f = open("test.html", "w")
 
