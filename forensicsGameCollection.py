@@ -276,7 +276,10 @@ class gameCollection:
         gameWinList.sort(key = lambda x: x.datetime)
         return gameWinList
             
-            
+    def recentNGames(self, n):
+        # Returns a list of the most recent N games.
+        scoreSortedGameList = sorted(self.gameList, key = lambda x: x.datetime, reverse = True)
+        return scoreSortedGameList[0:n]            
             
         
         
