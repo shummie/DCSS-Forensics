@@ -106,7 +106,7 @@ def writeComboTable(f, table, winTable):
     f.write("</tr>\n")
 
     # Last row uses header formatting
-    lastrow = table[-1]
+    # lastrow = table[-1] (Can remove, accidentally used header instead, but it *should* contain the same info
     f.write("<tr>")
     for item in header:
         f.write("<th>"+item+"</th>")
@@ -133,7 +133,7 @@ def writeGamesWonList(f, winList):
     f.write('<tr><th></th><th>Score</th><th>Character</th><th>End</th><th>Turns</th><th>Duration</th><th>God</th><th>Runes</th><th>Time</th><th>Version</th></tr>\n')
     gameCount = 1
     for game in winList:
-        f.write('<tr>')
+        f.write('<tr class="even">') if (gameCount % 2 == 0) else f.write('<tr class="odd">') 
         f.write('<td>'+str(gameCount)+'</td>')
         f.write('<td>'+str(game.score)+'</td>')
         f.write('<td>'+game.speciesShort+game.backgroundShort+'</td>')
