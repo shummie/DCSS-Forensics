@@ -1,6 +1,27 @@
+#   Dungeon Crawl Stone Soup Forensics
+#   Copyright (C) 2013  Raymond Shum
+#
+#   This program is free software: you can redistribute it and/or modify
+#   it under the terms of the GNU Affero General Public License as
+#   published by the Free Software Foundation, either version 3 of the
+#   License, or (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU Affero General Public License for more details.
+#
+#   You should have received a copy of the GNU Affero General Public License
+#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+## This file contains all the code required to output various statistics into an .HTML file
+
+import forensicsConfig
+
 title = "DCSS Forensics Output File"
 
 def createHTML(gc):
+    # This function creates an HTML file with various statistics produced
 
     f = open("test.html", "w")
 
@@ -20,12 +41,12 @@ def createHTML(gc):
     
     # output list of recent 10 games
     f.write('<h3>Recent Games</h3>')
-    recentGameList = gc.recentNGames(10)
+    recentGameList = gc.recentNGames(forensicsConfig.NUM_RECENT_GAMES)
     writeRecentGamesList(f, recentGameList)
     
     # output list of top 10 scores
     f.write('<h3>Top Scores</h3>')
-    topScoreList = gc.topNScores(10)
+    topScoreList = gc.topNScores(forensicsConfig.NUM_TOP_SCORES)
     writeTopScoreList(f, topScoreList)
 
     # Outputs the combo Tables
