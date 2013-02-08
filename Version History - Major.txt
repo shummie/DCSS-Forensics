@@ -22,6 +22,9 @@ automatic output of summarized gameCollection statistics into an html file!
 ---- Generates HTML code and outputs it into an html file that currently mimics the
 ----   format seen on the crawl online servers.
 
+config.ini
+-- Set variables to be used. Can be used to control some output.
+
 
 v0.02 - February 6, 2013
 =====
