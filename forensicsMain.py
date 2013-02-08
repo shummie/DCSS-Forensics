@@ -57,7 +57,9 @@ forensicsConfig.readConfigFile("config.ini")
 os.chdir(forensicsConfig.PATH)
 gameCollection = forensicsGameCollection.gameCollection()   
 readGameData()
-forensicsHTML.createHTML(gameCollection)
+forensicsHTML.createHTMLOverview(gameCollection)
+forensicsHTML.createHTMLALLScoresTable(gameCollection)
+
 
 #except WindowsError:
     #print("Directory " + forensicsConfig.PATH + " does not exist.")

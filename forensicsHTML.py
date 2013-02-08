@@ -19,17 +19,16 @@
 import forensicsConfig
 import os
 
-title = "DCSS Forensics Output File"
 
-def createHTML(gc):
+def createHTMLOverview(gc):
     # This function creates an HTML file with various statistics produced
     
     os.chdir(forensicsConfig.HTML_OUTFILE_PATH)
 
-    f = open("test.html", "w")
+    f = open("overview.html", "w")
 
     writeHtmlStart(f)
-    writeHeaderStart(f)
+    writeHeaderStart(f, "DCSS Forensics Output File")
     f.write("<body>\n")
 
     # Outputs summary stats
@@ -74,11 +73,32 @@ def createHTML(gc):
     f.close()
 
 
+
+def createHTMLALLScoresTable(gc):
+    
+    os.chdir(forensicsConfig.HTML_OUTFILE_PATH)
+
+    f = open("allScores.html", "w")
+
+    writeHtmlStart(f)
+    writeHeaderStart(f, "DCSS Forensics - All Games by Score")
+    f.write("<body>\n")
+    
+    f.write("<h3>All Games sorted by Score</h3><hr>")
+    gameList = gc.topNScores(len(gc.gameList))
+    writeTopScoreList(f, gameList)
+    
+    f.write("</body>\n")
+    f.write("</html>")
+
+    f.close()
+
+
 def writeHtmlStart(f):
     f.write("<!DOCTYPE html>\n")
     f.write("<html>\n")
 
-def writeHeaderStart(f):
+def writeHeaderStart(f, title):
     f.write("<head>\n")
     f.write("<title>" + title + "</title>\n")
 
