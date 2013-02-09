@@ -44,6 +44,7 @@ verbosity = 0
 NUM_RECENT_GAMES = 2
 NUM_TOP_SCORES = 2
 HTML_OUTFILE_PATH = os.getcwd()
+CURRENT_WORKING_PATH = os.getcwd()
 
 
 def readConfigFile(filename):

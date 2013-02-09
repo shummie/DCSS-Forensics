@@ -102,6 +102,7 @@ def writeHeaderStart(f, title):
     f.write("<head>\n")
     f.write("<title>" + title + "</title>\n")
 
+    writeStyleSheet(f, forensicsConfig.CURRENT_WORKING_PATH + "/style.css")
     # Note, will either need to embed style sheet into the html file or
     # figure out how to keep this separate since it references the sheet
     # from the active directory.
@@ -257,3 +258,13 @@ def writeTopScoreList(f, gameList):
         f.write('<td>'+game.versionShort+'</td>')
         gameCount += 1
     f.write('</table>\n')
+    
+def writeStyleSheet(f, styleFile):
+    # attempts to write the stylesheet internally. This way the stylesheet is not required in order for the sheet to be formatted
+    # properly, but will utilize the external sheet if it exists.
+    
+    f_style = open(styleFile, "r")
+    stylesheet = f_style.read()
+    f.write(stylesheet)
+    
+    
