@@ -59,6 +59,7 @@ gameCollection = forensicsGameCollection.gameCollection()
 readGameData()
 forensicsHTML.createHTMLOverview(gameCollection)
 forensicsHTML.createHTMLALLScoresTable(gameCollection)
+forensicsHTML.createHTMLALLGamesTableRecent(gameCollection)
 
 
 #except WindowsError:

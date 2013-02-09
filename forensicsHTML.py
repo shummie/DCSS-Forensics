@@ -92,6 +92,25 @@ def createHTMLALLScoresTable(gc):
     f.write("</html>")
 
     f.close()
+    
+def createHTMLALLGamesTableRecent(gc):
+    # outputs all games ordered by the most recent game first
+    os.chdir(forensicsConfig.HTML_OUTFILE_PATH)
+
+    f = open("allGamesByRecent.html", "w")
+
+    writeHtmlStart(f)
+    writeHeaderStart(f, "DCSS Forensics - All Games ordered by time")
+    f.write("<body>\n")
+    
+    f.write("<h3>All Games sorted by Most Recent</h3><hr>")
+    gameList = gc.recentNGames(len(gc.gameList))
+    writeTopScoreList(f, gameList)
+    
+    f.write("</body>\n")
+    f.write("</html>")
+
+    f.close()
 
 
 def writeHtmlStart(f):
