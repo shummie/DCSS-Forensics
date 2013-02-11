@@ -2,7 +2,7 @@ import sys
 from cx_Freeze import setup, Executable
 
 # Dependencies are automatically detected, but it might need fine tuning.
-build_exe_options = {"silent": ["s"], "create_shared_zip" : False, "include_files":["config.ini"]}
+build_exe_options = {"silent": ["s"], "create_shared_zip" : False, "include_files":["config.ini", "style.css", "LICENSE", "README.md", "Version History - Major.txt"]}
 #buildOptions = dict(create_shared_zip = False, silent = ["s"])
 
 # GUI applications require a different base on Windows (the default is for a
