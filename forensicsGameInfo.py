@@ -286,6 +286,20 @@ a: Burn Spellbooks, Berserk, Trog's Hand, Brothers in Arms, Renounce Religion
         elif lineSplit[-1] == "Blades.":
             self.dungeonLevel = 0
             self.dungeonLocation = "Blades"
+        elif lineSplit[-1] == "Cocytus.":
+            self.dungeonLevel = int(lineSplit[lineSplit.index("level")+1])
+            self.dungeonLocation = "Cocytus"
+        elif lineSplit[-1] == "Gehenna.":
+            self.dungeonLevel = int(lineSplit[lineSplit.index("level")+1])
+            self.dungeonLocation = "Gehenna"
+        elif lineSplit[-1] == "Tartarus.":
+            self.dungeonLevel = int(lineSplit[lineSplit.index("level")+1])
+            self.dungeonLocation = "Tartarus"
+        # I don't have a morgue file with Dis yet...
+        elif lineSplit[-1] == "Dis.":
+            self.dungeonLevel = int(lineSplit[lineSplit.index("level")+1])
+            self.dungeonLocation = "Dis"
+        # Do we need to add exceptions for Hell & Pandemonium?    
         elif lineSplit[2] == "on":
             self.dungeonLevel = int(lineSplit[lineSplit.index("level")+1])
             self.dungeonLocation = self.misc[lineIndex][self.misc[lineIndex].find("the")+4:-2]
