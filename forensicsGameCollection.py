@@ -56,9 +56,12 @@ class gameCollection:
         game = forensicsParser.readGameRecord(filename)
         if game != None:
             if game.id not in self.gameID:
-                self.gameList.append(game)
-                self.gameID.append(game.id)
-                if forensicsConfig.verbosity >= 3: print (filename, + " appended")
+                if game.header[0].find("Dungeon Crawl Stone Soup") == -1:
+                    print(game.filename + " could not be read. Sprint & Defense games not supported.")
+                else:
+                    self.gameList.append(game)
+                    self.gameID.append(game.id)
+                    if forensicsConfig.verbosity >= 3: print (filename, + " appended")
         self.updateAchievements()
         self.gameList.sort(key = lambda x: x.datetime)
 
