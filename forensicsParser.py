@@ -32,10 +32,14 @@ def readGameRecord(filePath):
     f.close()
 
     # Create a gameInfo object
-    gameInfoObject = forensicsGameInfo.gameInfo(rawData)
-    gameInfoObject.filename = filePath
-    parseGameInfoObject(gameInfoObject)
-    return gameInfoObject
+    try:
+        gameInfoObject = forensicsGameInfo.gameInfo(rawData)
+        gameInfoObject.filename = filePath
+        parseGameInfoObject(gameInfoObject)
+        return gameInfoObject
+    except:
+        print("Could not read file: " + filePath + " correctly. Skipping.")
+        return None
 
 
 

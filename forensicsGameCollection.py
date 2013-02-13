@@ -44,6 +44,7 @@ class gameCollection:
 
     def addGame(self, gameInfoObject):
         # Check if this game exists in the database, if not, add it.
+        # Don't believe this is currently used, so please use w/ caution. Will not be updating...
         if gameInfoObject.id not in self.gameID:
             self.gameList.append(gameInfoObject)
             self.gameID.append(gameInfoObject.id)
@@ -53,10 +54,11 @@ class gameCollection:
     def addFile(self, filename):
         # Reads the file and adds the game to the gameList.
         game = forensicsParser.readGameRecord(filename)
-        if game.id not in self.gameID:
-            self.gameList.append(game)
-            self.gameID.append(game.id)
-            if forensicsConfig.verbosity >= 3: print (filename, + " appended")
+        if game != None:
+            if game.id not in self.gameID:
+                self.gameList.append(game)
+                self.gameID.append(game.id)
+                if forensicsConfig.verbosity >= 3: print (filename, + " appended")
         self.updateAchievements()
         self.gameList.sort(key = lambda x: x.datetime)
 
