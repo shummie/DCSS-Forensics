@@ -198,11 +198,11 @@ def writeOverallStats(f, statList):
         f.write('<td>'+str(statList[i])+'</td>')
     f.write('</tr>')
     f.write('</table>\n')    
-
+    f.write('<p>\n')
     f.write('<table class = "overall-stats bordered">\n')
-    f.write('<tr><th>Total Score</th><th>Games</th><th>Wins</th><th>Win%</th><th>Best XL</th><th>Best Score</th><th>Average Score</th><th>Favorite Species</th><th>Favorite Background</th><th>Favorite Combo</th></tr>\n')
+    f.write('<tr><th>Total Turns Taken</th><th>Runes Collected</th><th>Levels Visited</th><th>Creatures Vanquished</th><th>Gold Collected</th><th>Gold Spent</th></tr>\n')
     f.write('<tr>')
-    for i in range(10, 10):
+    for i in range(10, 16):
         f.write('<td>'+str(statList[i])+'</td>')
     f.write('</tr>')
     f.write('</table>\n')
