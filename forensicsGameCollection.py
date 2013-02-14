@@ -216,10 +216,12 @@ class gameCollection:
         # [0] Total Score, [1] # Games, [2] # Wins, [3] % Win, [4] Best XL,
         # [5] Best Score, [6] Avg Score,
         # [7] Favorite Species, [8] Favorite Background, [9] Favorite Combo
+        # [10] Total Turns, [11] Runes collected, [12] Levels Visited, [13] Creatures Vanquished
+        # [14] Gold collected
 
         from collections import Counter
 
-        statList = [0, 0, 0, "", 0, 0, 0, "", "", ""]
+        statList = [0, 0, 0, "", 0, 0, 0, "", "", "", 0, 0]
         spList = []
         bgList = []
         comboList = []
@@ -234,6 +236,8 @@ class gameCollection:
             spList.append(game.species)
             bgList.append(game.background)
             comboList.append(game.species + " " + game.background)
+            statList[10] += game.turnsTaken
+            statList[11] += game.numRunes
 
         statList[3] = str(round(statList[2]/statList[1]*100, 2))+"%"
         statList[6] = "{:,}".format(int(round(statList[0]/statList[1], 0)))
@@ -241,6 +245,8 @@ class gameCollection:
         statList[1] = "{:,}".format(statList[1])
         statList[2] = "{:,}".format(statList[2])
         statList[5] = "{:,}".format(statList[5])
+        statList[10] = "{:,}".format(statList[10])
+        statList[11] = "{:,}".format(statList[11])
 
         # Find the most common species/bg/combo
         speciesCounter = Counter(spList)

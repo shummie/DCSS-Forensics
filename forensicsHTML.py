@@ -194,10 +194,18 @@ def writeOverallStats(f, statList):
     f.write('<table class = "overall-stats bordered">\n')
     f.write('<tr><th>Total Score</th><th>Games</th><th>Wins</th><th>Win%</th><th>Best XL</th><th>Best Score</th><th>Average Score</th><th>Favorite Species</th><th>Favorite Background</th><th>Favorite Combo</th></tr>\n')
     f.write('<tr>')
-    for item in statList:
-        f.write('<td>'+str(item)+'</td>')
+    for i in range(0, 10):
+        f.write('<td>'+str(statList[i])+'</td>')
     f.write('</tr>')
     f.write('</table>\n')    
+
+    f.write('<table class = "overall-stats bordered">\n')
+    f.write('<tr><th>Total Score</th><th>Games</th><th>Wins</th><th>Win%</th><th>Best XL</th><th>Best Score</th><th>Average Score</th><th>Favorite Species</th><th>Favorite Background</th><th>Favorite Combo</th></tr>\n')
+    f.write('<tr>')
+    for i in range(10, 10):
+        f.write('<td>'+str(statList[i])+'</td>')
+    f.write('</tr>')
+    f.write('</table>\n')
 
 def writeGamesWonList(f, winList):
     # Note, winList is a list of gameInfo objects. The list should be sorted by
