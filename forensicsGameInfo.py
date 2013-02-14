@@ -87,10 +87,31 @@ class gameInfo:
     ## goldDonated (int)
     ## goldMisc (int)
     
+    ### kills variables
+    ## numCreaturesVanquished (int)
 
   
     def __init__(self, data):
         self.rawData = data
+        
+        ## Initialization of variables
+        
+        ## Misc Var
+        self.levelsVisited = 0
+        self.branchesVisited = 0
+        self.goldCollected = 0
+        self.goldSpent = 0
+        self.goldDonted = 0
+        self.goldMisc = 0
+
+        ## Kills var        
+        self.numCreaturesVanquished = 0
+        
+        ## stats var
+        self.turnsTaken = 0
+        self.numRunes = 0
+        self.level = 0
+        
 
     ## This function extracts the data from the data element fields.
     ## It will populate data only if the data element field is not empty.
@@ -102,6 +123,7 @@ class gameInfo:
         if len(self.hiscore) != 0: self.extractHiscore()
         if len(self.stats) != 0: self.extractStats()
         if len(self.misc) != 0: self.extractMisc()
+        if len(self.kills) != 0: self.extractKills()
 
     def extractID(self):
         # morgue-Ray-20130122-083257.txt
@@ -352,7 +374,11 @@ You were very full.
         #    lineIndex += 1
         #    self.goldSpent = int(self.misc[lineIndex].split()[2])
             
-                
+    def extractKills(self):
+        if self.kills[-1].find("Grand Total:") != -1:
+            self.numCreaturesVanquished = int(self.kills[-1].split()[2])
+        else:
+            self.numCreaturesVanquished = int(self.kills[-1].split()[0])
         
 
     # outputs select variables into a list, useful for debugging purposes.

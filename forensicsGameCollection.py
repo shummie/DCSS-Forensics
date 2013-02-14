@@ -239,7 +239,7 @@ class gameCollection:
             statList[10] += game.turnsTaken
             statList[11] += game.numRunes
             statList[12] += game.levelsVisited
-            statList[13] += 0  # not tracked yet.
+            statList[13] += game.numCreaturesVanquished
             statList[14] += game.goldCollected
             statList[15] += game.goldSpent
 
