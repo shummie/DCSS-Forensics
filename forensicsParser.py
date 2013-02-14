@@ -60,6 +60,8 @@ def parseGameInfoObject(gameInfoObject):
     overview = []
     mutations = []
     monlist = []
+    kills_by_place = []
+    kills = []
             
     lineNum = 0
     while lineNum < len(rawData):
@@ -128,8 +130,7 @@ def parseGameInfoObject(gameInfoObject):
             inventory = rawData[inventoryStart:inventoryEnd]
         # Check if turns_by_place
         elif sectionID == "turns_by_place":
-            
-            turns_by_placeStart = lineNum
+            turns_by_placeStart = lineNum-1
             breakCount = 0
             while breakCount != 2:
                 if rawData[lineNum] == "               +-------+-------+-------+-------+-------+----------------------\n":
@@ -145,7 +146,6 @@ def parseGameInfoObject(gameInfoObject):
             skills = rawData[skillsStart:skillsEnd]
         # Check if spells
         elif sectionID == "spells":
-            
             spellsStart = lineNum
             while ((rawData[lineNum] != "You didn't know any spells.\n") and
                    (rawData[lineNum] != "You knew the following spells:\n")): lineNum += 1
@@ -159,7 +159,6 @@ def parseGameInfoObject(gameInfoObject):
         # Check if overview
         elif sectionID == "overview":
             # Overview consists of 5 sections: Branches, Altars, Shops, Portals, and Annotations
-            
             overviewStart = lineNum
             lineNum += 2
             while rawData[lineNum] in ["Branches:\n", "Altars:\n", "Shops:\n", "Portals:\n", "Annotations\n"]:
@@ -170,7 +169,6 @@ def parseGameInfoObject(gameInfoObject):
             overview = rawData[overviewStart:overviewEnd]
         # Check if mutations
         elif sectionID == "mutations":
-            
             mutationsStart = lineNum
             lineNum += 2
             while rawData[lineNum] != "\n": lineNum += 1
@@ -178,15 +176,36 @@ def parseGameInfoObject(gameInfoObject):
             mutations = rawData[mutationsStart:mutationsEnd]
         # Check if monlist
         elif sectionID == "monlist":
-            
             monlistStart = lineNum
             while rawData[lineNum] != "\n": lineNum += 1
             monlistEnd = lineNum
             monlist = rawData[monlistStart:monlistEnd]
-        # TODO: ADD THIS PART LATER
         # Check if kills_by_place
-        # elif sectionID == "kills_by_place"
+        elif sectionID == "kills_by_place":
+            kills_by_placeStart = lineNum-1
+            breakCount = 0
+            while breakCount != 2:
+                if rawData[lineNum] == "               +-------+-------+-------+-------+-------+----------------------\n":
+                    breakCount += 1
+                lineNum += 1
+            kills_by_placeEnd = lineNum
+            kills_by_place = rawData[kills_by_placeStart:kills_by_placeEnd]
         # Check if kills
+        elif sectionID == "kills":
+            killsStart = lineNum
+            try:
+                while rawData[lineNum].find("Grand Total:") == -1: lineNum += 1
+            except:
+                try:
+                    lineNum = killsStart
+                    while rawData[lineNum].find("Monster Nature") == -1: lineNum += 1
+                    lineNum -= 2
+                except:
+                    lineNum = killsStart
+                    while rawData[lineNum].find("vanquished.") == -1: lineNum += 1                    
+            lineNum += 1
+            killsEnd = lineNum
+            kills = rawData[killsStart:killsEnd]
         # Check if action_counts
         else:
             # Should never trigger if all components are active
@@ -207,6 +226,8 @@ def parseGameInfoObject(gameInfoObject):
     gameInfoObject.overview = overview
     gameInfoObject.mutations = mutations
     gameInfoObject.monlist = monlist
+    gameInfoObject.kills_by_place = kills_by_place
+    gameInfoObject.kills = kills
 
     gameInfoObject.extractData()
                     
