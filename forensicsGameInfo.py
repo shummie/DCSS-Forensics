@@ -80,6 +80,12 @@ class gameInfo:
     ## dungeonLevel (int)
     ## dungeonLocation (str)
     ## dungeonPlace (str)
+    ## branchesVisited (int)
+    ## levelsVisited (int)
+    ## goldCollected (int)
+    ## goldSpent (int)
+    ## goldDonated (int)
+    ## goldMisc (int)
     
 
   
@@ -312,16 +318,42 @@ a: Burn Spellbooks, Berserk, Trog's Hand, Brothers in Arms, Renounce Religion
         if self.dungeonLevel == 0: self.dungeonPlace = self.dungeonLocation
         else: self.dungeonPlace = self.dungeonLocation + ":" + str(self.dungeonLevel)
             
-    '''
+        '''
 You worshipped Trog.
 Trog was exalted by your worship.
 You were very full.
+        '''
+        # You visited 3 branches of the dungeon, and saw 23 of its levels.
+        while self.misc[lineIndex].find("You visited") == -1: lineIndex += 1
+            # Note, this still assumes dead characters. 
+        self.branchesVisited = int(self.misc[lineIndex].split()[2])
+        self.levelsVisited = int(self.misc[lineIndex].split()[-4])
+        
+            
+        ## You also visited: Labyrinth, Sewer, Ossuary, Bailey and Volcano.
 
-You visited 3 branches of the dungeon, and saw 23 of its levels.
-You also visited: Labyrinth, Sewer, Ossuary, Bailey and Volcano.
-
-You collected 1648 gold pieces.        
-    '''        
+        ## You collected 3205 gold pieces.
+        ## You spent 493 gold pieces at shops.
+        self.goldCollected = 0
+        self.goldSpent = 0
+        self.goldDonated = 0
+        self.goldMisc = 0
+        while (lineIndex < len(self.misc)) and (self.misc[lineIndex].find("You collected") == -1): lineIndex += 1      
+        while lineIndex < len(self.misc):
+            lineSplit = self.misc[lineIndex].split()
+            if lineSplit[1] == "collected": self.goldCollected = int(self.misc[lineIndex].split()[2])
+            elif lineSplit[1] == "spent": self.goldSpent = int(self.misc[lineIndex].split()[2])
+            elif lineSplit[1] == "donated": self.goldDonated = int(self.misc[lineIndex].split()[2])
+            elif lineSplit[1] == "used": self.goldMisc = int(self.misc[lineIndex].split()[2])
+            lineIndex += 1
+        
+        
+        #if lineIndex != len(self.misc) - 1:  
+        #    lineIndex += 1
+        #    self.goldSpent = int(self.misc[lineIndex].split()[2])
+            
+                
+        
 
     # outputs select variables into a list, useful for debugging purposes.
     def outputList(self):
