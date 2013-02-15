@@ -5,6 +5,8 @@ Many new features added!
 gameInfo class: 
 --End information extracted from hiscore
 --datetime variable created for sorting games
+--Kill info extracted
+--Gold info retrieved
 
 gameCollection class:
 --Various report functions added
@@ -21,10 +23,15 @@ automatic output of summarized gameCollection statistics into an html file!
 -- New module implemented: forensicsHTML.py
 ---- Generates HTML code and outputs it into an html file that currently mimics the
 ----   format seen on the crawl online servers.
+-- Three reports created: Overview, All games by score, All games recent first.
 
 config.ini
 -- Set variables to be used. Can be used to control some output.
 
+.exe file support! Should (in theory) work. When run, reads the config.ini file and outputs three HTML files.
+
+Added error handling logic to skip files that can't be read instead of bombing out
+Sprint / Defense games no longer loaded
 
 v0.02 - February 6, 2013
 =====
