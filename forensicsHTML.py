@@ -105,7 +105,7 @@ def createHTMLALLGamesTableRecent(gc):
     
     f.write("<h3>All Games sorted by Most Recent</h3><hr>")
     gameList = gc.recentNGames(len(gc.gameList))
-    writeTopScoreList(f, gameList)
+    writeALLGamesTableRecent(f, gameList)
     
     f.write("</body>\n")
     f.write("</html>")
@@ -271,6 +271,35 @@ def writeTopScoreList(f, gameList):
         trClassTag += (" win" if game.winFlag == True else "")
         f.write('<tr class="' + trClassTag + '">')
         f.write('<td>'+str(gameCount)+'</td>')
+        f.write('<td>'+("{:,}".format((game.score)))+'</td>')
+        f.write('<td>'+game.speciesShort+game.backgroundShort+'</td>')
+        f.write('<td>'+game.god+'</td>')
+        f.write('<td>'+game.title+'</td>')
+        f.write('<td>'+game.dungeonPlace+'</td>')
+        f.write('<td>'+game.end+'</td>')
+        f.write('<td>'+str(game.level)+'</td>')
+        f.write('<td>'+("{:,}".format((game.turnsTaken)))+'</td>')
+        f.write('<td>'+game.timeTakenLong+'</td>')
+        f.write('<td>'+str(game.numRunes)+'</td>')
+        f.write('<td>'+game.datetime.isoformat(' ')+'</td>')
+        f.write('<td>'+game.versionShort+'</td>')
+        gameCount += 1
+    f.write('</table>\n')
+    
+def writeALLGamesTableRecent(f, gameList):
+    # gameList is a list of gameInfo objects. The list should be sorted by date. Need to iterate through and output details
+    # Header fields are as follows:
+    # Rank / Score / Character / God / Title / Place / End / XL / Turns / Duration / Runes / Date / Version
+    
+    f.write('<table class = "overall-stats bordered">\n')
+    f.write('<tr><th></th><th>Score</th><th>Character</th><th>God</th><th>Title</th><th>Place</th><th>End</th><th>XL</th><th>Turns</th><th>Duration</th><th>Runes</th><th>Date</th><th>Version</th></tr>')
+    gameCount = 1
+    totalGames = len(gameList)
+    for game in gameList:
+        trClassTag = ("even" if (gameCount % 2 == 0) else "odd")
+        trClassTag += (" win" if game.winFlag == True else "")
+        f.write('<tr class="' + trClassTag + '">')
+        f.write('<td>'+str(totalGames-gameCount+1)+'</td>')
         f.write('<td>'+("{:,}".format((game.score)))+'</td>')
         f.write('<td>'+game.speciesShort+game.backgroundShort+'</td>')
         f.write('<td>'+game.god+'</td>')
