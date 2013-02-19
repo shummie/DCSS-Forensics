@@ -21,7 +21,8 @@ import os
 
 ## Enter path below to main DCSS directory
 # PATH = "C:/Users/shumr/Documents/Ray/stone_soup-tiles-0.11"
-PATH = "C:/Users/shumr/Documents/Ray/crawl_tiles-0.12-a0-1684/morgue"
+# PATH = "C:/Users/shumr/Documents/Ray/crawl_tiles-0.12-a0-1684/morgue"
+PATH = os.getcwd()
 
 
 ## Output file for the csv dump
