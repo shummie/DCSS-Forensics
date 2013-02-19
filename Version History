@@ -1,4 +1,4 @@
-v0.03 - ???
+v0.03 - February 19, 2013
 =====
 Many new features added!
 
@@ -31,7 +31,7 @@ automatic output of summarized gameCollection statistics into an html file!
 config.ini
 -- Set variables to be used. Can be used to control some output.
 
-.exe file support! Should (in theory) work. When run, reads the config.ini file and outputs three HTML files.
+.exe file support! Should (in theory) work. When run, reads the config.ini file and outputs three HTML files. Default path will run in the same directory as the morgue files (Might be a bit messy, but works for now)
 
 Added error handling logic to skip files that can't be read instead of bombing out
 Sprint / Defense games no longer loaded
