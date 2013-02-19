@@ -261,7 +261,7 @@ class gameCollection:
         spTuple = speciesCounter.most_common()
         maxSpeciesCount = spTuple[0][1]
         i = 0
-        while spTuple[i][1] == maxSpeciesCount:
+        while (i < len(spTuple)) and (spTuple[i][1] == maxSpeciesCount):
             if len(statList[7]) > 0: statList[7] += ", "
             statList[7] += spTuple[i][0]
             i += 1
@@ -270,7 +270,7 @@ class gameCollection:
         bgTuple = backgroundCounter.most_common()
         maxBackgroundCount = bgTuple[0][1]
         i = 0
-        while bgTuple[i][1] == maxBackgroundCount:
+        while (i < len(bgTuple)) and (bgTuple[i][1] == maxBackgroundCount):
             if len(statList[8]) > 0: statList[8] += ", "
             statList[8] += bgTuple[i][0]
             i += 1
@@ -279,7 +279,7 @@ class gameCollection:
         comboTuple = comboCounter.most_common()
         maxComboCount = comboTuple[0][1]
         i = 0
-        while comboTuple[i][1] == maxComboCount:
+        while (i < len(comboTuple)) and (comboTuple[i][1] == maxComboCount):
             if len(statList[9]) > 0: statList[9] += ", "
             statList[9] += comboTuple[i][0]
             i += 1
