@@ -340,10 +340,9 @@ def writeGameCollectionDump(f, gameList):
     # is captured appropriately.
 
     f.write('<table class = "overall-stats bordered">\n')
-    f.write('<tr><th></th><th>Filename</th><th>Score</th><th>Character</th><th>God</th><th>Title</th><th>Place</th><th>End</th><th>XL</th><th>Turns</th><th>Duration</th><th>Runes</th><th>Date</th><th>Version</th><th>Version-Long</th>' +
-            '<th>ID</th><th>WinFlag</th></tr>')
-    f.write('<tr><th></th><th>filename</th><th>score</th><th>speciesShort+backgroundShort</th><th>god</th><th>title</th><th>dungeonPlace</th><th>end</th><th>level</th><th>turnsTaken</th><th>timeTakenLong</th><th>numRunes</th><th>datetime.isoformat(' ')</th><th>versionShort</th><th>versionLong</th>' + 
-            '<th>id</th><th>winFlag</th></tr>')
+    f.write('<tr><th></th><th>Filename</th><th>Score</th><th>Character</th><th>God</th><th>Title</th><th>Place</th><th>End</th><th>XL</th><th>XL Long</th><th>Turns</th><th>Duration</th><th>Runes</th><th>Date</th><th>Version</th><th>Version-Long</th>' +
+            '<th>ID</th><th>WinFlag</th><th>Branches Visited</th><th>Levels Visited</th><th>Pan Visits</th><th>Pan Level Visits</th><th>Abyss Trips</th><th>Bazaar Visits</th><th>Zig Visits</th><th>Zigs Completed</th><th>Zig Levels Visited</th><th>Deepest Zig Level</th>' + 
+            '<th>Gold Collected</th><th>Gold Spent</th><th>Gold Donated</th><th>Gold for Misc</th><th>Creatures Vanquished</th></tr>')
     gameCount = 1
     for game in gameList:
         trClassTag = ("even" if (gameCount % 2 == 0) else "odd")
@@ -358,6 +357,7 @@ def writeGameCollectionDump(f, gameList):
         f.write('<td>'+game.dungeonPlace+'</td>')
         f.write('<td>'+game.end+'</td>')
         f.write('<td>'+str(game.level)+'</td>')
+        f.write('<td>'+str(game.levelLong)+'</td>')        
         f.write('<td>'+("{:,}".format((game.turnsTaken)))+'</td>')
         f.write('<td>'+game.timeTakenLong+'</td>')
         f.write('<td>'+str(game.numRunes)+'</td>')
@@ -366,6 +366,23 @@ def writeGameCollectionDump(f, gameList):
         f.write('<td>'+game.versionLong+'</td>')
         f.write('<td>'+game.id+'</td>')
         f.write('<td>'+str(game.winFlag)+'</td>')
+        f.write('<td>'+str(game.branchesVisited)+'</td>')
+        f.write('<td>'+str(game.levelsVisited)+'</td>')
+        f.write('<td>'+str(game.panVisits)+'</td>')
+        f.write('<td>'+str(game.panLevelVisits)+'</td>')
+        f.write('<td>'+str(game.abyssVisits)+'</td>')
+        f.write('<td>'+str(game.bazaarVisits)+'</td>')
+        f.write('<td>'+str(game.zigVisits)+'</td>')
+        f.write('<td>'+str(game.zigCompleted)+'</td>')
+        f.write('<td>'+str(game.zigLevelVisits)+'</td>')
+        f.write('<td>'+str(game.zigDeepest)+'</td>')
+        f.write('<td>'+str(game.goldCollected)+'</td>')
+        f.write('<td>'+str(game.goldSpent)+'</td>')
+        f.write('<td>'+str(game.goldDonated)+'</td>')
+        f.write('<td>'+str(game.goldMisc)+'</td>')
+        f.write('<td>'+str(game.numCreaturesVanquished)+'</td>')
+
+        
         gameCount += 1
     f.write('</table>\n')    
      
