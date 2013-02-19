@@ -60,6 +60,7 @@ readGameData()
 forensicsHTML.createHTMLOverview(gameCollection)
 forensicsHTML.createHTMLALLScoresTable(gameCollection)
 forensicsHTML.createHTMLALLGamesTableRecent(gameCollection)
+forensicsHTML.createGameCollectionDump(gameCollection)
 
 
 #except WindowsError:

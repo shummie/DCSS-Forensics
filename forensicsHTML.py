@@ -112,6 +112,24 @@ def createHTMLALLGamesTableRecent(gc):
 
     f.close()
 
+def createGameCollectionDump(gc):
+    # outputs all games ordered in the same order as the gameCollection object
+    os.chdir(forensicsConfig.HTML_OUTFILE_PATH)
+
+    f = open("allGamesDump.html", "w")
+
+    writeHtmlStart(f)
+    writeHeaderStart(f, "DCSS Forensics - All Games - Total information dump")
+    f.write("<body>\n")
+    
+    f.write("<h3>All Games Information</h3><hr>")
+    gameList = gc.gameList
+    writeGameCollectionDump(f, gameList)
+    
+    f.write("</body>\n")
+    f.write("</html>")
+
+    f.close()
 
 def writeHtmlStart(f):
     f.write("<!DOCTYPE html>\n")
@@ -314,6 +332,43 @@ def writeALLGamesTableRecent(f, gameList):
         f.write('<td>'+game.versionShort+'</td>')
         gameCount += 1
     f.write('</table>\n')
+    
+def writeGameCollectionDump(f, gameList):
+    # This is used to dump out the entire content of gameList.
+    # May or may not be up to date. Will output into an HTML file so that all the info is there on a game by game basis
+    # Can be modified to dump into a .csv file in the future, but for now, this is intended to make sure all the info for games
+    # is captured appropriately.
+
+    f.write('<table class = "overall-stats bordered">\n')
+    f.write('<tr><th></th><th>Filename</th><th>Score</th><th>Character</th><th>God</th><th>Title</th><th>Place</th><th>End</th><th>XL</th><th>Turns</th><th>Duration</th><th>Runes</th><th>Date</th><th>Version</th><th>Version-Long</th>' +
+            '<th>ID</th><th>WinFlag</th></tr>')
+    f.write('<tr><th></th><th>filename</th><th>score</th><th>speciesShort+backgroundShort</th><th>god</th><th>title</th><th>dungeonPlace</th><th>end</th><th>level</th><th>turnsTaken</th><th>timeTakenLong</th><th>numRunes</th><th>datetime.isoformat(' ')</th><th>versionShort</th><th>versionLong</th>' + 
+            '<th>id</th><th>winFlag</th></tr>')
+    gameCount = 1
+    for game in gameList:
+        trClassTag = ("even" if (gameCount % 2 == 0) else "odd")
+        trClassTag += (" win" if game.winFlag == True else "")
+        f.write('<tr class="' + trClassTag + '">')
+        f.write('<td>'+str(gameCount)+'</td>')
+        f.write('<td>'+game.filename+'</td>')
+        f.write('<td>'+("{:,}".format((game.score)))+'</td>')
+        f.write('<td>'+game.speciesShort+game.backgroundShort+'</td>')
+        f.write('<td>'+game.god+'</td>')
+        f.write('<td>'+game.title+'</td>')
+        f.write('<td>'+game.dungeonPlace+'</td>')
+        f.write('<td>'+game.end+'</td>')
+        f.write('<td>'+str(game.level)+'</td>')
+        f.write('<td>'+("{:,}".format((game.turnsTaken)))+'</td>')
+        f.write('<td>'+game.timeTakenLong+'</td>')
+        f.write('<td>'+str(game.numRunes)+'</td>')
+        f.write('<td>'+game.datetime.isoformat(' ')+'</td>')
+        f.write('<td>'+game.versionShort+'</td>')
+        f.write('<td>'+game.versionLong+'</td>')
+        f.write('<td>'+game.id+'</td>')
+        f.write('<td>'+str(game.winFlag)+'</td>')
+        gameCount += 1
+    f.write('</table>\n')    
+     
     
 def writeStyleSheet(f, styleFile):
     # attempts to write the stylesheet internally. This way the stylesheet is not required in order for the sheet to be formatted
