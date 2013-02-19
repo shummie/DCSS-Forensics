@@ -1,3 +1,9 @@
+v0.03b - February 19, 2013
+======
+Minor bugfix (wouldn't read files with no gold information)
+
+Added a new HTML file dump with some basic info. Will be expanded in a future version.
+
 v0.03 - February 19, 2013
 =====
 Many new features added!
