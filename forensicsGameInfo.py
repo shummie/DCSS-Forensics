@@ -86,6 +86,10 @@ class gameInfo:
     ## panLevelVisits (int)
     ## abyssVisits (int)
     ## bazaarVisits (int)
+    ## zigVisits (int)
+    ## zigLevelVisits (int)
+    ## zigCompleted (int)
+    ## zigDeepest (int)
     ## goldCollected (int)
     ## goldSpent (int)
     ## goldDonated (int)
@@ -107,6 +111,10 @@ class gameInfo:
         self.panLevelVisits = 0
         self.abyssVisits = 0
         self.bazaarVisits = 0
+        self.zigCompleted = 0
+        self.zigDeepest = 0
+        self.zigLevelVisits = 0
+        self.zigVisits = 0
         self.goldCollected = 0
         self.goldSpent = 0
         self.goldDonted = 0
@@ -335,7 +343,10 @@ a: Burn Spellbooks, Berserk, Trog's Hand, Brothers in Arms, Renounce Religion
         elif lineSplit[-1] == "Dis.":
             self.dungeonLevel = int(lineSplit[lineSplit.index("level")+1])
             self.dungeonLocation = "Dis"
-        # Do we need to add exceptions for Hell & Pandemonium?    
+        # Do we need to add exceptions for Hell & Pandemonium?
+        elif lineSplit[-1] == "ziggurat.":
+            self.dungeonLevel = int(lineSplit[lineSplit.index("level")+1])
+            self.dungeonLocation = "Ziggurat"
         elif lineSplit[2] == "on":
             self.dungeonLevel = int(lineSplit[lineSplit.index("level")+1])
             self.dungeonLocation = self.misc[lineIndex][self.misc[lineIndex].find("the")+4:-2]
@@ -374,6 +385,22 @@ You were very full.
         ## You visited 1 bazaar.
         if self.misc[lineIndex].find("bazaar") != -1:
             self.bazaarVisits = int(self.misc[lineIndex].split()[2])
+            lineIndex += 1
+        
+        ## You completed 1 Ziggurat, and saw 27 of its levels.
+        ## You completed 2 Ziggurats, and saw 54 of their levels.
+        ## You visited 1 Ziggurat, and saw 14 of its levels.
+        ## You visited 2 Ziggurats, and saw 32 of its levels (deepest: 22).
+        ## You visited 2 Ziggurats (completing 1), and saw 51 of their levels.
+        if self.misc[lineIndex].find("Ziggurat") != -1:
+            lineSplit = self.misc[lineIndex].split()
+            self.zigVisits = int(lineSplit[2])
+            if lineSplit[1] == "completed": self.zigCompleted = self.zigVisits
+            elif lineSplit[4] == "(completing": self.zigCompleted = int(lineSplit[5][:-2])
+            self.zigLevelVisits = int(lineSplit[lineSplit.index("saw")+1])
+            if lineSplit[-2] == "(deepest:": self.zigDeepest = int(lineSplit[-1][:-2])
+            elif self.zigCompleted > 0: self.zigDeepest = 27
+            else: self.zigDeepest = self.zigLevelVisits
             lineIndex += 1
             
         ## You also visited: Labyrinth, Sewer, Ossuary, Bailey and Volcano.

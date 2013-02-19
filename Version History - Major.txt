@@ -7,6 +7,9 @@ gameInfo class:
 --datetime variable created for sorting games
 --Kill info extracted
 --Gold info retrieved
+--Various visit information extracted
+----Abyss visits, Pan visits, Pan levels visited, bazaar visits
+----Zig visits, completed, deepest, levels visited
 
 gameCollection class:
 --Various report functions added
