@@ -369,7 +369,7 @@ You were very full.
             # Note, this still assumes dead characters. 
         self.branchesVisited = int(self.misc[lineIndex].split()[2])
         self.levelsVisited = int(self.misc[lineIndex].split()[-4])
-        lineIndex += 1
+        if lineIndex < (len(self.misc) - 1) : lineIndex += 1
         
         ## You visited Pandemonium 2 times, and saw 27 of its levels.
         if self.misc[lineIndex].find("Pandemonium") != -1:
