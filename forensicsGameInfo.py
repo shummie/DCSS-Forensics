@@ -82,6 +82,10 @@ class gameInfo:
     ## dungeonPlace (str)
     ## branchesVisited (int)
     ## levelsVisited (int)
+    ## panVisits (int)
+    ## panLevelVisits (int)
+    ## abyssVisits (int)
+    ## bazaarVisits (int)
     ## goldCollected (int)
     ## goldSpent (int)
     ## goldDonated (int)
@@ -99,6 +103,10 @@ class gameInfo:
         ## Misc Var
         self.levelsVisited = 0
         self.branchesVisited = 0
+        self.panVisits = 0
+        self.panLevelVisits = 0
+        self.abyssVisits = 0
+        self.bazaarVisits = 0
         self.goldCollected = 0
         self.goldSpent = 0
         self.goldDonted = 0
@@ -350,7 +358,23 @@ You were very full.
             # Note, this still assumes dead characters. 
         self.branchesVisited = int(self.misc[lineIndex].split()[2])
         self.levelsVisited = int(self.misc[lineIndex].split()[-4])
+        lineIndex += 1
         
+        ## You visited Pandemonium 2 times, and saw 27 of its levels.
+        if self.misc[lineIndex].find("Pandemonium") != -1:
+            self.panVisits = int(self.misc[lineIndex].split()[3])
+            self.panLevelVisits = int(self.misc[lineIndex].split()[7])
+            lineIndex += 1
+            
+        ## You visited the Abyss 1 time.
+        if self.misc[lineIndex].find("Abyss") != -1:
+            self.abyssVisits = int(self.misc[lineIndex].split()[4])
+            lineIndex += 1
+        
+        ## You visited 1 bazaar.
+        if self.misc[lineIndex].find("bazaar") != -1:
+            self.bazaarVisits = int(self.misc[lineIndex].split()[2])
+            lineIndex += 1
             
         ## You also visited: Labyrinth, Sewer, Ossuary, Bailey and Volcano.
 
