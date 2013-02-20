@@ -244,6 +244,7 @@ class gameInfo:
             # print (self.hiscore[lineIndex])
             lineIndex += 1
         self.end = self.end.replace("...", "")
+        if self.end[self.end.find("(")-1] != " ": self.end = self.end.replace("(", " (")
 
         ## Collect all end information and place in one line. The formatting for this
         ## varies quite a bit depending on how the player died/quit.
