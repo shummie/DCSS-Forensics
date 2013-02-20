@@ -375,17 +375,17 @@ You were very full.
         if self.misc[lineIndex].find("Pandemonium") != -1:
             self.panVisits = int(self.misc[lineIndex].split()[3])
             self.panLevelVisits = int(self.misc[lineIndex].split()[7])
-            lineIndex += 1
+            if lineIndex < (len(self.misc) - 1) : lineIndex += 1
             
         ## You visited the Abyss 1 time.
         if self.misc[lineIndex].find("Abyss") != -1:
             self.abyssVisits = int(self.misc[lineIndex].split()[4])
-            lineIndex += 1
+            if lineIndex < (len(self.misc) - 1) : lineIndex += 1
         
         ## You visited 1 bazaar.
         if self.misc[lineIndex].find("bazaar") != -1:
             self.bazaarVisits = int(self.misc[lineIndex].split()[2])
-            lineIndex += 1
+            if lineIndex < (len(self.misc) - 1) : lineIndex += 1
         
         ## You completed 1 Ziggurat, and saw 27 of its levels.
         ## You completed 2 Ziggurats, and saw 54 of their levels.
@@ -401,7 +401,7 @@ You were very full.
             if lineSplit[-2] == "(deepest:": self.zigDeepest = int(lineSplit[-1][:-2])
             elif self.zigCompleted > 0: self.zigDeepest = 27
             else: self.zigDeepest = self.zigLevelVisits
-            lineIndex += 1
+            if lineIndex < (len(self.misc) - 1) : lineIndex += 1
             
         ## You also visited: Labyrinth, Sewer, Ossuary, Bailey and Volcano.
 
