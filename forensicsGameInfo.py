@@ -75,6 +75,7 @@ class gameInfo:
     ## level (int)
     ## levelLong (float)
     ## numRunes (int)
+    ## runeList (list of str)
 
     ### misc variables
     ## dungeonLevel (int)
@@ -126,6 +127,7 @@ class gameInfo:
         ## stats var
         self.turnsTaken = 0
         self.numRunes = 0
+        self.runeList = []
         self.level = 0
         
 
@@ -302,7 +304,9 @@ A: disease resistance, carnivore 3, poison resistance, saprovore 2, AC +2, Dex
 a: Burn Spellbooks, Berserk, Trog's Hand, Brothers in Arms, Renounce Religion
 }: 2/15 runes: barnacled, gossamer
         '''
-
+        
+        ## Future change? Can rewrite this section to parse the runeList info and just have numRunes = len(runeList)
+        ## also, can just read to the end of the section instead of assuming it is only 2 lines long at max.
         ## extracting rune information if it exists.
         lineIndex = 3
         self.numRunes = 0
@@ -310,10 +314,20 @@ a: Burn Spellbooks, Berserk, Trog's Hand, Brothers in Arms, Renounce Religion
             if len(self.stats[lineIndex]) < 2: lineIndex += 1
             else:
                 if self.stats[lineIndex].split()[0] == "}:":
-                    runeString = self.stats[lineIndex].split()[1]
-                    self.numRunes = int(runeString[:runeString.find("/")])
+                    runeString = self.stats[lineIndex]
+                    numRuneString = self.stats[lineIndex].split()[1]
+                    self.numRunes = int(numRuneString[:numRuneString.find("/")])
                 lineIndex += 1
-
+                
+        ## extracting runes collected
+        if self.numRunes > 0: 
+            if lineIndex < len(self.stats):
+                runeString += self.stats[lineIndex]
+            
+            # Rune string shouldn't exceed 2 lines... I think?
+            runeString = runeString.replace(",", " ")
+            self.runeList = runeString.split()[3:]
+            
     ## extract misc information
                 
     def extractMisc(self):
