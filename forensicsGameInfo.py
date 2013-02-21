@@ -76,6 +76,7 @@ class gameInfo:
     ## levelLong (float)
     ## numRunes (int)
     ## runeList (list of str)
+    ## pietyLevel (int)
 
     ### misc variables
     ## dungeonLevel (int)
@@ -126,6 +127,7 @@ class gameInfo:
         
         ## stats var
         self.turnsTaken = 0
+        self.pietyLevel = 0
         self.numRunes = 0
         self.runeList = []
         self.level = 0
@@ -282,8 +284,16 @@ class gameInfo:
             self.levelLong = self.level + 0.0
             
 
+
+        
+        ## Line 3:
+        ## MP  27/27        EV 25     Int  8      God: Trog [******]
+        ## MP   0/0         EV 10     Int  4      God: 
+        lineIndex = 3
+        self.pietyLevel = self.stats[lineIndex].split()[-1].count("*")
+        
         '''
-MP  27/27        EV 25     Int  8      God: Trog [******]
+
 Gold 1668        SH 16     Dex 21      Spells:  0 memorised, 14 levels left
 
 Res.Fire  : + . .   See Invis. : +   D - +7 quick blade {god gift}
@@ -302,13 +312,17 @@ very slow, incredibly resistant to hostile enchantments, incredibly stealthy
 A: disease resistance, carnivore 3, poison resistance, saprovore 2, AC +2, Dex
 +2
 a: Burn Spellbooks, Berserk, Trog's Hand, Brothers in Arms, Renounce Religion
-}: 2/15 runes: barnacled, gossamer
-        '''
+
+        '''        
         
         ## Future change? Can rewrite this section to parse the runeList info and just have numRunes = len(runeList)
         ## also, can just read to the end of the section instead of assuming it is only 2 lines long at max.
-        ## extracting rune information if it exists.
-        lineIndex = 3
+        ## extracting rune information if it exists.       
+        
+        ## }: 2/15 runes: barnacled, gossamer
+        ## }: 15/15 runes: decaying, serpentine, slimy, silver, golden, iron, obsidian,
+        ## icy, bone, abyssal, demonic, glowing, magical, fiery, dark
+        
         self.numRunes = 0
         while (lineIndex < len(self.stats)) and (self.numRunes == 0):
             if len(self.stats[lineIndex]) < 2: lineIndex += 1
