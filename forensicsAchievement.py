@@ -34,25 +34,42 @@ def forensicsAchievement(gameCollection):
         gameCollection.achievementList[1] = _1_CheckAnyLevel27(gameCollection)
     if gameCollection.achievementList[2] == False:
         gameCollection.achievementList[2] = _2_CheckAny15RuneWin(gameCollection)
-
+    if gameCollection.achievementList[3] == False:
+        gameCollection.achievementList[3] = _3_SlowAndSteady1(gameCollection)
 
 def _0_CheckAnyWin(gameCollection):
     # InternalID: 0
     # Has the player won the game?
     for game in gameCollection.gameList:
-        if game.winFlag == True: return True
-    return False
+        if game.winFlag == True: return [True, "Complete!"]
+    return [False, ""]
 
 def _1_CheckAnyLevel27(gameCollection):
     # InternalID: 1
     # Has the player reached level 27 in any game?
+    maxLevel = 0
     for game in gameCollection.gameList:
-        if game.level == 27: return True
-    return False
+        if game.level == 27: return [True, "Complete!"]
+        elif game.level > maxLevel: maxLevel = game.level
+    return [False, "Max Level: " + str(maxLevel)]
 
 def _2_CheckAny15RuneWin(gameCollection):
     # InternalID: 2
     # Has the player won the game with 15 runes?
+    maxRunes = 0
     for game in gameCollection.gameList:
-        if (game.winFlag == True) and (game.numRunes == 15): return True
-    return False
+        if (game.winFlag == True) and (game.numRunes == 15): return [True, "Complete!"]
+        elif game.numRunes < maxRunes: maxRunes = game.numRunes
+    return [False, "Max Runes: " + str(maxRunes)]
+
+def _3_SlowAndSteady1(gameCollection):
+    # Internal ID: 3
+    # Check that there are two characters in a row with XL:9
+    i = 0
+    levelCount = 0
+    while (i < len(gameCollection.gameList)) and (levelCount < 2):
+        if gameCollection.gameList[i].level >= 9: levelCount += 1
+        else: levelCount = 0
+    if levelCount < 2: return [False, ""]
+    else: return [True, "Complete!"]
+        

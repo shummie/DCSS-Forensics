@@ -90,12 +90,13 @@ dBackground = {
 
 ## Achievements
 ## Format is the following:
-## InternalID : [AlternativeID : Short Desc : Long Desc]
+## InternalID : [AlternativeID : Short Name, Long Name, Short Desc : Long Desc]
 
 dAchievementList = {
-    0 : [0, "A Winner is You", "Escaped with the Orb"],
-    1 : [1, "Maximum Level", "Hit level 27 with at least one character"],
-    2 : [2, "Game Complete", "Escaped with the Orb and 15 runes"]
+    0 : [0, "Win", "Winner", "A Winner is You", "Escaped with the Orb"],
+    1 : [1, "Maximum Level", "Maximum Level", "Maximum Level", "Hit level 27 with at least one character"],
+    2 : [2, "Game Complete", "Game Complete", "Game Complete", "Escaped with the Orb and 15 runes"],
+    3 : [3, "SlowAndSteady1", "Slow and Steady I", "XL 9 in 2 consecutive games", "Reach XL 9 in 2 consecutive games"]
 
     }
 
