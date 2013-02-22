@@ -17,6 +17,7 @@
 ## This file contains all the code required to output various statistics into an .HTML file
 
 import forensicsConfig
+import forensicsDictionary
 import os
 
 
@@ -130,6 +131,22 @@ def createGameCollectionDump(gc):
     f.write("</html>")
 
     f.close()
+    
+def createAchievementDetailed(gc):
+    # Outputs the achievement (detailed) data into an html file. Note this is a highly customizable section.
+    
+    os.chdir(forensicsConfig.HTML_OUTFILE_PATH)
+    
+    f = open("achievementsDetailed.html", "w")
+    
+    writeHtmlStart(f)
+    writeHeaderStart(f, "DCSS Forensics - Achievements: Detailed")
+    f.write("<body>\n")
+    
+    f.write("<h3>0.11 Tournament God Banners</h3></hr>")
+    
+    writeDetailedAchievements()
+    
 
 def writeHtmlStart(f):
     f.write("<!DOCTYPE html>\n")
@@ -385,7 +402,44 @@ def writeGameCollectionDump(f, gameList):
         
         gameCount += 1
     f.write('</table>\n')    
-     
+
+
+def writeDetailedAchievements(f, aList, numCol):
+    # Outputs the detailed Achievement data from an gameCollecetion's achievementList (aList) and produces it in to # of columns
+    f.write('<table class = "bordered achievements">\n')
+    row = 0
+    column = 0
+    index = 0
+    
+    while row*column < len(aList):
+        # Print header row
+        print('<tr>')
+        index = 0
+        while index < column:
+            if aList[row*column+index][0] == True: print('<th class = "done"')
+            else: print('<th')
+            if row == 0: print(' width = 10%')
+            print('>' + forensicsDictionary.dAchievementList[row*column+index][2]+'</th>')
+            index += 1
+        print('</tr>\n')
+        print('<tr>')
+        index = 0
+        while index < column:
+            if aList[row*column+index][0] == True: print('<td class = "done"')
+            else: print('<td')
+            print('>' + forensicsDictionary.dAchievementList[row*column+index][4]+'</td>')
+            index += 1
+        print('</tr>\n')
+        index = 0
+        print('<tr class="progress">')
+        while index < column:
+            if aList[row*column+index][0] == True: print('<td class = "done"')
+            else: print('<td')
+            print('>' + aList[row*column+index][1]+'</td>')
+            index += 1
+        row += 1
+             
+          
     
 def writeStyleSheet(f, styleFile):
     # attempts to write the stylesheet internally. This way the stylesheet is not required in order for the sheet to be formatted
@@ -394,5 +448,4 @@ def writeStyleSheet(f, styleFile):
     f_style = open(styleFile, "r")
     stylesheet = f_style.read()
     f.write(stylesheet)
-    
     

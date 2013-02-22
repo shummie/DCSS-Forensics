@@ -87,4 +87,41 @@ table.overall-stats th{
   text-align: left;
 }
 
+table.achievements {
+  font-size: 11px;
+  text-align: center;
+  color: #777777;
+
+}
+
+table.achievements td {
+  width: 16.3%
+}
+
+table.achievements th {
+  background: #ffffdd;
+  width: 16.3%
+
+}
+
+table.achievements th.done {
+  background: #D1FFD1;
+  font-weight: bold;
+  color: #000000;
+  
+}
+
+table.achievements td.done {
+  background: #E8FCEF;
+  font-weight: bold;
+  color: #000000;
+  
+}
+
+table.achievements tr.progress {
+  font-size: 9px;
+  font-style:italic;
+  color: #666666;
+}
+
 </style>
