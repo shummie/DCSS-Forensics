@@ -99,6 +99,9 @@ class gameInfo:
     
     ### kills variables
     ## numCreaturesVanquished (int)
+    
+    ### notes variables
+    ## notesList (list [Turn, Location, Note])
 
   
     def __init__(self, data):
@@ -132,6 +135,9 @@ class gameInfo:
         self.runeList = []
         self.level = 0
         
+        ## notes var
+        self.notesList = []
+        
 
     ## This function extracts the data from the data element fields.
     ## It will populate data only if the data element field is not empty.
@@ -144,6 +150,7 @@ class gameInfo:
         if len(self.stats) != 0: self.extractStats()
         if len(self.misc) != 0: self.extractMisc()
         if len(self.kills) != 0: self.extractKills()
+        if len(self.notes) != 0: self.extractNotes()
 
     def extractID(self):
         # morgue-Ray-20130122-083257.txt
@@ -460,7 +467,19 @@ You were very full.
         else:
             self.numCreaturesVanquished = int(self.kills[-1].split()[0])
         
-
+        
+    def extractNotes(self):
+        self.notesList = self.notes[3:]
+        for i in range(len(self.notesList)):
+            self.notesList[i] = self.notesList[i].split("|")
+            for j in range(len(self.notesList[i])):
+                self.notesList[i][j] = self.notesList[i][j].strip()
+            self.notesList[i][0] = int(self.notesList[i][0])
+            #self.notesList[i][2] = self.notesList[i][2].replace("\n", "") 
+         
+            
+        
+        
     # outputs select variables into a list, useful for debugging purposes.
     def outputList(self):
         # outList = []

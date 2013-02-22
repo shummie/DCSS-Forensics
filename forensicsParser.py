@@ -115,7 +115,7 @@ def parseGameInfoObject(gameInfoObject):
         # Check if notes
         elif sectionID == "notes":
             notesStart = lineNum
-            while rawData[lineNum] != "\n": lineNum += 1
+            while (rawData[lineNum] != "\n") and (rawData[lineNum] != "             \n"): lineNum += 1
             notesEnd = lineNum
             notes = rawData[notesStart:notesEnd]
         # Check if inventory
