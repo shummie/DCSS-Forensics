@@ -40,7 +40,7 @@ class gameCollection:
     def __init__(self):
         self.gameList = []
         self.gameID = []
-        self.achievementList = [False]*3
+        self.achievementList = [[False],""]*len(forensicsDictionary.dAchievementList)
 
     def addGame(self, gameInfoObject):
         # Check if this game exists in the database, if not, add it.
@@ -104,10 +104,10 @@ class gameCollection:
         # Prints out the list of completed achievements
         print ("Completed Achievements:")
         for i in range(0, len(self.achievementList)):
-            if self.achievementList[i] == True:
+            if self.achievementList[i][0] == True:
                 print ("  " + forensicsDictionary.dAchievementList[i][1] +
                        " : " + forensicsDictionary.dAchievementList[i][2])
-        
+
     def comboMaxLevel(self):
         # Returns a table with the max level of each species/background combo.
         statTable = self.blankStatTable()
