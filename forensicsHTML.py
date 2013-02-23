@@ -143,9 +143,14 @@ def createAchievementDetailed(gc):
     writeHeaderStart(f, "DCSS Forensics - Achievements: Detailed")
     f.write("<body>\n")
     
-    f.write("<h3>0.11 Tournament God Banners</h3></hr>")
+    f.write("<h3>0.11 Tournament God Banners</h3><hr>")
+    aNumList = [0, 1, 2, 3]
+    writeDetailedAchievements(f, gc.achievementList, aNumList, 4)
     
-    writeDetailedAchievements()
+    f.write('</body>\n')
+    f.write('</html>\n')
+    
+    f.close()
     
 
 def writeHtmlStart(f):
@@ -404,40 +409,44 @@ def writeGameCollectionDump(f, gameList):
     f.write('</table>\n')    
 
 
-def writeDetailedAchievements(f, aList, numCol):
+def writeDetailedAchievements(f, aList, aNumList, numCol):
     # Outputs the detailed Achievement data from an gameCollecetion's achievementList (aList) and produces it in to # of columns
     f.write('<table class = "bordered achievements">\n')
-    row = 0
-    column = 0
     index = 0
+    header = '<tr>'
+    desc = '<tr>'
+    progress = '<tr class = "progress">'
     
-    while row*column < len(aList):
-        # Print header row
-        print('<tr>')
-        index = 0
-        while index < column:
-            if aList[row*column+index][0] == True: print('<th class = "done"')
-            else: print('<th')
-            if row == 0: print(' width = 10%')
-            print('>' + forensicsDictionary.dAchievementList[row*column+index][2]+'</th>')
-            index += 1
-        print('</tr>\n')
-        print('<tr>')
-        index = 0
-        while index < column:
-            if aList[row*column+index][0] == True: print('<td class = "done"')
-            else: print('<td')
-            print('>' + forensicsDictionary.dAchievementList[row*column+index][4]+'</td>')
-            index += 1
-        print('</tr>\n')
-        index = 0
-        print('<tr class="progress">')
-        while index < column:
-            if aList[row*column+index][0] == True: print('<td class = "done"')
-            else: print('<td')
-            print('>' + aList[row*column+index][1]+'</td>')
-            index += 1
-        row += 1
+    
+    while index < len(aNumList):
+        if aList[aNumList[index]][0] == True: 
+            header += '<th class = "done"'
+            desc += '<td class = "done"'
+            progress += '<td class = "done"'
+        else:
+            header += '<th'
+            desc += '<td'
+            progress += '<td'
+        if index < numCol:
+            header += ' width = 10%'
+        header += '>' + forensicsDictionary.dAchievementList[aNumList[index]][2] + '</th>'
+        desc += '>' + forensicsDictionary.dAchievementList[aNumList[index]][4] + '</td>'
+        progress += '>' + aList[aNumList[index]][1] + '</td>'
+        
+        index += 1
+        if (index % numCol == 0) or (index == len(aNumList)):
+            header += '</tr>\n'
+            desc += '</tr>\n'
+            progress += '</tr>\n'
+            f.write(header + desc + progress)
+            header = '<tr>'
+            desc = '<tr>'
+            progress = '<tr class = "progress">'
+        
+            if index != len(aNumList):
+                f.write('<tr><td colspan='+str(numCol)+'></td><tr>')
+        
+    f.write('</table>')
              
           
     

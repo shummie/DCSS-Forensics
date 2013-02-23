@@ -40,7 +40,7 @@ class gameCollection:
     def __init__(self):
         self.gameList = []
         self.gameID = []
-        self.achievementList = [[False],""]*len(forensicsDictionary.dAchievementList)
+        self.achievementList = [[False, ""] for i in range(len(forensicsDictionary.dAchievementList))]
 
     def addGame(self, gameInfoObject):
         # Check if this game exists in the database, if not, add it.
@@ -62,7 +62,7 @@ class gameCollection:
                     self.gameList.append(game)
                     self.gameID.append(game.id)
                     if forensicsConfig.verbosity >= 3: print (filename, + " appended")
-        self.updateAchievements()
+        # self.updateAchievements()
         self.gameList.sort(key = lambda x: x.datetime)
 
     def outputCSVFile(self, OUTFILE):

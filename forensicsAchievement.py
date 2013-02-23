@@ -28,14 +28,21 @@ def forensicsAchievement(gameCollection):
     while len(gameCollection.achievementList) < len(forensicsDictionary.dAchievementList):
         gameCollection.achievementList.append(False)
 
-    if gameCollection.achievementList[0] == False:
+    if gameCollection.achievementList[0][0] == False:
         gameCollection.achievementList[0] = _0_CheckAnyWin(gameCollection)
-    if gameCollection.achievementList[1] == False:
+    if gameCollection.achievementList[1][0] == False:
         gameCollection.achievementList[1] = _1_CheckAnyLevel27(gameCollection)
-    if gameCollection.achievementList[2] == False:
+    if gameCollection.achievementList[2][0] == False:
         gameCollection.achievementList[2] = _2_CheckAny15RuneWin(gameCollection)
-    if gameCollection.achievementList[3] == False:
+    if gameCollection.achievementList[3][0] == False:
         gameCollection.achievementList[3] = _3_SlowAndSteady1(gameCollection)
+    if gameCollection.achievementList[4][0] == False:
+        gameCollection.achievementList[4] = _4_SlowAndSteady2(gameCollection)
+    if gameCollection.achievementList[5][0] == False:
+        gameCollection.achievementList[5] = _5_SlowAndSteady3(gameCollection)
+    if gameCollection.achievementList[6][0] == False:
+        gameCollection.achievementList[6] = _6_Explorer1(gameCollection)
+    
 
 def _0_CheckAnyWin(gameCollection):
     # InternalID: 0
@@ -73,3 +80,16 @@ def _3_SlowAndSteady1(gameCollection):
     if levelCount < 2: return [False, ""]
     else: return [True, "Complete!"]
         
+def _4_SlowAndSteady2(gameCollection):
+    # Achieve a 2-win streak
+    # Currently no streak detection coded, so this will need to be rewritten
+    return [False, "Not yet implemented"]
+
+def _5_SlowAndSteady3(gameCollection):
+    # Achieve a 4-win streak with 4 different Species & Classes
+    # Currently no streak detection coded, so this will need to be rewritten
+    return [False, "Not yet implemented"]
+
+def _6_Explorer1(gameCollection):
+    # After entering Lair the first tie, reach Lair 8 before returning to the dungeon
+    return [False, "Not yet implemented"]

@@ -40,6 +40,7 @@ def readGameData():
         if forensicsConfig.verbosity >= 2:
             print(files)
         gameCollection.addFile(files)
+    gameCollection.updateAchievements()
 
 # Saves the gameCollection object into filename
 def saveGameData(filename):
@@ -52,7 +53,7 @@ def loadGameData(filename):
     inputfile = open(filename, "rb")
     return pickle.load(inputfile)
 
-#try:
+#try:    
 forensicsConfig.readConfigFile("config.ini")
 os.chdir(forensicsConfig.PATH)
 gameCollection = forensicsGameCollection.gameCollection()   
@@ -61,6 +62,7 @@ forensicsHTML.createHTMLOverview(gameCollection)
 forensicsHTML.createHTMLALLScoresTable(gameCollection)
 forensicsHTML.createHTMLALLGamesTableRecent(gameCollection)
 forensicsHTML.createGameCollectionDump(gameCollection)
+forensicsHTML.createAchievementDetailed(gameCollection)
 
 
 #except WindowsError:
