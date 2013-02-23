@@ -96,7 +96,10 @@ dAchievementList = {
     0 : [0, "Win", "Winner", "A Winner is You", "Escaped with the Orb"],
     1 : [1, "Maximum Level", "Maximum Level", "Maximum Level", "Hit level 27 with at least one character"],
     2 : [2, "Game Complete", "Game Complete", "Game Complete", "Escaped with the Orb and 15 runes"],
-    3 : [3, "SlowAndSteady1", "Slow and Steady I", "XL 9 in 2 consecutive games", "Reach XL 9 in 2 consecutive games"]
+    3 : [3, "SlowAndSteady1", "Slow and Steady I", "XL 9 in 2 consecutive games", "Reach XL 9 in 2 consecutive games"],
+    4 : [4, "SlowAndSteady2", "Slow and Steady II", "Achieve a 2-win streak", "Achieve a 2-win streak"],
+    5 : [5, "SlowAndSteady3", "Slow and Steady III", "4-win streak with 4 diff species & backgrounds", "Achieve a 4-win streak with 4 distinct species & backgrounds"],
+    6 : [6, "Explorer1", "Explorer I", "Reach Lair:8 before returning to Dungeon", "After entering Lair for the 1st time, reach Lair:8 before returning to the Dungeon"]
 
     }
 
