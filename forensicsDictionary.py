@@ -87,6 +87,10 @@ dBackground = {
     "Thief" : "Th"
     }
 
+### Branches List ###
+
+lOverviewBranchList = ["Dungeon", "Temple", "Orc", "Elf", "Lair", "Swamp", "Snake", "Slime", "Vaults", "Blade", "Crypt", "Tomb", "Dis", "Geh", "Coc", "Tar", "Zot", "Hive"]
+
 
 ## Achievements
 ## Format is the following:
@@ -110,9 +114,12 @@ dAchievementList = {
     14 : [14, "NaturesAlly3", "Nature's Ally III", "Enter Tomb for the first time after picking up the Orb of Zot and then get the Golden Rune", "Enter Tomb for the first time after picking up the Orb of Zot and then get the Golden Rune"],
     15 : [15, "GelatinousBody1", "Gelatinous Body I", "Reach XL:9 with 5 different species and backgrounds", "Reach XL:9 with 5 different species and backgrounds"],
     16 : [16, "GelatinousBody2", "Gelatinous Body II", "Get a rune with 5 different species and backgrounds", "Get a rune with 5 different species and backgrounds"],
-    17 : [17, "GelatinousBody3", "Gelatinous Body II", "Win with 5 different species and backgrounds", "Win with 5 different species and backgrounds"]   
+    17 : [17, "GelatinousBody3", "Gelatinous Body III", "Win with 5 different species and backgrounds", "Win with 5 different species and backgrounds"],   
+    18 : [18, "LordOfDarkness1", "Lord of Darkness I", "Enter the Vestibule of Hell without having entered the Lair", "Enter the Vestibule of Hell without having entered the Lair"],
+    19 : [19, "LordOfDarkness2", "Lord of Darkness II", "Win a game without having entered the Lair", "Win a game without having entered the Lair"],
+    20 : [20, "LordOfDarkness3", "Lord of Darkness III", "Win a game without having entered the Temple, Orcish Mines, Lair, or Vaults", "Win a game without having entered the Temple, Orcish Mines, Lair, or Vaults"]
     
-
+    
     }
 
 ## Table Index Format
