@@ -1,3 +1,43 @@
+v0.04 - March ??, 2013
+=====
+gameInfo class:
+--Notes information extracted
+--Branch information extracted from overview section
+--Names of the runes collected is now extracted into runeList
+--Piety level of the god at death/escape is captured
+--minor formatting fix for end information (added space before "(" if necessary)
+
+
+htmlOutput:
+--New file: allGamesDump.html
+----Contains a dump of almost all possible variables stored for each gameInfo object (within reason)
+--New file: achievementsDetailed.html
+----Achivements implemented!
+
+Achievements!
+--Achievements module has been revamped. Achievements is now active and in a testing state.
+--The following new achievements are available.
+    0 : [0, "Win", "Winner", "A Winner is You", "Escaped with the Orb"],
+    1 : [1, "Maximum Level", "Maximum Level", "Maximum Level", "Hit level 27 with at least one character"],
+    2 : [2, "Game Complete", "Game Complete", "Game Complete", "Escaped with the Orb and 15 runes"],
+    3 : [3, "SlowAndSteady1", "Slow and Steady I", "XL 9 in 2 consecutive games", "Reach XL 9 in 2 consecutive games"],
+    4 : [4, "SlowAndSteady2", "Slow and Steady II", "Achieve a 2-win streak", "Achieve a 2-win streak"],
+    5 : [5, "SlowAndSteady3", "Slow and Steady III", "4-win streak with 4 diff species & backgrounds", "Achieve a 4-win streak with 4 distinct species & backgrounds"],
+    6 : [6, "Explorer1", "Explorer I", "Reach Lair:8 before returning to Dungeon", "After entering Lair for the 1st time, reach Lair:8 before returning to the Dungeon"],
+    7 : [7, "Explorer2", "Explorer II", "Win a game in where when you enter a branch for the 1st time, you reach the end of the branch before leaving", "Win a game in where when you enter a branch for the 1st time, you reach the end of the branch before leaving"],
+    8 : [8, "Explorer3", "Explorer III", "Win a game as in II, except all subbranches must be completed", "Win a game as in II, except all subbranches must be completed before leaving the branch. I.e., all subbranches of Lair must be complete before leaving Lair"],
+    9 : [9, "Pious1", "Pious I", "Champion any god", "Champion (******) any god"],
+    10 : [10, "Pious2", "Pious II", "Champion 5 different gods", "Champion 5 different gods"],
+    11 : [11, "Pious3", "Pious III", "Champion 13 different gods", "Champion 13 different gods"],
+    12 : [12, "NaturesAlly1", "Nature's Ally I", "Enter the Crypt", "Enter the Crypt"],
+    13 : [13, "NaturesAlly2", "Nature's Ally II", "Get the golden rune", "Get the golden rune"],
+    14 : [14, "NaturesAlly3", "Nature's Ally III", "Enter Tomb for the first time after picking up the Orb of Zot and then get the Golden Rune", "Enter Tomb for the first time after picking up the Orb of Zot and then get the Golden Rune"],
+    15 : [15, "GelatinousBody1", "Gelatinous Body I", "Reach XL:9 with 5 different species and backgrounds", "Reach XL:9 with 5 different species and backgrounds"],
+    16 : [16, "GelatinousBody2", "Gelatinous Body II", "Get a rune with 5 different species and backgrounds", "Get a rune with 5 different species and backgrounds"],
+    17 : [17, "GelatinousBody3", "Gelatinous Body II", "Win with 5 different species and backgrounds", "Win with 5 different species and backgrounds"]   
+
+
+
 v0.03b - February 19, 2013
 ======
 Minor bugfix (wouldn't read files with no gold information)
