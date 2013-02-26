@@ -63,7 +63,13 @@ def forensicsAchievement(gameCollection):
     if gameCollection.achievementList[16][0] == False:
         gameCollection.achievementList[16] = _16_GelatinousBody2(gameCollection)
     if gameCollection.achievementList[17][0] == False:
-        gameCollection.achievementList[17] = _17_GelatinousBody3(gameCollection)  
+        gameCollection.achievementList[17] = _17_GelatinousBody3(gameCollection)
+    if gameCollection.achievementList[18][0] == False:
+        gameCollection.achievementList[18] = _18_LordOfDarkness1(gameCollection)
+    if gameCollection.achievementList[19][0] == False:
+        gameCollection.achievementList[19] = _19_LordOfDarkness2(gameCollection)  
+    if gameCollection.achievementList[20][0] == False:
+        gameCollection.achievementList[20] = _20_LordOfDarkness3(gameCollection)
     
 
 def _0_CheckAnyWin(gameCollection):
@@ -179,7 +185,7 @@ def _14_NaturesAlly3(gameCollection):
                 if game.notesList[2] == "Entered Level 1 of the Tomb of the Ancients": enterTombTurn = game.notesList[line][0]
                 elif game.notesList[2] == "Got the Orb of Zot": getOrbTurn = game.notesList[line][0]
                 line += 1
-            if getOrbTurn < enterTombTurn: return [True, "Complete!"]
+            if (getOrbTurn < enterTombTurn) and (getOrbTurn != 0): return [True, "Complete!"]
     return [False, ""]
 
 def listToString(listVar, delimiter):
@@ -222,3 +228,60 @@ def _17_GelatinousBody3(gameCollection):
             if game.background not in bgList: bgList.append(game.background)
             if (len(spList) >= 5) and (len(bgList) >= 5): return [True, "Complete!"]
     return [False, listToString(spList, ", ")+"<br>"+listToString(bgList, ", ")]
+
+def _18_LordOfDarkness1(gameCollection):
+    # Enter the Vestibule of Hell without having entered the Lair
+    for game in gameCollection.gameList:
+        enterLairTurn = 0
+        enterHellTurn = 0
+        line = 0
+        while (line < len(game.notesList)) and ((enterLairTurn == 0) or (enterHellTurn == 0)):
+            if game.notesList[2] == "Entered Level 1 of the Lair of Beasts": enterLairTurn = game.notesList[line][0]
+            elif game.notesList[2] == "Entered the Vestibule of Hell": enterHellTurn = game.notesList[line][0]
+            line += 1
+        if (enterHellTurn < enterLairTurn) and (enterHellTurn != 0): return [True, "Complete!"]
+    return [False, ""]
+
+def _19_LordOfDarkness2(gameCollection):
+    # Win a game without having entered the Lair
+    for game in gameCollection.gameList:
+        if game.winFlag == True:
+            # In case the entrance to Lair was never found.
+            if "Lair" not in game.branchesDict: return [True, "Complete"]
+            else:
+                if game.branchesDict["Lair"][0] == 0: return [True, "Complete"]
+    return [False, ""]
+
+def _20_LordOfDarkness3(gameCollection):
+    # Win a game without having entered the Temple, Orcish Mines, Lair, or Vaults
+    falseString = ""
+    bestRun = 19
+    for game in gameCollection.gameList:
+        temple = 1
+        orc = 4
+        lair = 8
+        vaults = 5
+                
+        if game.winFlag == True:
+            if "Temple" not in game.branchesDict: temple = 0
+            else: temple = game.branchesDict["Temple"][0]
+            if "Orc" not in game.branchesDict: orc = 0
+            else: orc = game.branchesDict["Orc"][0]
+            if "Lair" not in game.branchesDict: lair = 0
+            else: lair = game.branchesDict["Lair"][0]
+            if "Vaults" not in game.branchesDict: vaults = 0
+            else: vaults = game.branchesDict["Vaults"][0]
+            if (temple + orc + lair + vaults) == 0: return [True, "Complete!"]
+            elif (temple + orc + lair + vaults) < bestRun:
+                falseList = []
+                if temple == 0: falseList.append("Temple")
+                if orc == 0: falseList.append("Orc")
+                if lair == 0: falseList.append("Lair")
+                if vaults == 0: falseList.append("Vaults")
+                falseString = listToString(falseList, ", ")
+                bestRun = temple + orc + lair + vaults
+        return [False, falseString]
+                
+            
+            
+    
