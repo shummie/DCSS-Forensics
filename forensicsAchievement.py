@@ -43,7 +43,17 @@ def forensicsAchievement(gameCollection):
     if gameCollection.achievementList[6][0] == False:
         gameCollection.achievementList[6] = _6_Explorer1(gameCollection)
     if gameCollection.achievementList[7][0] == False:
-        gameCollection.achievementList[6] = _7_Explorer2(gameCollection)
+        gameCollection.achievementList[7] = _7_Explorer2(gameCollection)
+    if gameCollection.achievementList[8][0] == False:
+        gameCollection.achievementList[8] = _8_Explorer3(gameCollection)
+    if gameCollection.achievementList[9][0] == False:
+        gameCollection.achievementList[9] = _9_Pious1(gameCollection)
+    if gameCollection.achievementList[10][0] == False:
+        achievement = _10_11_Pious_2_3(gameCollection)
+        gameCollection.achievementList[10] = achievement[0]
+        gameCollection.achievementList[11] = achievement[1]
+        
+        
     
 
 def _0_CheckAnyWin(gameCollection):
@@ -101,13 +111,40 @@ def _6_Explorer1(gameCollection):
             if game.notesList[i][1] == "Lair:1": achieveStep = 1
             if achieveStep == 1:
                 if game.notesList[i][1][:2] == "D:": achieveStep = 2
-                elif game.NotesList[i][1] == "Lair:8": return [True, "Complete!"]
+                elif game.notesList[i][1] == "Lair:8": return [True, "Complete!"]
             i += 1
     return [False, ""]
 
 def _7_Explorer2(gameCollection):
-    # ???
-    
-    
+    # Win a game in where when you enter a branch for the 1st time, you reach the end of the branch before leaving
     return [False, "Not yet Implemented"]            
+
+def _8_Explorer3(gameCollection):
+    # Win a game as in II, except all subbranches must be completed before leaving the branch. I.e., all subbranches of Lair must be complete before leaving Lair
+    return [False, "Not yet implemented"]
+
+def _9_Pious1(gameCollection):
+    # Champion a god
+    maxPiety = 0
+    for game in gameCollection.gameList:
+        if game.pietyLevel == 6: return [True, "Complete!"]
+        elif game.pietyLevel > maxPiety: maxPiety = game.pietyLevel 
+    return [False, "Max Piety: " + ("*" * maxPiety)]
+
+def _10_11_Pious_2_3(gameCollection):
+    # Champion 5 gods and 13 gods
+    champList = []
+    for game in gameCollection.gameList:
+        if game.pietyLevel == 6:
+            if game.god not in champList: champList.append(game.god)
+    godString = ""
+    for a in champList: godString += a + ", "
+    godString = godString[:-2]
+    if len(champList) >= 13:
+        return [[True, "Complete!"], [True, "Complete!"]]
+    elif len(champList) >= 5:
+        return [[True, "Complete!"], [False, godString]]
+    else:
+        return [[False, godString], [False, godString]]        
+    
     

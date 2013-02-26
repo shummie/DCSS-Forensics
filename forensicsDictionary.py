@@ -99,7 +99,13 @@ dAchievementList = {
     3 : [3, "SlowAndSteady1", "Slow and Steady I", "XL 9 in 2 consecutive games", "Reach XL 9 in 2 consecutive games"],
     4 : [4, "SlowAndSteady2", "Slow and Steady II", "Achieve a 2-win streak", "Achieve a 2-win streak"],
     5 : [5, "SlowAndSteady3", "Slow and Steady III", "4-win streak with 4 diff species & backgrounds", "Achieve a 4-win streak with 4 distinct species & backgrounds"],
-    6 : [6, "Explorer1", "Explorer I", "Reach Lair:8 before returning to Dungeon", "After entering Lair for the 1st time, reach Lair:8 before returning to the Dungeon"]
+    6 : [6, "Explorer1", "Explorer I", "Reach Lair:8 before returning to Dungeon", "After entering Lair for the 1st time, reach Lair:8 before returning to the Dungeon"],
+    7 : [7, "Explorer2", "Explorer II", "Win a game in where when you enter a branch for the 1st time, you reach the end of the branch before leaving", "Win a game in where when you enter a branch for the 1st time, you reach the end of the branch before leaving"],
+    8 : [8, "Explorer3", "Explorer III", "Win a game as in II, except all subbranches must be completed", "Win a game as in II, except all subbranches must be completed before leaving the branch. I.e., all subbranches of Lair must be complete before leaving Lair"],
+    9 : [9, "Pious1", "Pious I", "Champion any god", "Champion (******) any god"],
+    10 : [10, "Pious2", "Pious II", "Champion 5 different gods", "Champion 5 different gods"],
+    11 : [11, "Pious3", "Pious III", "Champion 13 different gods", "Champion 13 different gods"]
+    
 
     }
 

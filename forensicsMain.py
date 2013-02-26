@@ -58,11 +58,17 @@ forensicsConfig.readConfigFile("config.ini")
 os.chdir(forensicsConfig.PATH)
 gameCollection = forensicsGameCollection.gameCollection()   
 readGameData()
+print("All game data read.")
 forensicsHTML.createHTMLOverview(gameCollection)
+print("overview.html created")
 forensicsHTML.createHTMLALLScoresTable(gameCollection)
+print("allGamesByScore.html created")
 forensicsHTML.createHTMLALLGamesTableRecent(gameCollection)
+print("allGamesByRecent.html created")
 forensicsHTML.createGameCollectionDump(gameCollection)
+print("allGamesDump.html created")
 forensicsHTML.createAchievementDetailed(gameCollection)
+print("acheivementsDetailed.html created")
 
 
 #except WindowsError:
