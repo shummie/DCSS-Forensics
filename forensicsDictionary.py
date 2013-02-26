@@ -104,7 +104,13 @@ dAchievementList = {
     8 : [8, "Explorer3", "Explorer III", "Win a game as in II, except all subbranches must be completed", "Win a game as in II, except all subbranches must be completed before leaving the branch. I.e., all subbranches of Lair must be complete before leaving Lair"],
     9 : [9, "Pious1", "Pious I", "Champion any god", "Champion (******) any god"],
     10 : [10, "Pious2", "Pious II", "Champion 5 different gods", "Champion 5 different gods"],
-    11 : [11, "Pious3", "Pious III", "Champion 13 different gods", "Champion 13 different gods"]
+    11 : [11, "Pious3", "Pious III", "Champion 13 different gods", "Champion 13 different gods"],
+    12 : [12, "NaturesAlly1", "Nature's Ally I", "Enter the Crypt", "Enter the Crypt"],
+    13 : [13, "NaturesAlly2", "Nature's Ally II", "Get the golden rune", "Get the golden rune"],
+    14 : [14, "NaturesAlly3", "Nature's Ally III", "Enter Tomb for the first time after picking up the Orb of Zot and then get the Golden Rune", "Enter Tomb for the first time after picking up the Orb of Zot and then get the Golden Rune"],
+    15 : [15, "GelatinousBody1", "Gelatinous Body I", "Reach XL:9 with 5 different species and backgrounds", "Reach XL:9 with 5 different species and backgrounds"],
+    16 : [16, "GelatinousBody2", "Gelatinous Body II", "Get a rune with 5 different species and backgrounds", "Get a rune with 5 different species and backgrounds"],
+    17 : [17, "GelatinousBody3", "Gelatinous Body II", "Win with 5 different species and backgrounds", "Win with 5 different species and backgrounds"]   
     
 
     }

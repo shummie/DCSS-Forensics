@@ -52,8 +52,18 @@ def forensicsAchievement(gameCollection):
         achievement = _10_11_Pious_2_3(gameCollection)
         gameCollection.achievementList[10] = achievement[0]
         gameCollection.achievementList[11] = achievement[1]
-        
-        
+    if gameCollection.achievementList[12][0] == False:
+        gameCollection.achievementList[12] = _12_NaturesAlly1(gameCollection)    
+    if gameCollection.achievementList[13][0] == False:
+        gameCollection.achievementList[13] = _13_NaturesAlly2(gameCollection)
+    if gameCollection.achievementList[14][0] == False:
+        gameCollection.achievementList[14] = _14_NaturesAlly3(gameCollection)    
+    if gameCollection.achievementList[15][0] == False:
+        gameCollection.achievementList[15] = _15_GelatinousBody1(gameCollection)
+    if gameCollection.achievementList[16][0] == False:
+        gameCollection.achievementList[16] = _16_GelatinousBody2(gameCollection)
+    if gameCollection.achievementList[17][0] == False:
+        gameCollection.achievementList[17] = _17_GelatinousBody3(gameCollection)  
     
 
 def _0_CheckAnyWin(gameCollection):
@@ -137,9 +147,7 @@ def _10_11_Pious_2_3(gameCollection):
     for game in gameCollection.gameList:
         if game.pietyLevel == 6:
             if game.god not in champList: champList.append(game.god)
-    godString = ""
-    for a in champList: godString += a + ", "
-    godString = godString[:-2]
+    godString = listToString(champList, ", ")
     if len(champList) >= 13:
         return [[True, "Complete!"], [True, "Complete!"]]
     elif len(champList) >= 5:
@@ -147,4 +155,70 @@ def _10_11_Pious_2_3(gameCollection):
     else:
         return [[False, godString], [False, godString]]        
     
+def _12_NaturesAlly1(gameCollection):
+    # Enter the crypt
+    for game in gameCollection.gameList:
+        for i in game.notesList:
+            if i[1] == "Crypt:1": return [True, "Complete!"]
+    return [False, ""]
+
+def _13_NaturesAlly2(gameCollection):
+    # Collect the golden rune of Zot
+    for game in gameCollection.gameList:
+        if "golden" in game.runeList: return [True, "Complete!"]
+    return [False, ""]
+
+def _14_NaturesAlly3(gameCollection):
+    # Enter Tomb for the first time after picking up the Orb of Zot and then get the Golden Rune
+    for game in gameCollection.gameList:
+        if "golden" in game.runeList:
+            enterTombTurn = 0
+            getOrbTurn = 0
+            line = 0
+            while (line < len(game.notesList)) and ((getOrbTurn == 0) or (enterTombTurn == 0)):
+                if game.notesList[2] == "Entered Level 1 of the Tomb of the Ancients": enterTombTurn = game.notesList[line][0]
+                elif game.notesList[2] == "Got the Orb of Zot": getOrbTurn = game.notesList[line][0]
+                line += 1
+            if getOrbTurn < enterTombTurn: return [True, "Complete!"]
+    return [False, ""]
+
+def listToString(listVar, delimiter):
+    # Creates a string from a list using the delimiter as the separator.
+    # Note, delimiter of "," produces a,b,c,d. while ", ", produces a, b, c, d
+    retString = ""
+    for i in listVar:
+        retString += i + delimiter
+    return retString[:-len(delimiter)]
     
+def _15_GelatinousBody1(gameCollection):
+    # Reach XL:9 with 5 different species and backgrounds
+    spList = []
+    bgList = []
+    for game in gameCollection.gameList:
+        if game.level >= 9:
+            if game.species not in spList: spList.append(game.species)
+            if game.background not in bgList: bgList.append(game.background)
+            if (len(spList) >= 5) and (len(bgList) >= 5): return [True, "Complete!"]
+    return [False, listToString(spList, ", ")+"\n"+listToString(bgList, ", ")]
+
+def _16_GelatinousBody2(gameCollection):
+    # Get a rune with at least 5 distinct species and backgrounds
+    spList = []
+    bgList = []
+    for game in gameCollection.gameList:
+        if game.numRunes > 0:
+            if game.species not in spList: spList.append(game.species)
+            if game.background not in bgList: bgList.append(game.background)
+            if (len(spList) >= 5) and (len(bgList) >= 5): return [True, "Complete!"]
+    return [False, listToString(spList, ", ")+"<br>"+listToString(bgList, ", ")]
+
+def _17_GelatinousBody3(gameCollection):
+    # Win with at least 5 distinct species and backgrounds
+    spList = []
+    bgList = []
+    for game in gameCollection.gameList:
+        if game.winFlag == True:
+            if game.species not in spList: spList.append(game.species)
+            if game.background not in bgList: bgList.append(game.background)
+            if (len(spList) >= 5) and (len(bgList) >= 5): return [True, "Complete!"]
+    return [False, listToString(spList, ", ")+"<br>"+listToString(bgList, ", ")]
