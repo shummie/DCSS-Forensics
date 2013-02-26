@@ -42,6 +42,8 @@ def forensicsAchievement(gameCollection):
         gameCollection.achievementList[5] = _5_SlowAndSteady3(gameCollection)
     if gameCollection.achievementList[6][0] == False:
         gameCollection.achievementList[6] = _6_Explorer1(gameCollection)
+    if gameCollection.achievementList[7][0] == False:
+        gameCollection.achievementList[6] = _7_Explorer2(gameCollection)
     
 
 def _0_CheckAnyWin(gameCollection):
@@ -91,5 +93,21 @@ def _5_SlowAndSteady3(gameCollection):
     return [False, "Not yet implemented"]
 
 def _6_Explorer1(gameCollection):
-    # After entering Lair the first tie, reach Lair 8 before returning to the dungeon
-    return [False, "Not yet implemented"]
+    # After entering Lair the first time, reach Lair 8 before returning to the dungeon
+    for game in gameCollection.gameList:
+        achieveStep = 0
+        i = 0
+        while (i < len(game.notesList)) and (achieveStep < 2):
+            if game.notesList[i][1] == "Lair:1": achieveStep = 1
+            if achieveStep == 1:
+                if game.notesList[i][1][:2] == "D:": achieveStep = 2
+                elif game.NotesList[i][1] == "Lair:8": return [True, "Complete!"]
+            i += 1
+    return [False, ""]
+
+def _7_Explorer2(gameCollection):
+    # ???
+    
+    
+    return [False, "Not yet Implemented"]            
+    
