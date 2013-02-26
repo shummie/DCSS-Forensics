@@ -501,16 +501,20 @@ You were very full.
                 # The branchesDict dictionary contains the following structure
                 # {Branchname(str): [levelsVisited (int), maxLevels (int), location (str)]
                 wordIndex = 0
-                while wordIndex < len(lineSplit):
-                    # Dungeon is a special case where there is no location found information
+                while wordIndex < len(lineSplit):                   
                     branchName = lineSplit[wordIndex]
                     wordIndex += 1
                     levInfo = lineSplit[wordIndex].split("/")
                     wordIndex += 1
+                    # Dungeon is a special case where there is no location found information
                     if branchName == "Dungeon": locationFound = ""
+                    # Note, Location found may be MULTIPLE if mimics exist
                     else:
                         locationFound = lineSplit[wordIndex]
                         wordIndex += 1
+                        while (wordIndex < len(lineSplit)) and (lineSplit[wordIndex] not in forensicsDictionary.lOverviewBranchList):
+                            locationFound += ", " + lineSplit[wordIndex]
+                            wordIndex += 1 
                     self.branchesDict[branchName] = [int(levInfo[0][1:]), int(levInfo[1][:-1]), locationFound]
             lineIndex += 1
             
