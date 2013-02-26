@@ -102,6 +102,9 @@ class gameInfo:
     
     ### notes variables
     ## notesList (list [Turn, Location, Note])
+    
+    ### overview variables
+    ## branchesDict: {Branchname(str): [levelsVisited (int), maxLevels (int), location (str)]
 
   
     def __init__(self, data):
@@ -138,6 +141,9 @@ class gameInfo:
         ## notes var
         self.notesList = []
         
+        ## overview var
+        self.branchesDict = {}
+        
 
     ## This function extracts the data from the data element fields.
     ## It will populate data only if the data element field is not empty.
@@ -150,6 +156,7 @@ class gameInfo:
         if len(self.stats) != 0: self.extractStats()
         if len(self.misc) != 0: self.extractMisc()
         if len(self.kills) != 0: self.extractKills()
+        if len(self.overview) != 0: self.extractOverview()
         if len(self.notes) != 0: self.extractNotes()
 
     def extractID(self):
@@ -476,9 +483,37 @@ You were very full.
                 self.notesList[i][j] = self.notesList[i][j].strip()
             self.notesList[i][0] = int(self.notesList[i][0])
             #self.notesList[i][2] = self.notesList[i][2].replace("\n", "") 
-         
+             
+    def extractOverview(self):
+        lineIndex = 0
+        while self.overview[lineIndex] != "Branches:\n": lineIndex += 1
+        lineIndex += 1
+        self.branchesDict = {}
+        while self.overview[lineIndex] != "\n":
+            # Dungeon (27/27)            Temple (1/1) D:5             Orc (4/4) D:11
+            # Elf (3/3) Orc:3          Lair (8/8) D:10          Swamp (5/5) Lair:4
+            # Snake (5/5) Lair:6        Slime (6/6) Lair:7       Vaults (5/5) D:18
+            # ..
+            # Temple: D:4-7 
+            lineSplit = self.overview[lineIndex].split()
+            # Check to see if we have reacehd the unvisited branches section
+            if lineSplit[0][-1] != ":":
+                # The branchesDict dictionary contains the following structure
+                # {Branchname(str): [levelsVisited (int), maxLevels (int), location (str)]
+                wordIndex = 0
+                while wordIndex < len(lineSplit):
+                    # Dungeon is a special case where there is no location found information
+                    branchName = lineSplit[wordIndex]
+                    wordIndex += 1
+                    levInfo = lineSplit[wordIndex].split("/")
+                    wordIndex += 1
+                    if branchName == "Dungeon": locationFound = ""
+                    else:
+                        locationFound = lineSplit[wordIndex]
+                        wordIndex += 1
+                    self.branchesDict[branchName] = [int(levInfo[0][1:]), int(levInfo[1][:-1]), locationFound]
+            lineIndex += 1
             
-        
         
     # outputs select variables into a list, useful for debugging purposes.
     def outputList(self):
