@@ -100,6 +100,12 @@ def forensicsAchievement(gameCollection):
         gameCollection.achievementList[31] = _31_RuthlessEfficiency2(gameCollection)
     if gameCollection.achievementList[32][0] == False:
         gameCollection.achievementList[32] = _32_RuthlessEfficiency3(gameCollection)
+    if gameCollection.achievementList[33][0] == False:
+        gameCollection.achievementList[33] = _33_DescentIntoMadness1(gameCollection)
+    if gameCollection.achievementList[34][0] == False:
+        gameCollection.achievementList[34] = _34_DescentIntoMadness2(gameCollection)
+    if gameCollection.achievementList[35][0] == False:
+        gameCollection.achievementList[35] = _35_DescentIntoMadness3(gameCollection)
 
 def _0_CheckAnyWin(gameCollection):
     # InternalID: 0
@@ -544,3 +550,27 @@ def _32_RuthlessEfficiency3(gameCollection):
                 bestUnique1 = unique1
                 bestUnique2 = unique2
     return [False, bestUnique1 + " and " + bestUnique2 + " killed within " + str(bestTurnsBetween) + " turns of each other"]
+
+def _33_DescentIntoMadness1(gameCollection):
+    # Enter a zig
+    for game in gameCollection.gameList:
+        if game.zigVisits > 0: return [True, "Complete!"]
+    return [False, ""]
+
+def _34_DescentIntoMadness2(gameCollection):
+    # Reach the 14th floor of a ziggurat
+    deepestLevel = 0
+    for game in gameCollection.gameList:
+        if game.zigDeepest >= 14: return [True, "Complete!"]
+        if game.zigDeepest > deepestLevel: deepestLevel = game.zigDeepest
+    if deepestLevel == 0: return [False, ""]
+    else: return [False, "Deepest Zig Level: " + str(deepestLevel)]
+    
+def _35_DescentIntoMadness3(gameCollection):
+    # Reach the 27th floor of a ziggurat
+    deepestLevel = 0
+    for game in gameCollection.gameList:
+        if game.zigDeepest >= 27: return [True, "Complete!"]
+        if game.zigDeepest > deepestLevel: deepestLevel = game.zigDeepest
+    if deepestLevel == 0: return [False, ""]
+    else: return [False, "Deepest Zig Level: " + str(deepestLevel)]
