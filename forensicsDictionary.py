@@ -117,8 +117,10 @@ dAchievementList = {
     17 : [17, "GelatinousBody3", "Gelatinous Body III", "Win with 5 different species and backgrounds", "Win with 5 different species and backgrounds"],   
     18 : [18, "LordOfDarkness1", "Lord of Darkness I", "Enter the Vestibule of Hell without having entered the Lair", "Enter the Vestibule of Hell without having entered the Lair"],
     19 : [19, "LordOfDarkness2", "Lord of Darkness II", "Win a game without having entered the Lair", "Win a game without having entered the Lair"],
-    20 : [20, "LordOfDarkness3", "Lord of Darkness III", "Win a game without having entered the Temple, Orcish Mines, Lair, or Vaults", "Win a game without having entered the Temple, Orcish Mines, Lair, or Vaults"]
-    
+    20 : [20, "LordOfDarkness3", "Lord of Darkness III", "Win a game without having entered the Temple, Orcish Mines, Lair, or Vaults", "Win a game without having entered the Temple, Orcish Mines, Lair, or Vaults"],
+    21 : [21, "AbyssalTourist1", "Abyssal Tourist I", "Survive the abyss without having worshipped Lugonu in that game", "Survive the abyss without having worshipped Lugonu in that game"],
+    22 : [22, "AbyssalTourist2", "Abyssal Tourist II", "Find the abyssal rune and escape the Abyss without following Lugonu in that game", "Find the abyssal rune and escape the Abyss without following Lugonu in that game"],
+    23 : [23, "AbyssalTourist3", "Abyssal Tourist III", "Find the abyssal rune and escape the Abyss before XL 13 and without following Lugonu in that game", "Find the abyssal rune and escape the Abyss before XL 13 and without following Lugonu in that game"]
     
     }
 

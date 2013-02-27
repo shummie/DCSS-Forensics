@@ -70,7 +70,13 @@ def forensicsAchievement(gameCollection):
         gameCollection.achievementList[19] = _19_LordOfDarkness2(gameCollection)  
     if gameCollection.achievementList[20][0] == False:
         gameCollection.achievementList[20] = _20_LordOfDarkness3(gameCollection)
-    
+    if gameCollection.achievementList[21][0] == False:
+        gameCollection.achievementList[21] = _21_AbyssalTourist1(gameCollection)
+    if gameCollection.achievementList[22][0] == False:
+        gameCollection.achievementList[22] = _22_AbyssalTourist2(gameCollection)  
+    if gameCollection.achievementList[23][0] == False:
+        gameCollection.achievementList[23] = _23_AbyssalTourist3(gameCollection)    
+
 
 def _0_CheckAnyWin(gameCollection):
     # InternalID: 0
@@ -282,6 +288,52 @@ def _20_LordOfDarkness3(gameCollection):
                 bestRun = temple + orc + lair + vaults
         return [False, falseString]
                 
+def _21_AbyssalTourist1(gameCollection):
+    # Survive the abyss without having worshipped Lugonu in that game
+    for game in gameCollection.gameList:
+        if game.abyssVisits > 0:
+            worshipLugonu = False
+            i = 0
+            while (i < len(game.notesList)) and (worshipLugonu == False):
+                if game.notesList[i][2] == "Escaped the Abyss": return [True, "Complete!"]
+                if game.notesList[i][2] == "Became a worshipper of Lugonu": worshipLugonu = True
+                i += 1
+    return [False, ""]
+
+def _22_AbyssalTourist2(gameCollection):
+    # Find the abyssal rune and escape the Abyss without following Lugonu in that game
+    for game in gameCollection.gameList:
+        if (game.abyssVisits > 0) and ("abyssal" in game.runeList):
+            worshipLugonu = False
+            gotRune = False
+            escapedAbyss = False
+            i = 0
+            while (i < len(game.notesList)) and (worshipLugonu == False):
+                if game.notesList[i][2] == "Got an abyssal rune of Zot": gotRune = True
+                if game.notesList[i][2] == "Escaped the Abyss": escapedAbyss = True
+                if gotRune and escapedAbyss: return [True, "Complete!"]
+                if game.notesList[i][2] == "Became a worshipper of Lugonu": worshipLugonu = True
+                i += 1
+    return [False, ""]
+
+def _23_AbyssalTourist3(gameCollection):
+    # Find the abyssal rune and escape the Abyss before XL 13 and without following Lugonu in that game
+    for game in gameCollection.gameList:
+        if (game.abyssVisits > 0) and ("abyssal" in game.runeList):
+            worshipLugonu = False
+            level13 = False
+            gotRune = False
+            escapedAbyss = False
+            i = 0
+            while (i < len(game.notesList)) and (worshipLugonu == False) and (level13 == False):
+                if game.notesList[i][2] == "Got an abyssal rune of Zot": gotRune = True
+                if game.notesList[i][2] == "Escaped the Abyss": escapedAbyss = True
+                if game.notesList[i][2].find("Reached XP level 13"): level13 = True
+                if gotRune and escapedAbyss: return [True, "Complete!"]
+                if game.notesList[i][2] == "Became a worshipper of Lugonu": worshipLugonu = True
+                i += 1
+    return [False, ""]
+                    
             
             
     
