@@ -489,7 +489,7 @@ You were very full.
         while self.overview[lineIndex] != "Branches:\n": lineIndex += 1
         lineIndex += 1
         self.branchesDict = {}
-        while self.overview[lineIndex] != "\n":
+        while (lineIndex < len(self.overview)) and (self.overview[lineIndex] != "\n"):
             # Dungeon (27/27)            Temple (1/1) D:5             Orc (4/4) D:11
             # Elf (3/3) Orc:3          Lair (8/8) D:10          Swamp (5/5) Lair:4
             # Snake (5/5) Lair:6        Slime (6/6) Lair:7       Vaults (5/5) D:18
