@@ -124,7 +124,21 @@ dAchievementList = {
     21 : [21, "Conqueror1", "Conqueror I", "Reach XL 13", "Reach XL 13"],
     22 : [22, "Conqueror2", "Conqueror II", "Win a game", "Win a game"],
     23 : [23, "Conqueror3", "Conqueror III", "Win a game in under 50000 turns", "Win a game in under 50000 turns"],
-
+    24 : [24, "Lorekeeper1", "Lorekeeper I", "Enter a branch that contains a rune.", "Enter a branch that contains a rune."],
+    25 : [25, "Lorekeeper2", "Lorekeeper II", "Find 5 distinct runes.", "Find 5 distinct runes."],
+    26 : [26, "Lorekeeper3", "Lorekeeper III", "Find 17 distinct runes.", "Find 17 distinct runes."],
+    27 : [27, "VowOfCourage1", "Vow of Courage I", "Get a rune before entering D:14 (or below) in that game.", "Get a rune before entering D:14 (or below) in that game."],
+    28 : [28, "VowOfCourage2", "Vow of Courage II", "Get two runes before entering D:14 (or below) in that game.", "Get two runes before entering D:14 (or below) in that game."],
+    29 : [29, "VowOfCourage3", "Vow of Courage III", "Get four runes before entering D:14 (or below) in that game.", "Get four runes before entering D:14 (or below) in that game."],
+    30 : [30, "RuthlessEfficiency1", "Ruthless Efficiency I", "Kill any two uniques within two turns of each other.", "Kill any two uniques within two turns of each other."],
+    31 : [31, "RuthlessEfficiency2", "Ruthless Efficiency II", "Kill two medium or deep uniques within one turn of each other.", "Kill two medium or deep uniques within one turn of each other."],
+    32 : [32, "RuthlessEfficiency3", "Ruthless Efficiency III", " Kill two deep uniques on the same turn.", "Kill two deep uniques on the same turn."],
+    33 : [33, "DescentIntoMadness1", "Descent into Madness I", "Enter a ziggurat.", "Enter a ziggurat."],
+    34 : [34, "DescentIntoMadness2", "Descent into Madness II", "Reach the 14th floor of a ziggurat.", "Reach the 14th floor of a ziggurat."],
+    35 : [35, "DescentIntoMadness3", "Descent into Madness III", "Leave a ziggurat from its lowest floor.", "Leave a ziggurat from its lowest floor."],
+    36 : [36, "AngelOfJustice1", "Angel of Justice I", "Enter either Pandemonium or any branch of Hell.", "Enter either Pandemonium or any branch of Hell."],
+    37 : [37, "AngelOfJustice2", "Angel of Justice II", "Kill at least one unique pan lord and at least one unique hell lord.", "Kill at least one unique pan lord and at least one unique hell lord."],
+    38 : [38, "AngelOfJustice3", "Angel of Justice III", "Kill all four unique pan lords and all four unique hell lords.", "Kill all four unique pan lords and all four unique hell lords."]
     
     
     }
