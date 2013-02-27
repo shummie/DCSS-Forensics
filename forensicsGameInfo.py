@@ -102,9 +102,11 @@ class gameInfo:
     
     ### notes variables
     ## notesList (list [Turn, Location, Note])
+    ## uniqueKillDict ({uniqueName: [turnKilled, Location]})
+    ## runesCollectDict ({runeName: turnCollected})
     
     ### overview variables
-    ## branchesDict: {Branchname(str): [levelsVisited (int), maxLevels (int), location (str)]
+    ## branchesDict: {Branchname(str): [levelsVisited (int), maxLevels (int), location (str)]}
 
   
     def __init__(self, data):
@@ -140,6 +142,8 @@ class gameInfo:
         
         ## notes var
         self.notesList = []
+        self.uniqueKilldict = {}
+        self.runesCollectDict = {}
         
         ## overview var
         self.branchesDict = {}
@@ -483,6 +487,18 @@ You were very full.
                 self.notesList[i][j] = self.notesList[i][j].strip()
             self.notesList[i][0] = int(self.notesList[i][0])
             #self.notesList[i][2] = self.notesList[i][2].replace("\n", "") 
+            
+        # Extract Notes information.
+        # Each note should be handled line by line to avoid having to read the notes list over and over and over again
+        for noteLine in self.notesList:
+            noteLineSplit = noteLine[2].split()
+            if noteLine[2].find("rune of Zot") != -1:
+                self.runesCollectDict[noteLineSplit[2]] = noteLine[0]
+            elif noteLineSplit[0] == "Killed":
+                # Check if it's a unique.
+                checkUniqueName = noteLine[2][7:]
+                if checkUniqueName in forensicsDictionary.lUniques:
+                    self.uniqueKilldict[checkUniqueName] = [noteLine[0], noteLine[1]]
              
     def extractOverview(self):
         lineIndex = 0
