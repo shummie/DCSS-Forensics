@@ -120,7 +120,11 @@ dAchievementList = {
     20 : [20, "LordOfDarkness3", "Lord of Darkness III", "Win a game without having entered the Temple, Orcish Mines, Lair, or Vaults", "Win a game without having entered the Temple, Orcish Mines, Lair, or Vaults"],
     21 : [21, "AbyssalTourist1", "Abyssal Tourist I", "Survive the abyss without having worshipped Lugonu in that game", "Survive the abyss without having worshipped Lugonu in that game"],
     22 : [22, "AbyssalTourist2", "Abyssal Tourist II", "Find the abyssal rune and escape the Abyss without following Lugonu in that game", "Find the abyssal rune and escape the Abyss without following Lugonu in that game"],
-    23 : [23, "AbyssalTourist3", "Abyssal Tourist III", "Find the abyssal rune and escape the Abyss before XL 13 and without following Lugonu in that game", "Find the abyssal rune and escape the Abyss before XL 13 and without following Lugonu in that game"]
+    23 : [23, "AbyssalTourist3", "Abyssal Tourist III", "Find the abyssal rune and escape the Abyss before XL 13 and without following Lugonu in that game", "Find the abyssal rune and escape the Abyss before XL 13 and without following Lugonu in that game"],
+    24 : [24, "Conqueror1", "Conqueror I", "Reach XL 13", "Reach XL 13"],
+    25 : [25, "Conqueror2", "Conqueror II", "Win a game", "Win a game"],
+    26 : [26, "Conqueror3", "Conqueror III", "Win a game in under 50000 turns", "Win a game in under 50000 turns"]
+    
     
     }
 

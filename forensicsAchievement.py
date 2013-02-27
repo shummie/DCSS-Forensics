@@ -76,7 +76,12 @@ def forensicsAchievement(gameCollection):
         gameCollection.achievementList[22] = _22_AbyssalTourist2(gameCollection)  
     if gameCollection.achievementList[23][0] == False:
         gameCollection.achievementList[23] = _23_AbyssalTourist3(gameCollection)    
-
+    if gameCollection.achievementList[24][0] == False:
+        gameCollection.achievementList[24] = _24_Conqueror1(gameCollection)
+    if gameCollection.achievementList[25][0] == False:
+        gameCollection.achievementList[25] = _25_Conqueror2(gameCollection)
+    if gameCollection.achievementList[26][0] == False:
+        gameCollection.achievementList[26] = _26_Conqueror3(gameCollection)    
 
 def _0_CheckAnyWin(gameCollection):
     # InternalID: 0
@@ -334,6 +339,28 @@ def _23_AbyssalTourist3(gameCollection):
                 i += 1
     return [False, ""]
                     
+def _24_Conqueror1(gameCollection):
+    # Reach XL 13
+    maxLevel = 0
+    for game in gameCollection.gameList:
+        if game.level >= 13: return [True, "Complete!"]
+        else:
+            if game.level > maxLevel: maxLevel = game.level
+    return [False, "Max Level: " + str(maxLevel)]
+
+def _25_Conqueror2(gameCollection):
+    # Win a game
+    for game in gameCollection.gameList:
+        if game.winFlag == True: return [True, "Complete!"]
+    return [False, ""]
+
+def _26_Conqueror3(gameCollection):
+    # Win a game in under 50k turns
+    lowestCount = -1
+    for game in gameCollection.gameList:
+        if game.winFlag == True:
+            if game.turnsTaken < 50000: return [True, "Complete!"]
+            if (lowestCount == -1) or (game.turnsTaken < lowestCount):
+                lowestCount = game.turnsTaken
+    return [False, "Fastest Win: " + str(lowestCount) + " turns"]
             
-            
-    
