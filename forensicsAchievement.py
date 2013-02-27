@@ -96,10 +96,10 @@ def forensicsAchievement(gameCollection):
         gameCollection.achievementList[29] = _29_VowOfCourage3(gameCollection)    
     if gameCollection.achievementList[30][0] == False:
         gameCollection.achievementList[30] = _30_RuthlessEfficiency1(gameCollection)
-    #if gameCollection.achievementList[31][0] == False:
-    #    gameCollection.achievementList[31] = _31_RuthlessEfficiency2(gameCollection)
-    #if gameCollection.achievementList[32][0] == False:
-    #    gameCollection.achievementList[32] = _32_RuthlessEfficiency3(gameCollection)
+    if gameCollection.achievementList[31][0] == False:
+        gameCollection.achievementList[31] = _31_RuthlessEfficiency2(gameCollection)
+    if gameCollection.achievementList[32][0] == False:
+        gameCollection.achievementList[32] = _32_RuthlessEfficiency3(gameCollection)
 
 def _0_CheckAnyWin(gameCollection):
     # InternalID: 0
@@ -477,7 +477,7 @@ def _30_RuthlessEfficiency1(gameCollection):
                     unique1 = uniqueKillList[i-1][1]
                     unique2 = uniqueKillList[i][1]
                     turnsBetween = uniqueKillList[i][0] - uniqueKillList[i-1][0]
-                if turnsBetween <= 2: return[True, "Complete!"]
+                if turnsBetween <= 2: return[True, "Complete!<br>" + unique1 + " and " + unique2 + " killed within " + str(turnsBetween) + " turns of each other"]
                 i += 1
             if turnsBetween < bestTurnsBetween:
                 bestTurnsBetween = turnsBetween
@@ -485,4 +485,62 @@ def _30_RuthlessEfficiency1(gameCollection):
                 bestUnique2 = unique2
     return [False, bestUnique1 + " and " + bestUnique2 + " killed within " + str(bestTurnsBetween) + " turns of each other"]
 
+def _31_RuthlessEfficiency2(gameCollection):
+    # Kill 2 medium or deep uniques within 1 turn of each other.
+    
+    bestUnique1 = ""
+    bestUnique2 = ""
+    bestTurnsBetween = 9999999999
+    
+    for game in gameCollection.gameList:
+        uniqueKillList = []
+        for unique in game.uniqueKillDict:
+            if unique not in forensicsDictionary.lShallowUniques:
+                uniqueKillList.append([game.uniqueKillDict[unique][0], unique])
+        uniqueKillList.sort()
         
+        if len(uniqueKillList) >= 2:
+            turnsBetween = 9999999999
+            i = 1
+            while i < len(uniqueKillList):
+                if (uniqueKillList[i][0] - uniqueKillList[i-1][0]) < turnsBetween:
+                    unique1 = uniqueKillList[i-1][1]
+                    unique2 = uniqueKillList[i][1]
+                    turnsBetween = uniqueKillList[i][0] - uniqueKillList[i-1][0]
+                if turnsBetween <= 1: return[True, "Complete!<br>" + unique1 + " and " + unique2 + " killed within " + str(turnsBetween) + " turns of each other"]
+                i += 1
+            if turnsBetween < bestTurnsBetween:
+                bestTurnsBetween = turnsBetween
+                bestUnique1 = unique1
+                bestUnique2 = unique2
+    return [False, bestUnique1 + " and " + bestUnique2 + " killed within " + str(bestTurnsBetween) + " turns of each other"]
+
+def _32_RuthlessEfficiency3(gameCollection):
+    # Kill 2 deep uniques on the same turn.
+    
+    bestUnique1 = ""
+    bestUnique2 = ""
+    bestTurnsBetween = 9999999999
+    
+    for game in gameCollection.gameList:
+        uniqueKillList = []
+        for unique in game.uniqueKillDict:
+            if unique in forensicsDictionary.lDeepUniques:
+                uniqueKillList.append([game.uniqueKillDict[unique][0], unique])
+        uniqueKillList.sort()
+        
+        if len(uniqueKillList) >= 2:
+            turnsBetween = 9999999999
+            i = 1
+            while i < len(uniqueKillList):
+                if (uniqueKillList[i][0] - uniqueKillList[i-1][0]) < turnsBetween:
+                    unique1 = uniqueKillList[i-1][1]
+                    unique2 = uniqueKillList[i][1]
+                    turnsBetween = uniqueKillList[i][0] - uniqueKillList[i-1][0]
+                if turnsBetween == 0: return[True, "Complete!<br>" + unique1 + " and " + unique2 + " killed within " + str(turnsBetween) + " turns of each other"]
+                i += 1
+            if turnsBetween < bestTurnsBetween:
+                bestTurnsBetween = turnsBetween
+                bestUnique1 = unique1
+                bestUnique2 = unique2
+    return [False, bestUnique1 + " and " + bestUnique2 + " killed within " + str(bestTurnsBetween) + " turns of each other"]
