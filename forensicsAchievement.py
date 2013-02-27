@@ -28,60 +28,60 @@ def forensicsAchievement(gameCollection):
     while len(gameCollection.achievementList) < len(forensicsDictionary.dAchievementList):
         gameCollection.achievementList.append(False)
 
+    #if gameCollection.achievementList[0][0] == False:
+    #    gameCollection.achievementList[0] = _0_CheckAnyWin(gameCollection)
+    #if gameCollection.achievementList[1][0] == False:
+    #    gameCollection.achievementList[1] = _1_CheckAnyLevel27(gameCollection)
+    #if gameCollection.achievementList[2][0] == False:
+    #    gameCollection.achievementList[2] = _2_CheckAny15RuneWin(gameCollection)
     if gameCollection.achievementList[0][0] == False:
-        gameCollection.achievementList[0] = _0_CheckAnyWin(gameCollection)
+        gameCollection.achievementList[0] = _0_SlowAndSteady1(gameCollection)
     if gameCollection.achievementList[1][0] == False:
-        gameCollection.achievementList[1] = _1_CheckAnyLevel27(gameCollection)
+        gameCollection.achievementList[1] = _1_SlowAndSteady2(gameCollection)
     if gameCollection.achievementList[2][0] == False:
-        gameCollection.achievementList[2] = _2_CheckAny15RuneWin(gameCollection)
+        gameCollection.achievementList[2] = _2_SlowAndSteady3(gameCollection)
     if gameCollection.achievementList[3][0] == False:
-        gameCollection.achievementList[3] = _3_SlowAndSteady1(gameCollection)
+        gameCollection.achievementList[3] = _3_Explorer1(gameCollection)
     if gameCollection.achievementList[4][0] == False:
-        gameCollection.achievementList[4] = _4_SlowAndSteady2(gameCollection)
+        gameCollection.achievementList[4] = _4_Explorer2(gameCollection)
     if gameCollection.achievementList[5][0] == False:
-        gameCollection.achievementList[5] = _5_SlowAndSteady3(gameCollection)
+        gameCollection.achievementList[5] = _5_Explorer3(gameCollection)
     if gameCollection.achievementList[6][0] == False:
-        gameCollection.achievementList[6] = _6_Explorer1(gameCollection)
-    if gameCollection.achievementList[7][0] == False:
-        gameCollection.achievementList[7] = _7_Explorer2(gameCollection)
+        gameCollection.achievementList[6] = _6_Pious1(gameCollection)
     if gameCollection.achievementList[8][0] == False:
-        gameCollection.achievementList[8] = _8_Explorer3(gameCollection)
+        achievement = _7_8_Pious_2_3(gameCollection)
+        gameCollection.achievementList[7] = achievement[0]
+        gameCollection.achievementList[8] = achievement[1]
     if gameCollection.achievementList[9][0] == False:
-        gameCollection.achievementList[9] = _9_Pious1(gameCollection)
+        gameCollection.achievementList[9] = _9_NaturesAlly1(gameCollection)    
     if gameCollection.achievementList[10][0] == False:
-        achievement = _10_11_Pious_2_3(gameCollection)
-        gameCollection.achievementList[10] = achievement[0]
-        gameCollection.achievementList[11] = achievement[1]
+        gameCollection.achievementList[10] = _10_NaturesAlly2(gameCollection)
+    if gameCollection.achievementList[11][0] == False:
+        gameCollection.achievementList[11] = _11_NaturesAlly3(gameCollection)    
     if gameCollection.achievementList[12][0] == False:
-        gameCollection.achievementList[12] = _12_NaturesAlly1(gameCollection)    
+        gameCollection.achievementList[12] = _12_GelatinousBody1(gameCollection)
     if gameCollection.achievementList[13][0] == False:
-        gameCollection.achievementList[13] = _13_NaturesAlly2(gameCollection)
+        gameCollection.achievementList[13] = _13_GelatinousBody2(gameCollection)
     if gameCollection.achievementList[14][0] == False:
-        gameCollection.achievementList[14] = _14_NaturesAlly3(gameCollection)    
+        gameCollection.achievementList[14] = _14_GelatinousBody3(gameCollection)
     if gameCollection.achievementList[15][0] == False:
-        gameCollection.achievementList[15] = _15_GelatinousBody1(gameCollection)
+        gameCollection.achievementList[15] = _15_LordOfDarkness1(gameCollection)
     if gameCollection.achievementList[16][0] == False:
-        gameCollection.achievementList[16] = _16_GelatinousBody2(gameCollection)
+        gameCollection.achievementList[16] = _16_LordOfDarkness2(gameCollection)  
     if gameCollection.achievementList[17][0] == False:
-        gameCollection.achievementList[17] = _17_GelatinousBody3(gameCollection)
+        gameCollection.achievementList[17] = _17_LordOfDarkness3(gameCollection)
     if gameCollection.achievementList[18][0] == False:
-        gameCollection.achievementList[18] = _18_LordOfDarkness1(gameCollection)
+        gameCollection.achievementList[18] = _18_AbyssalTourist1(gameCollection)
     if gameCollection.achievementList[19][0] == False:
-        gameCollection.achievementList[19] = _19_LordOfDarkness2(gameCollection)  
+        gameCollection.achievementList[19] = _19_AbyssalTourist2(gameCollection)  
     if gameCollection.achievementList[20][0] == False:
-        gameCollection.achievementList[20] = _20_LordOfDarkness3(gameCollection)
+        gameCollection.achievementList[20] = _20_AbyssalTourist3(gameCollection)    
     if gameCollection.achievementList[21][0] == False:
-        gameCollection.achievementList[21] = _21_AbyssalTourist1(gameCollection)
+        gameCollection.achievementList[21] = _21_Conqueror1(gameCollection)
     if gameCollection.achievementList[22][0] == False:
-        gameCollection.achievementList[22] = _22_AbyssalTourist2(gameCollection)  
+        gameCollection.achievementList[22] = _22_Conqueror2(gameCollection)
     if gameCollection.achievementList[23][0] == False:
-        gameCollection.achievementList[23] = _23_AbyssalTourist3(gameCollection)    
-    if gameCollection.achievementList[24][0] == False:
-        gameCollection.achievementList[24] = _24_Conqueror1(gameCollection)
-    if gameCollection.achievementList[25][0] == False:
-        gameCollection.achievementList[25] = _25_Conqueror2(gameCollection)
-    if gameCollection.achievementList[26][0] == False:
-        gameCollection.achievementList[26] = _26_Conqueror3(gameCollection)    
+        gameCollection.achievementList[23] = _23_Conqueror3(gameCollection)    
 
 def _0_CheckAnyWin(gameCollection):
     # InternalID: 0
@@ -108,7 +108,7 @@ def _2_CheckAny15RuneWin(gameCollection):
         elif game.numRunes < maxRunes: maxRunes = game.numRunes
     return [False, "Max Runes: " + str(maxRunes)]
 
-def _3_SlowAndSteady1(gameCollection):
+def _0_SlowAndSteady1(gameCollection):
     # Internal ID: 3
     # Check that there are two characters in a row with XL:9
     i = 0
@@ -119,17 +119,17 @@ def _3_SlowAndSteady1(gameCollection):
     if levelCount < 2: return [False, ""]
     else: return [True, "Complete!"]
         
-def _4_SlowAndSteady2(gameCollection):
+def _1_SlowAndSteady2(gameCollection):
     # Achieve a 2-win streak
     # Currently no streak detection coded, so this will need to be rewritten
     return [False, "Not yet implemented"]
 
-def _5_SlowAndSteady3(gameCollection):
+def _2_SlowAndSteady3(gameCollection):
     # Achieve a 4-win streak with 4 different Species & Classes
     # Currently no streak detection coded, so this will need to be rewritten
     return [False, "Not yet implemented"]
 
-def _6_Explorer1(gameCollection):
+def _3_Explorer1(gameCollection):
     # After entering Lair the first time, reach Lair 8 before returning to the dungeon
     for game in gameCollection.gameList:
         achieveStep = 0
@@ -142,15 +142,15 @@ def _6_Explorer1(gameCollection):
             i += 1
     return [False, ""]
 
-def _7_Explorer2(gameCollection):
+def _4_Explorer2(gameCollection):
     # Win a game in where when you enter a branch for the 1st time, you reach the end of the branch before leaving
     return [False, "Not yet Implemented"]            
 
-def _8_Explorer3(gameCollection):
+def _5_Explorer3(gameCollection):
     # Win a game as in II, except all subbranches must be completed before leaving the branch. I.e., all subbranches of Lair must be complete before leaving Lair
     return [False, "Not yet implemented"]
 
-def _9_Pious1(gameCollection):
+def _6_Pious1(gameCollection):
     # Champion a god
     maxPiety = 0
     for game in gameCollection.gameList:
@@ -158,7 +158,7 @@ def _9_Pious1(gameCollection):
         elif game.pietyLevel > maxPiety: maxPiety = game.pietyLevel 
     return [False, "Max Piety: " + ("*" * maxPiety)]
 
-def _10_11_Pious_2_3(gameCollection):
+def _7_8_Pious_2_3(gameCollection):
     # Champion 5 gods and 13 gods
     champList = []
     for game in gameCollection.gameList:
@@ -172,20 +172,20 @@ def _10_11_Pious_2_3(gameCollection):
     else:
         return [[False, godString], [False, godString]]        
     
-def _12_NaturesAlly1(gameCollection):
+def _9_NaturesAlly1(gameCollection):
     # Enter the crypt
     for game in gameCollection.gameList:
         for i in game.notesList:
             if i[1] == "Crypt:1": return [True, "Complete!"]
     return [False, ""]
 
-def _13_NaturesAlly2(gameCollection):
+def _10_NaturesAlly2(gameCollection):
     # Collect the golden rune of Zot
     for game in gameCollection.gameList:
         if "golden" in game.runeList: return [True, "Complete!"]
     return [False, ""]
 
-def _14_NaturesAlly3(gameCollection):
+def _11_NaturesAlly3(gameCollection):
     # Enter Tomb for the first time after picking up the Orb of Zot and then get the Golden Rune
     for game in gameCollection.gameList:
         if "golden" in game.runeList:
@@ -207,7 +207,7 @@ def listToString(listVar, delimiter):
         retString += i + delimiter
     return retString[:-len(delimiter)]
     
-def _15_GelatinousBody1(gameCollection):
+def _12_GelatinousBody1(gameCollection):
     # Reach XL:9 with 5 different species and backgrounds
     spList = []
     bgList = []
@@ -218,7 +218,7 @@ def _15_GelatinousBody1(gameCollection):
             if (len(spList) >= 5) and (len(bgList) >= 5): return [True, "Complete!"]
     return [False, listToString(spList, ", ")+"\n"+listToString(bgList, ", ")]
 
-def _16_GelatinousBody2(gameCollection):
+def _13_GelatinousBody2(gameCollection):
     # Get a rune with at least 5 distinct species and backgrounds
     spList = []
     bgList = []
@@ -229,7 +229,7 @@ def _16_GelatinousBody2(gameCollection):
             if (len(spList) >= 5) and (len(bgList) >= 5): return [True, "Complete!"]
     return [False, listToString(spList, ", ")+"<br>"+listToString(bgList, ", ")]
 
-def _17_GelatinousBody3(gameCollection):
+def _14_GelatinousBody3(gameCollection):
     # Win with at least 5 distinct species and backgrounds
     spList = []
     bgList = []
@@ -240,7 +240,7 @@ def _17_GelatinousBody3(gameCollection):
             if (len(spList) >= 5) and (len(bgList) >= 5): return [True, "Complete!"]
     return [False, listToString(spList, ", ")+"<br>"+listToString(bgList, ", ")]
 
-def _18_LordOfDarkness1(gameCollection):
+def _15_LordOfDarkness1(gameCollection):
     # Enter the Vestibule of Hell without having entered the Lair
     for game in gameCollection.gameList:
         enterLairTurn = 0
@@ -253,7 +253,7 @@ def _18_LordOfDarkness1(gameCollection):
         if (enterHellTurn < enterLairTurn) and (enterHellTurn != 0): return [True, "Complete!"]
     return [False, ""]
 
-def _19_LordOfDarkness2(gameCollection):
+def _16_LordOfDarkness2(gameCollection):
     # Win a game without having entered the Lair
     for game in gameCollection.gameList:
         if game.winFlag == True:
@@ -263,7 +263,7 @@ def _19_LordOfDarkness2(gameCollection):
                 if game.branchesDict["Lair"][0] == 0: return [True, "Complete"]
     return [False, ""]
 
-def _20_LordOfDarkness3(gameCollection):
+def _17_LordOfDarkness3(gameCollection):
     # Win a game without having entered the Temple, Orcish Mines, Lair, or Vaults
     falseString = ""
     bestRun = 19
@@ -293,7 +293,7 @@ def _20_LordOfDarkness3(gameCollection):
                 bestRun = temple + orc + lair + vaults
         return [False, falseString]
                 
-def _21_AbyssalTourist1(gameCollection):
+def _18_AbyssalTourist1(gameCollection):
     # Survive the abyss without having worshipped Lugonu in that game
     for game in gameCollection.gameList:
         if game.abyssVisits > 0:
@@ -305,7 +305,7 @@ def _21_AbyssalTourist1(gameCollection):
                 i += 1
     return [False, ""]
 
-def _22_AbyssalTourist2(gameCollection):
+def _19_AbyssalTourist2(gameCollection):
     # Find the abyssal rune and escape the Abyss without following Lugonu in that game
     for game in gameCollection.gameList:
         if (game.abyssVisits > 0) and ("abyssal" in game.runeList):
@@ -321,7 +321,7 @@ def _22_AbyssalTourist2(gameCollection):
                 i += 1
     return [False, ""]
 
-def _23_AbyssalTourist3(gameCollection):
+def _20_AbyssalTourist3(gameCollection):
     # Find the abyssal rune and escape the Abyss before XL 13 and without following Lugonu in that game
     for game in gameCollection.gameList:
         if (game.abyssVisits > 0) and ("abyssal" in game.runeList):
@@ -339,7 +339,7 @@ def _23_AbyssalTourist3(gameCollection):
                 i += 1
     return [False, ""]
                     
-def _24_Conqueror1(gameCollection):
+def _21_Conqueror1(gameCollection):
     # Reach XL 13
     maxLevel = 0
     for game in gameCollection.gameList:
@@ -348,13 +348,13 @@ def _24_Conqueror1(gameCollection):
             if game.level > maxLevel: maxLevel = game.level
     return [False, "Max Level: " + str(maxLevel)]
 
-def _25_Conqueror2(gameCollection):
+def _22_Conqueror2(gameCollection):
     # Win a game
     for game in gameCollection.gameList:
         if game.winFlag == True: return [True, "Complete!"]
     return [False, ""]
 
-def _26_Conqueror3(gameCollection):
+def _23_Conqueror3(gameCollection):
     # Win a game in under 50k turns
     lowestCount = -1
     for game in gameCollection.gameList:
