@@ -142,7 +142,7 @@ class gameInfo:
         
         ## notes var
         self.notesList = []
-        self.uniqueKilldict = {}
+        self.uniqueKillDict = {}
         self.runesCollectDict = {}
         
         ## overview var
@@ -498,7 +498,7 @@ You were very full.
                 # Check if it's a unique.
                 checkUniqueName = noteLine[2][7:]
                 if checkUniqueName in forensicsDictionary.lUniques:
-                    self.uniqueKilldict[checkUniqueName] = [noteLine[0], noteLine[1]]
+                    self.uniqueKillDict[checkUniqueName] = [noteLine[0], noteLine[1]]
              
     def extractOverview(self):
         lineIndex = 0
