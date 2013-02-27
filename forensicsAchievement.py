@@ -81,7 +81,13 @@ def forensicsAchievement(gameCollection):
     if gameCollection.achievementList[22][0] == False:
         gameCollection.achievementList[22] = _22_Conqueror2(gameCollection)
     if gameCollection.achievementList[23][0] == False:
-        gameCollection.achievementList[23] = _23_Conqueror3(gameCollection)    
+        gameCollection.achievementList[23] = _23_Conqueror3(gameCollection)
+    if gameCollection.achievementList[24][0] == False:
+        gameCollection.achievementList[24] = _24_Lorekeeper1(gameCollection)
+    if gameCollection.achievementList[25][0] == False:
+        gameCollection.achievementList[25] = _25_Lorekeeper2(gameCollection)
+    if gameCollection.achievementList[26][0] == False:
+        gameCollection.achievementList[26] = _26_Lorekeeper3(gameCollection)    
 
 def _0_CheckAnyWin(gameCollection):
     # InternalID: 0
@@ -116,6 +122,7 @@ def _0_SlowAndSteady1(gameCollection):
     while (i < len(gameCollection.gameList)) and (levelCount < 2):
         if gameCollection.gameList[i].level >= 9: levelCount += 1
         else: levelCount = 0
+        i += 1
     if levelCount < 2: return [False, ""]
     else: return [True, "Complete!"]
         
@@ -363,4 +370,31 @@ def _23_Conqueror3(gameCollection):
             if (lowestCount == -1) or (game.turnsTaken < lowestCount):
                 lowestCount = game.turnsTaken
     return [False, "Fastest Win: " + str(lowestCount) + " turns"]
-            
+
+def _24_Lorekeeper1(gameCollection):
+    # Enter a branch that contains a rune
+    branchRuneList = ["Swamp", "Snake", "Slime", "Vaults", "Tomb", "Dis", "Geh", "Coc", "Tar"]
+    for game in gameCollection.gameList:
+        for branch in branchRuneList:
+            if branch in game.branchesDict:
+                if game.branchesDict[branch][0] > 0: return [True, "Complete"]
+    return [False, ""]
+
+def _25_Lorekeeper2(gameCollection):
+    # Find 5 distinct runes.
+    runeList = []
+    for game in gameCollection.gameList:
+        runeList.extend(game.runeList)
+        runeList = list(set(runeList))
+        if len(runeList) >= 5: return [True, "Complete!"]
+    return [False, str(len(runeList)) + " Runes Collected: " + listToString(runeList, ", ")]
+
+def _26_Lorekeeper3(gameCollection):
+    # Find 17 distinct runes.
+    runeList = []
+    for game in gameCollection.gameList:
+        runeList.extend(game.runeList)
+        runeList = list(set(runeList))
+        if len(runeList) >= 17: return [True, "Complete!"]
+    return [False, str(len(runeList)) + " Runes Collected: " + listToString(runeList, ", ")]
+        
