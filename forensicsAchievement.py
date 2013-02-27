@@ -87,7 +87,13 @@ def forensicsAchievement(gameCollection):
     if gameCollection.achievementList[25][0] == False:
         gameCollection.achievementList[25] = _25_Lorekeeper2(gameCollection)
     if gameCollection.achievementList[26][0] == False:
-        gameCollection.achievementList[26] = _26_Lorekeeper3(gameCollection)    
+        gameCollection.achievementList[26] = _26_Lorekeeper3(gameCollection)
+    if gameCollection.achievementList[27][0] == False:
+        gameCollection.achievementList[27] = _27_VowOfCourage1(gameCollection)
+    if gameCollection.achievementList[28][0] == False:
+        gameCollection.achievementList[28] = _28_VowOfCourage2(gameCollection)
+    if gameCollection.achievementList[29][0] == False:
+        gameCollection.achievementList[29] = _29_VowOfCourage3(gameCollection)    
 
 def _0_CheckAnyWin(gameCollection):
     # InternalID: 0
@@ -398,3 +404,48 @@ def _26_Lorekeeper3(gameCollection):
         if len(runeList) >= 17: return [True, "Complete!"]
     return [False, str(len(runeList)) + " Runes Collected: " + listToString(runeList, ", ")]
         
+def _27_VowOfCourage1(gameCollection):
+    # Get a rune before entering D:14 (or below) in that game.
+    for game in gameCollection.gameList:
+        reachedD14 = False
+        i = 0
+        if game.numRunes >= 1:
+            while (i < len(game.notesList)) and (reachedD14 == False):
+                if game.notesList[i][2].find("rune of Zot") != -1: return [True, "Complete!"]
+                if game.notesList[i][2] == "Entered Level 14 of the Dungeon": reachedD14 = True
+                i += 1
+    return [False, ""]
+
+def _28_VowOfCourage2(gameCollection):
+    # get 2 runes before entering D14
+    bestRun = 0
+    for game in gameCollection.gameList:
+        reachedD14 = False
+        runesCollected = 0
+        i = 0
+        if game.numRunes >= 1:
+            while (i < len(game.notesList)) and (reachedD14 == False):
+                if game.notesList[i][2].find("rune of Zot") != -1: 
+                    runesCollected += 1
+                    if runesCollected >= 2: return [True, "Complete!"]
+                if game.notesList[i][2] == "Entered Level 14 of the Dungeon": reachedD14 = True
+                i += 1
+        if runesCollected > bestRun: bestRun = runesCollected
+    return [False, str(bestRun) + " runes collected before D:14"]
+            
+def _29_VowOfCourage3(gameCollection):
+    # get 4 runes before entering D14
+    bestRun = 0
+    for game in gameCollection.gameList:
+        reachedD14 = False
+        runesCollected = 0
+        i = 0
+        if game.numRunes >= 1:
+            while (i < len(game.notesList)) and (reachedD14 == False):
+                if game.notesList[i][2].find("rune of Zot") != -1: 
+                    runesCollected += 1
+                    if runesCollected >= 4: return [True, "Complete!"]
+                if game.notesList[i][2] == "Entered Level 14 of the Dungeon": reachedD14 = True
+                i += 1
+        if runesCollected > bestRun: bestRun = runesCollected
+    return [False, str(bestRun) + " runes collected before D:14"]
