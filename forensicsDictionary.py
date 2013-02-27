@@ -225,3 +225,22 @@ dBackgroundShortTableList = ["Fi", "Gl", "Mo", "Hu", "As", "Be", "AK", "CK",
                              "DK", "Pr", "He", "Sk", "En", "Tm", "AM", "St",
                              "Wr", "Wz", "Cj", "Su", "Ne", "FE", "IE", "AE",
                              "EE", "VM", "Ar", "Wn", "Pa", "Re", "Th"]
+
+
+## Unique List (Note: Updated as of v0.11)
+
+# Uniques who do not normally generate before depth 18.
+lDeepUniques = ["Antaeus", "Asmodeus", "Boris", "Cerebov", "Dispater", "Dissolution", "Ereshkigal", "Frederick", "Geryon", "Gloorx Vloq", "Ignacio", "Ilsuiw", "Jory", 
+                "Khufu", "Lom Lobon", "Mara", "Margery", "Mennas", "Mnoleg", "Murray", "the Enchantress", "the Lernaean hydra", "the Serpent of Hell", "the royal jelly",
+                "Tiamat", "Xtahua"]
+
+# Uniques who do not normally generate before depth 11 and are not on the previous list.
+lMediumUniques = ["Agnes", "Aizul", "Arachne", "Azrael", "Donald", "Frances", "Kirke", "Louise", "Maud", "Nergalle", "Nessos", "Nikola", "Norris", "Polyphemus", 
+                  "Roxanne", "Rupert", "Saint Roka", "Snorg", "Wiglaf"]
+
+# Uniques who are not on the previous lists.
+lShallowUniques = ["Blork", "Crazy Yiuf", "Dowan", "Duvessa", "Edmund", "Erica", "Erolcha", "Eustachio", "Fannar", "Gastronok", "Grum", "Grinder", "Harold", "Ijyb", 
+                   "Jessica", "Joseph", "Josephine", "Maurice", "Menkaure", "Pikel", "Prince Ribbit", "Psyche", "Purgy", "Sigmund", "Sonja", "Terence", "Urug"]
+
+# All uniques
+lUniques = lDeepUniques + lMediumUniques + lShallowUniques
