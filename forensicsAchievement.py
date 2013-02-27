@@ -94,6 +94,12 @@ def forensicsAchievement(gameCollection):
         gameCollection.achievementList[28] = _28_VowOfCourage2(gameCollection)
     if gameCollection.achievementList[29][0] == False:
         gameCollection.achievementList[29] = _29_VowOfCourage3(gameCollection)    
+    if gameCollection.achievementList[30][0] == False:
+        gameCollection.achievementList[30] = _30_RuthlessEfficiency1(gameCollection)
+    #if gameCollection.achievementList[31][0] == False:
+    #    gameCollection.achievementList[31] = _31_RuthlessEfficiency2(gameCollection)
+    #if gameCollection.achievementList[32][0] == False:
+    #    gameCollection.achievementList[32] = _32_RuthlessEfficiency3(gameCollection)
 
 def _0_CheckAnyWin(gameCollection):
     # InternalID: 0
@@ -449,3 +455,34 @@ def _29_VowOfCourage3(gameCollection):
                 i += 1
         if runesCollected > bestRun: bestRun = runesCollected
     return [False, str(bestRun) + " runes collected before D:14"]
+
+def _30_RuthlessEfficiency1(gameCollection):
+    # Kill 2 uniques within 2 turns of each other.
+    
+    bestUnique1 = ""
+    bestUnique2 = ""
+    bestTurnsBetween = 9999999999
+    
+    for game in gameCollection.gameList:
+        uniqueKillList = []
+        for unique in game.uniqueKillDict:
+            uniqueKillList.append([game.uniqueKillDict[unique][0], unique])
+        uniqueKillList.sort()
+        
+        if len(uniqueKillList) >= 2:
+            turnsBetween = 9999999999
+            i = 1
+            while i < len(uniqueKillList):
+                if (uniqueKillList[i][0] - uniqueKillList[i-1][0]) < turnsBetween:
+                    unique1 = uniqueKillList[i-1][1]
+                    unique2 = uniqueKillList[i][1]
+                    turnsBetween = uniqueKillList[i][0] - uniqueKillList[i-1][0]
+                if turnsBetween <= 2: return[True, "Complete!"]
+                i += 1
+            if turnsBetween < bestTurnsBetween:
+                bestTurnsBetween = turnsBetween
+                bestUnique1 = unique1
+                bestUnique2 = unique2
+    return [False, bestUnique1 + " and " + bestUnique2 + " killed within " + str(bestTurnsBetween) + " turns of each other"]
+
+        
