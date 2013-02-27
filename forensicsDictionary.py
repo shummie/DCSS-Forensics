@@ -138,7 +138,10 @@ dAchievementList = {
     35 : [35, "DescentIntoMadness3", "Descent into Madness III", "Leave a ziggurat from its lowest floor.", "Leave a ziggurat from its lowest floor."],
     36 : [36, "AngelOfJustice1", "Angel of Justice I", "Enter either Pandemonium or any branch of Hell.", "Enter either Pandemonium or any branch of Hell."],
     37 : [37, "AngelOfJustice2", "Angel of Justice II", "Kill at least one unique pan lord and at least one unique hell lord.", "Kill at least one unique pan lord and at least one unique hell lord."],
-    38 : [38, "AngelOfJustice3", "Angel of Justice III", "Kill all four unique pan lords and all four unique hell lords.", "Kill all four unique pan lords and all four unique hell lords."]
+    38 : [38, "AngelOfJustice3", "Angel of Justice III", "Kill all four unique pan lords and all four unique hell lords.", "Kill all four unique pan lords and all four unique hell lords."], 
+    39 : [39, "Harvest1", "Harvest I", "Kill 25 distinct uniques", "Kill 25 distinct uniques"],
+    40 : [40, "Harvest2", "Harvest II", "Kill 45 distinct uniques", "Kill 45 distinct uniques"],
+    41 : [41, "Harvest3", "Harvest III", "Kill 65 distinct uniques", "Kill 65 distinct uniques"],
     
     
     }

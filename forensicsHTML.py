@@ -144,7 +144,7 @@ def createAchievementDetailed(gc):
     f.write("<body>\n")
     
     f.write("<h3>0.11 Tournament God Banners</h3><hr>")
-    aNumList = range(0, 39)
+    aNumList = range(0, 42)
     writeDetailedAchievements(f, gc.achievementList, aNumList, 6)
     
     f.write('</body>\n')
