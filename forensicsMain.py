@@ -42,7 +42,11 @@ def readGameData():
         if forensicsConfig.verbosity >= 2:
             print(files)
         gameCollection.addFile(files)
+    print("Updating achievements")
+    logging.info("Updating achievements")
     gameCollection.updateAchievements()
+    print("Achievements updated")
+    logging.info("Achievements updated")
 
 # Saves the gameCollection object into filename
 def saveGameData(filename):
