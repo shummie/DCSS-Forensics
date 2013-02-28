@@ -417,9 +417,10 @@ def _4_Explorer2(gameCollection):
                                     if testLevel > deepestLevel: 
                                         deepestLevel = testLevel
                                         j += 1
-                                    if deepestLevel < testLevel:
+                                    elif deepestLevel < testLevel:
                                         inBranch = False
                                         continuous = False
+                                    else: j += 1
                                 else:
                                     inBranch = False
                                     continuous = False
@@ -439,9 +440,10 @@ def _4_Explorer2(gameCollection):
                                     if testLevel > deepestLevel: 
                                         deepestLevel = testLevel
                                         j += 1
-                                    if deepestLevel < testLevel:
+                                    elif deepestLevel < testLevel:
                                         inBranch = False
                                         continuous = False
+                                    else: j += 1
                                 else:
                                     inBranch = False
                                     continuous = False
@@ -461,9 +463,10 @@ def _4_Explorer2(gameCollection):
                                     if testLevel > deepestLevel: 
                                         deepestLevel = testLevel
                                         j += 1
-                                    if deepestLevel < testLevel:
+                                    elif deepestLevel < testLevel:
                                         inBranch = False
                                         continuous = False
+                                    else: j += 1
                                 else:
                                     inBranch = False
                                     continuous = False
@@ -483,9 +486,10 @@ def _4_Explorer2(gameCollection):
                                     if testLevel > deepestLevel: 
                                         deepestLevel = testLevel
                                         j += 1
-                                    if deepestLevel < testLevel:
+                                    elif deepestLevel < testLevel:
                                         inBranch = False
                                         continuous = False
+                                    else: j += 1
                                 else:
                                     inBranch = False
                                     continuous = False
@@ -739,9 +743,10 @@ def _5_Explorer3(gameCollection):
                                     if testLevel > deepestLevel: 
                                         deepestLevel = testLevel
                                         j += 1
-                                    if deepestLevel < testLevel:
+                                    elif deepestLevel < testLevel:
                                         inBranch = False
                                         continuous = False
+                                    else: j += 1
                                 else:
                                     inBranch = False
                                     continuous = False
@@ -761,9 +766,10 @@ def _5_Explorer3(gameCollection):
                                     if testLevel > deepestLevel: 
                                         deepestLevel = testLevel
                                         j += 1
-                                    if deepestLevel < testLevel:
+                                    elif deepestLevel < testLevel:
                                         inBranch = False
                                         continuous = False
+                                    else: j += 1
                                 else:
                                     inBranch = False
                                     continuous = False
@@ -783,9 +789,10 @@ def _5_Explorer3(gameCollection):
                                     if testLevel > deepestLevel: 
                                         deepestLevel = testLevel
                                         j += 1
-                                    if deepestLevel < testLevel:
+                                    elif deepestLevel < testLevel:
                                         inBranch = False
                                         continuous = False
+                                    else: j += 1
                                 else:
                                     inBranch = False
                                     continuous = False
@@ -805,9 +812,10 @@ def _5_Explorer3(gameCollection):
                                     if testLevel > deepestLevel: 
                                         deepestLevel = testLevel
                                         j += 1
-                                    if deepestLevel < testLevel:
+                                    elif deepestLevel < testLevel:
                                         inBranch = False
                                         continuous = False
+                                    else: j += 1
                                 else:
                                     inBranch = False
                                     continuous = False
