@@ -1086,7 +1086,7 @@ def _27_VowOfCourage1(gameCollection):
                 if game.notesList[i][2].find("rune of Zot") != -1: return [True, "Complete!"]
                 if game.notesList[i][2] == "Entered Level 14 of the Dungeon": reachedD14 = True
                 i += 1
-    return [False, ""]
+    return [False, "0 runes collected before D:14"]
 
 def _28_VowOfCourage2(gameCollection):
     # get 2 runes before entering D14
