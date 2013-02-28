@@ -159,7 +159,18 @@ def _0_SlowAndSteady1(gameCollection):
 def _1_SlowAndSteady2(gameCollection):
     # Achieve a 2-win streak
     # Currently no streak detection coded, so this will need to be rewritten
-    return [False, "Not yet implemented"]
+    
+    # Simple implementation below. Need to change when I add in better streak listing code
+    streakCount = 0
+    maxStreak = 0
+    for game in gameCollection.gameList:
+        if game.winFlag == True: streakCount += 1
+        else:
+            if streakCount > maxStreak: maxStreak = streakCount 
+            streakCount = 0
+        if streakCount > 1: return [True, "Complete!"]
+    
+    return [False, "Max Streak: " + str(maxStreak)]
 
 def _2_SlowAndSteady3(gameCollection):
     # Achieve a 4-win streak with 4 different Species & Classes
