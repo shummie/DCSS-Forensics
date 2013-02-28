@@ -106,6 +106,18 @@ def forensicsAchievement(gameCollection):
         gameCollection.achievementList[34] = _34_DescentIntoMadness2(gameCollection)
     if gameCollection.achievementList[35][0] == False:
         gameCollection.achievementList[35] = _35_DescentIntoMadness3(gameCollection)
+	if gameCollection.achievementList[36][0] == False:
+        gameCollection.achievementList[36] = _36_AngelOfJustice1(gameCollection)
+	if gameCollection.achievementList[37][0] == False:
+        gameCollection.achievementList[37] = _37_AngelOfJustice2(gameCollection)
+	if gameCollection.achievementList[38][0] == False:
+        gameCollection.achievementList[38] = _38_AngelOfJustice3(gameCollection)
+	if gameCollection.achievementList[39][0] == False:
+        gameCollection.achievementList[39] = _39_Harvest1(gameCollection)
+	if gameCollection.achievementList[40][0] == False:
+        gameCollection.achievementList[40] = _40_Harvest2(gameCollection)
+	if gameCollection.achievementList[41][0] == False:
+        gameCollection.achievementList[41] = _41_Harvest3(gameCollection)
 
 def _0_CheckAnyWin(gameCollection):
     # InternalID: 0
@@ -574,3 +586,86 @@ def _35_DescentIntoMadness3(gameCollection):
         if game.zigDeepest > deepestLevel: deepestLevel = game.zigDeepest
     if deepestLevel == 0: return [False, ""]
     else: return [False, "Deepest Zig Level: " + str(deepestLevel)]
+	
+def _36_AngelOfJustice1(gameCollection):
+	# Enter either Pandemonium or any branch of Hell
+	hellBranchList = ["Dis", "Geh", "Coc", "Tar"]
+	for game in gameCollection.gameList:
+		if game.panVisits > 0: return [True, "Complete!"]
+		for hellBranch in hellBranchList:
+			if hellBranch in game.branchesDict:
+				if game.branchesDict[hellBranch][0] > 0: return [True, "Complete!"]
+	return [False, ""]
+
+def _37_AngelOfJustice2(gameCollection):
+	# Kill at least one unique pan lord and at least one unique hell lord.
+	killedHell = False
+	killedPan = False
+	hellList = ["Asmodeus", "Ereshkigal", "Dispater", "Antaeus"]
+	panList = ["Mnoleg", "Lom Lobon", "Cerebov", "Gloorx Vloq"]
+	for game in gameCollection.gameList:
+		if killedHell == False:
+			for boss in hellList:
+				if boss in game.uniqueKillDict: killedHell = True
+		if killedPan == False:
+			for boss in panList:
+				if boss in game.uniqueKillDict: killedPan = True
+		if killedHell and killedPan: return [True, "Complete!"]
+	if killedHell: return [False, "Hell lord killed"]
+	if killedPan: return [False, "Pan lord killed"]
+	return [False, ""]
+		
+def _38_AngelOfJustice3(gameCollection):
+	# Kill all four unique pan lords and all four unique hell lords.
+	hellList = ["Asmodeus", "Ereshkigal", "Dispater", "Antaeus"]
+	panList = ["Mnoleg", "Lom Lobon", "Cerebov", "Gloorx Vloq"]
+	killedHell = []
+	killedPan = []
+	for game in gameCollection.gameList:
+		if len(killedHell) < 4:
+			checkHellList = list(set(hellList)-set(killedHell))
+			for boss in checkHellList:
+				if boss in game.uniqueKillDict: killedHell.append(boss)
+		if len(killedPan) < 4:
+			checkPanList = list(set(panList)-set(killedPan))
+			for boss in checkPanList:
+				if boss in game.uniqueKillDict: killedPan.append(boss)
+		if (len(killedHell) == 4) and (len(killedPan) == 4): return [True, "Complete!"]
+	if (len(killedHell) + len(killedPan)) == 0: return [False, ""]
+	falseString = ""
+	if len(killedHell) > 0: 
+		falseString += listToString(killedHell, ", ")
+		if len(killedPan) > 0: falseString += "<br>" + listToString(killedPan, ", ")
+	else: # no Hell lords killed, but Pan lords killed
+		falseString += listToString(killedPan, ", ")
+	return [False, falseString]
+	
+def _39_Harvest1(gameCollection):
+	# Kill 25 distinct uniques
+	uniqueList = []
+	for game in gameCollection.gameList:
+		gameUniqueKill = []
+		for a in game.uniqueKillDict: gameUniqueKill.append(a)
+		uniqueList = list(set(uniqueList + gameUniqueKill))
+		if len(uniqueList) >= 25: return [True, "Complete!"]
+	return [False, str(len(uniqueList)) + " distinct uniques killed"]
+
+def _40_Harvest2(gameCollection):
+	# Kill 45 distinct uniques
+	uniqueList = []
+	for game in gameCollection.gameList:
+		gameUniqueKill = []
+		for a in game.uniqueKillDict: gameUniqueKill.append(a)
+		uniqueList = list(set(uniqueList + gameUniqueKill))
+		if len(uniqueList) >= 45: return [True, "Complete!"]
+	return [False, str(len(uniqueList)) + " distinct uniques killed"]
+
+def _41_Harvest3(gameCollection):
+	# Kill 65 distinct uniques
+	uniqueList = []
+	for game in gameCollection.gameList:
+		gameUniqueKill = []
+		for a in game.uniqueKillDict: gameUniqueKill.append(a)
+		uniqueList = list(set(uniqueList + gameUniqueKill))
+		if len(uniqueList) >= 65: return [True, "Complete!"]
+	return [False, str(len(uniqueList)) + " distinct uniques killed"]
