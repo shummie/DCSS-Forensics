@@ -175,7 +175,32 @@ def _1_SlowAndSteady2(gameCollection):
 def _2_SlowAndSteady3(gameCollection):
     # Achieve a 4-win streak with 4 different Species & Classes
     # Currently no streak detection coded, so this will need to be rewritten
-    return [False, "Not yet implemented"]
+    
+    # Simple implementation below. Need to change when I add in better streak listing code
+    streakCount = 0
+    maxStreak = 0
+    bestStreakList = []
+    spList = []
+    bgList = []
+    streakList = []
+    for game in gameCollection.gameList:
+        if game.winFlag == True:
+            streakCount += 1
+            spList.append(game.speciesShort)
+            bgList.append(game.backgroundShort)
+            streakList.append(game.speciesShort+game.backgroundShort)
+        else:
+            if streakCount > maxStreak: 
+                maxStreak = streakCount
+                bestStreakList = []
+                bestStreakList.extend(streakList)
+            streakCount = 0
+            spList = []
+            bgList = []
+            streakList = []
+        if (streakCount >= 4) and (len(set(spList)) >= 4) and (len(set(bgList)) >= 4): return [True, "Complete!"]
+    return [False, "Max Streak: " + str(maxStreak) + "<br>" + listToString(bestStreakList,", ")]
+                
 
 def _3_Explorer1(gameCollection):
     # After entering Lair the first time, reach Lair 8 before returning to the dungeon
