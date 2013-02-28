@@ -1,4 +1,4 @@
-v0.04 - March ??, 2013
+v0.04 - February 28, 2013
 =====
 gameInfo class:
 --Notes information extracted
@@ -64,13 +64,13 @@ Achievements!
     40 : [40, "Harvest2", "Harvest II", "Kill 45 distinct uniques", "Kill 45 distinct uniques"],
     41 : [41, "Harvest3", "Harvest III", "Kill 65 distinct uniques", "Kill 65 distinct uniques"]
 
-
-
+	
 v0.03b - February 19, 2013
 ======
 Minor bugfix (wouldn't read files with no gold information)
 
 Added a new HTML file dump with some basic info. Will be expanded in a future version.
+
 
 v0.03 - February 19, 2013
 =====
@@ -109,6 +109,7 @@ config.ini
 
 Added error handling logic to skip files that can't be read instead of bombing out
 Sprint / Defense games no longer loaded
+
 
 v0.02 - February 6, 2013
 =====
