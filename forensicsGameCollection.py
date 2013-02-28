@@ -34,6 +34,7 @@ import forensicsParser
 import forensicsAchievement
 import forensicsConfig
 import forensicsDictionary
+import logging
 
 class gameCollection:
 
@@ -58,6 +59,7 @@ class gameCollection:
             if game.id not in self.gameID:
                 if game.header[0].find("Dungeon Crawl Stone Soup") == -1:
                     print(game.filename + " could not be read. Sprint & Defense games not supported.")
+                    logging.info(game.filename + " could not be read. Sprint & Defense games not supported.")
                 else:
                     self.gameList.append(game)
                     self.gameID.append(game.id)

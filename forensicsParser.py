@@ -23,6 +23,7 @@
 
 import forensicsGameInfo
 import forensicsConfig
+import logging
 
 def readGameRecord(filePath):
 
@@ -39,6 +40,7 @@ def readGameRecord(filePath):
         return gameInfoObject
     except:
         print("Could not read file: " + filePath + " correctly. Skipping.")
+        logging.info("Could not read file: " + filePath + " correctly. Skipping.")
         return None
 
 

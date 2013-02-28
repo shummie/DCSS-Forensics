@@ -20,6 +20,8 @@ import forensicsHTML
 import os
 import glob
 import pickle
+import logging
+
 
 
 
@@ -53,24 +55,34 @@ def loadGameData(filename):
     inputfile = open(filename, "rb")
     return pickle.load(inputfile)
 
+logging.basicConfig(filename='dcssforensics.log', filemode = 'w', level=logging.DEBUG)
+
 #try:    
 print("Attempting to read config.ini")
+logging.info("Attemping to read config.ini")
 forensicsConfig.readConfigFile("config.ini")
 os.chdir(forensicsConfig.PATH)
 gameCollection = forensicsGameCollection.gameCollection()
 print("Attempting to read game data")   
+logging.info("Attempting to read game data")
 readGameData()
 print("All game data read.")
+logging.info("All game data read.")
 forensicsHTML.createHTMLOverview(gameCollection)
 print("overview.html created")
+logging.info("overview.html created")
 forensicsHTML.createHTMLALLScoresTable(gameCollection)
 print("allGamesByScore.html created")
+logging.info("allGamesByScore.html created")
 forensicsHTML.createHTMLALLGamesTableRecent(gameCollection)
 print("allGamesByRecent.html created")
+logging.info("allGamesByRecent.html created")
 forensicsHTML.createGameCollectionDump(gameCollection)
 print("allGamesDump.html created")
+logging.info("allGamesDump.html created")
 forensicsHTML.createAchievementDetailed(gameCollection)
 print("acheivementsDetailed.html created")
+logging.info("acheivementsDetailed.html created")
 
 
 #except WindowsError:
