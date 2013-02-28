@@ -89,7 +89,7 @@ dBackground = {
 
 ### Branches List ###
 
-lOverviewBranchList = ["Dungeon", "Temple", "Orc", "Elf", "Lair", "Swamp", "Snake", "Slime", "Vaults", "Blade", "Crypt", "Tomb", "Dis", "Geh", "Coc", "Tar", "Zot", "Hive"]
+lOverviewBranchList = ["Dungeon", "Temple", "Orc", "Elf", "Lair", "Swamp", "Snake", "Slime", "Shoals", "Spider", "Vaults", "Blade", "Crypt", "Tomb", "Dis", "Geh", "Coc", "Tar", "Zot", "Hive"]
 
 
 ## Achievements
