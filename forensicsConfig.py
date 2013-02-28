@@ -36,14 +36,14 @@ CSVOUTFILE = ""
 # 5 = FULL verbosity
 
 #verbosity = 1
-verbosity = 0
+verbosity = 1
 
 
 ## HTML FILE OUTPUT VARIABLES
 #NUM_RECENT_GAMES = 15
 #NUM_TOP_SCORES = 15
-NUM_RECENT_GAMES = 2
-NUM_TOP_SCORES = 2
+NUM_RECENT_GAMES = 15
+NUM_TOP_SCORES = 15
 HTML_OUTFILE_PATH = os.getcwd()
 CURRENT_WORKING_PATH = os.getcwd()
 
