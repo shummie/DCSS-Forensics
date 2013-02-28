@@ -54,9 +54,11 @@ def loadGameData(filename):
     return pickle.load(inputfile)
 
 #try:    
+print("Attempting to read config.ini")
 forensicsConfig.readConfigFile("config.ini")
 os.chdir(forensicsConfig.PATH)
-gameCollection = forensicsGameCollection.gameCollection()   
+gameCollection = forensicsGameCollection.gameCollection()
+print("Attempting to read game data")   
 readGameData()
 print("All game data read.")
 forensicsHTML.createHTMLOverview(gameCollection)
