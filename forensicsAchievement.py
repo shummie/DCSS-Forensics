@@ -515,7 +515,325 @@ def _4_Explorer2(gameCollection):
 
 def _5_Explorer3(gameCollection):
     # Win a game as in II, except all subbranches must be completed before leaving the branch. I.e., all subbranches of Lair must be complete before leaving Lair
-    return [False, "Not yet implemented"]
+    
+    branchList = ["Lair", "Swamp", "Snake", "Shoals", "Spider", "Slime", "Orc", "Elf", "Vaults", "Crypt", "Tomb", "Hell", "Coc", "Dis", "Geh", "Tar", "Pan", "Zot"]
+    
+    for game in gameCollection.gameList:
+        if game.winFlag == True:
+            continuous = True
+            i = 0
+            branchesDone = []
+            while continuous and (i < len(game.notesList)):
+                currBranch = game.notesList[i][1].split(":")[0]
+                if currBranch in branchList:
+                    if currBranch in branchesDone: i += 1
+                    else:
+                        if currBranch == "Swamp":
+                            inBranch = True
+                            branchDone = False
+                            j = i
+                            while inBranch and (j < len(game.notesList)) and (not branchDone):
+                                testBranch = game.notesList[j][1].split(":")[0]
+                                if game.notesList[j][2] == "Got a decaying rune of Zot": branchDone = True
+                                elif (testBranch == currBranch) or (testBranch == "Abyss") or (testBranch == "Zig"): j += 1
+                                elif len(game.notesList[j][1].split(":")) == 1: j += 1
+                                else: 
+                                    inBranch = False
+                                    continuous = False 
+                            if branchDone == True: branchesDone.append(currBranch)
+                        elif currBranch == "Snake":
+                            inBranch = True
+                            branchDone = False
+                            j = i
+                            while inBranch and (j < len(game.notesList)) and (not branchDone):
+                                testBranch = game.notesList[j][1].split(":")[0]
+                                if game.notesList[j][2] == "Got a serpentine rune of Zot": branchDone = True
+                                elif (testBranch == currBranch) or (testBranch == "Abyss") or (testBranch == "Zig"): j += 1
+                                elif len(game.notesList[j][1].split(":")) == 1: j += 1
+                                else: 
+                                    inBranch = False
+                                    continuous = False 
+                            if branchDone == True: branchesDone.append(currBranch)
+                        elif currBranch == "Shoals":
+                            inBranch = True
+                            branchDone = False
+                            j = i
+                            while inBranch and (j < len(game.notesList)) and (not branchDone):
+                                testBranch = game.notesList[j][1].split(":")[0]
+                                if game.notesList[j][2] == "Got a barnacled rune of Zot": branchDone = True
+                                elif (testBranch == currBranch) or (testBranch == "Abyss") or (testBranch == "Zig"): j += 1
+                                elif len(game.notesList[j][1].split(":")) == 1: j += 1
+                                else: 
+                                    inBranch = False
+                                    continuous = False 
+                            if branchDone == True: branchesDone.append(currBranch)
+                        elif currBranch == "Spider":
+                            inBranch = True
+                            branchDone = False
+                            j = i
+                            while inBranch and (j < len(game.notesList)) and (not branchDone):
+                                testBranch = game.notesList[j][1].split(":")[0]
+                                if game.notesList[j][2] == "Got a gossamer rune of Zot": branchDone = True
+                                elif (testBranch == currBranch) or (testBranch == "Abyss") or (testBranch == "Zig"): j += 1
+                                elif len(game.notesList[j][1].split(":")) == 1: j += 1
+                                else: 
+                                    inBranch = False
+                                    continuous = False 
+                            if branchDone == True: branchesDone.append(currBranch)
+                        elif currBranch == "Slime":
+                            inBranch = True
+                            branchDone = False
+                            j = i
+                            while inBranch and (j < len(game.notesList)) and (not branchDone):
+                                testBranch = game.notesList[j][1].split(":")[0]
+                                if game.notesList[j][2] == "Got a slimy rune of Zot": branchDone = True
+                                elif (testBranch == currBranch) or (testBranch == "Abyss") or (testBranch == "Zig"): j += 1
+                                elif len(game.notesList[j][1].split(":")) == 1: j += 1
+                                else: 
+                                    inBranch = False
+                                    continuous = False 
+                            if branchDone == True: branchesDone.append(currBranch)
+                        elif currBranch == "Tomb":
+                            inBranch = True
+                            branchDone = False
+                            j = i
+                            while inBranch and (j < len(game.notesList)) and (not branchDone):
+                                testBranch = game.notesList[j][1].split(":")[0]
+                                if game.notesList[j][2] == "Got a golden rune of Zot": branchDone = True
+                                elif (testBranch == currBranch) or (testBranch == "Abyss") or (testBranch == "Zig"): j += 1
+                                elif len(game.notesList[j][1].split(":")) == 1: j += 1
+                                else: 
+                                    inBranch = False
+                                    continuous = False 
+                            if branchDone == True: branchesDone.append(currBranch)
+                        elif currBranch == "Vaults":
+                            inBranch = True
+                            branchDone = False
+                            j = i
+                            objectiveCount = 0
+                            while inBranch and (j < len(game.notesList)) and (not branchDone):
+                                testBranch = game.notesList[j][1].split(":")[0]
+                                if game.notesList[j][2] == "Got a silver rune of Zot": objectiveCount += 1
+                                elif game.notesList[j][1] == "Crypt:5": objectiveCount += 1
+                                elif game.notesList[j][2] == "Got a golden rune of Zot": objectiveCount += 1
+                                elif (testBranch == currBranch) or (testBranch == "Abyss") or (testBranch == "Crypt") or (testBranch == "Tomb") or (testBranch == "Zig"): j += 1
+                                elif len(game.notesList[j][1].split(":")) == 1: j += 1
+                                else: 
+                                    inBranch = False
+                                    continuous = False 
+                                if objectiveCount == 3: branchDone = True
+                            if branchDone == True: branchesDone.append(currBranch)
+                        elif currBranch == "Lair":
+                            inBranch = True
+                            branchDone = False
+                            j = i
+                            objectiveCount = 0
+                            while inBranch and (j < len(game.notesList)) and (not branchDone):
+                                testBranch = game.notesList[j][1].split(":")[0]
+                                if game.notesList[j][1] == "Lair:8": objectiveCount += 1
+                                elif game.notesList[j][2] == "Got a slimy rune of Zot": objectiveCount += 1
+                                elif game.notesList[j][2] == "Got a decaying rune of Zot": objectiveCount += 1
+                                elif game.notesList[j][2] == "Got a serpentine rune of Zot": objectiveCount += 1
+                                elif game.notesList[j][2] == "Got a barnacled rune of Zot": objectiveCount += 1
+                                elif game.notesList[j][2] == "Got a gossamer rune of Zot": objectiveCount += 1
+                                elif ((testBranch == currBranch) or (testBranch == "Abyss") or (testBranch == "Slime") or (testBranch == "Snake") or 
+                                    (testBranch == "Swamp") or (testBranch == "Spider") or (testBranch == "Shoals") or (testBranch == "Zig")): j += 1
+                                elif len(game.notesList[j][1].split(":")) == 1: j += 1
+                                if objectiveCount == 4: branchDone = True
+                                else: 
+                                    inBranch = False
+                                    continuous = False 
+                            if branchDone == True: branchesDone.append(currBranch)
+                        elif currBranch == "Orc":
+                            inBranch = True
+                            branchDone = False
+                            j = i
+                            objectiveCount = 0
+                            while inBranch and (j < len(game.notesList)) and (not branchDone):
+                                testBranch = game.notesList[j][1].split(":")[0]
+                                if game.notesList[j][1] == "Orc:4": objectiveCount += 1
+                                elif game.notesList[j][1] == "Elf:3": objectiveCount += 1
+                                elif (testBranch == currBranch) or (testBranch == "Abyss") or (testBranch == "Elf") or (testBranch == "Zig"): j += 1
+                                elif len(game.notesList[j][1].split(":")) == 1: j += 1
+                                else: 
+                                    inBranch = False
+                                    continuous = False
+                                if objectiveCount == 2: branchDone = True 
+                            if branchDone == True: branchesDone.append(currBranch)
+                        elif currBranch == "Elf":
+                            inBranch = True
+                            branchDone = False
+                            j = i
+                            while inBranch and (j < len(game.notesList)) and (not branchDone):
+                                testBranch = game.notesList[j][1].split(":")[0]
+                                if game.notesList[j][1] == "Elf:3": branchDone = True
+                                elif (testBranch == currBranch) or (testBranch == "Abyss") or (testBranch == "Zig"): j += 1
+                                elif len(game.notesList[j][1].split(":")) == 1: j += 1
+                                else: 
+                                    inBranch = False
+                                    continuous = False 
+                            if branchDone == True: branchesDone.append(currBranch)
+                        elif currBranch == "Crypt":
+                            inBranch = True
+                            branchDone = False
+                            j = i
+                            objectiveCount = 0
+                            while inBranch and (j < len(game.notesList)) and (not branchDone):
+                                testBranch = game.notesList[j][1].split(":")[0]
+                                if game.notesList[j][1] == "Crypt:5": objectiveCount += 1
+                                elif game.notesList[j][2] == "Got a golden rune of Zot": objectiveCount += 1 
+                                elif (testBranch == currBranch) or (testBranch == "Abyss") or (testBranch == "Tomb") or (testBranch == "Zig"): j += 1
+                                elif len(game.notesList[j][1].split(":")) == 1: j += 1
+                                else: 
+                                    inBranch = False
+                                    continuous = False
+                                if objectiveCount == 2: branchDone = True 
+                            if branchDone == True: branchesDone.append(currBranch)
+                        elif currBranch == "Zot":
+                            inBranch = True
+                            branchDone = False
+                            j = i
+                            prereqBranches = ["Lair", "Orc", "Vaults", "Hell", "Pan"]
+                            for b in prereqBranches: 
+                                if b not in branchesDone: continuous = False
+                            while inBranch and (j < len(game.notesList)) and (not branchDone):
+                                testBranch = game.notesList[j][1].split(":")[0]
+                                if game.notesList[j][2] == "Got the Orb of Zot": branchDone = True
+                                elif (testBranch == currBranch) or (testBranch == "Abyss") or (testBranch == "Zig"): j += 1
+                                elif len(game.notesList[j][1].split(":")) == 1: j += 1
+                                else: 
+                                    inBranch = False
+                                    continuous = False 
+                            if branchDone == True: branchesDone.append(currBranch)
+                        elif currBranch == "Hell":
+                            inBranch = True
+                            branchDone = False
+                            j = i
+                            objectiveCount = 0
+                            while inBranch and (j < len(game.notesList)) and (not branchDone):
+                                testBranch = game.notesList[j][1].split(":")[0]
+                                if game.notesList[j][2] == "Killed Geryon": objectiveCount += 1
+                                elif game.notesList[j][2] == "Got an icy rune of Zot": objectiveCount += 1
+                                elif game.notesList[j][2] == "Got an bone rune of Zot": objectiveCount += 1
+                                elif game.notesList[j][2] == "Got an iron rune of Zot": objectiveCount += 1
+                                elif game.notesList[j][2] == "Got an obsidian rune of Zot": objectiveCount += 1
+                                elif ((testBranch == currBranch) or (testBranch == "Abyss") or (testBranch == "Geh") or (testBranch == "Coc") or 
+                                    (testBranch == "Dis") or (testBranch == "Tar") or (testBranch == "Zig")): j += 1
+                                elif len(game.notesList[j][1].split(":")) == 1: j += 1
+                                else: 
+                                    inBranch = False
+                                    continuous = False 
+                            if branchDone == True: branchesDone.append(currBranch)
+                        elif currBranch == "Coc":
+                            inBranch = True
+                            branchDone = False
+                            deepestLevel = 1
+                            j = i
+                            while inBranch and (j < len(game.notesList)) and (not branchDone):
+                                testBranch = game.notesList[j][1].split(":")[0]
+                                testLevel = int(game.notesList[j][1].split(":")[1])
+                                if game.notesList[j][2] == "Got an icy rune of Zot": branchDone = True
+                                elif (testBranch == "Abyss") or (testBranch == "Zig"): j += 1
+                                elif len(game.notesList[j][1].split(":")) == 1: j += 1
+                                elif (testBranch == currBranch):
+                                    if testLevel > deepestLevel: 
+                                        deepestLevel = testLevel
+                                        j += 1
+                                    if deepestLevel < testLevel:
+                                        inBranch = False
+                                        continuous = False
+                                else:
+                                    inBranch = False
+                                    continuous = False
+                            if branchDone == True: branchesDone.append(currBranch)
+                        elif currBranch == "Tar":
+                            inBranch = True
+                            branchDone = False
+                            deepestLevel = 1
+                            j = i
+                            while inBranch and (j < len(game.notesList)) and (not branchDone):
+                                testBranch = game.notesList[j][1].split(":")[0]
+                                testLevel = int(game.notesList[j][1].split(":")[1])
+                                if game.notesList[j][2] == "Got an bone rune of Zot": branchDone = True
+                                elif (testBranch == "Abyss") or (testBranch == "Zig"): j += 1
+                                elif len(game.notesList[j][1].split(":")) == 1: j += 1
+                                elif (testBranch == currBranch):
+                                    if testLevel > deepestLevel: 
+                                        deepestLevel = testLevel
+                                        j += 1
+                                    if deepestLevel < testLevel:
+                                        inBranch = False
+                                        continuous = False
+                                else:
+                                    inBranch = False
+                                    continuous = False
+                            if branchDone == True: branchesDone.append(currBranch)
+                        elif currBranch == "Dis":
+                            inBranch = True
+                            branchDone = False
+                            deepestLevel = 1
+                            j = i
+                            while inBranch and (j < len(game.notesList)) and (not branchDone):
+                                testBranch = game.notesList[j][1].split(":")[0]
+                                testLevel = int(game.notesList[j][1].split(":")[1])
+                                if game.notesList[j][2] == "Got an iron rune of Zot": branchDone = True
+                                elif (testBranch == "Abyss") or (testBranch == "Zig"): j += 1
+                                elif len(game.notesList[j][1].split(":")) == 1: j += 1
+                                elif (testBranch == currBranch):
+                                    if testLevel > deepestLevel: 
+                                        deepestLevel = testLevel
+                                        j += 1
+                                    if deepestLevel < testLevel:
+                                        inBranch = False
+                                        continuous = False
+                                else:
+                                    inBranch = False
+                                    continuous = False
+                            if branchDone == True: branchesDone.append(currBranch)
+                        elif currBranch == "Geh":
+                            inBranch = True
+                            branchDone = False
+                            deepestLevel = 1
+                            j = i
+                            while inBranch and (j < len(game.notesList)) and (not branchDone):
+                                testBranch = game.notesList[j][1].split(":")[0]
+                                testLevel = int(game.notesList[j][1].split(":")[1])
+                                if game.notesList[j][2] == "Got an obsidian rune of Zot": branchDone = True
+                                elif (testBranch == "Abyss") or (testBranch == "Zig"): j += 1
+                                elif len(game.notesList[j][1].split(":")) == 1: j += 1
+                                elif (testBranch == currBranch):
+                                    if testLevel > deepestLevel: 
+                                        deepestLevel = testLevel
+                                        j += 1
+                                    if deepestLevel < testLevel:
+                                        inBranch = False
+                                        continuous = False
+                                else:
+                                    inBranch = False
+                                    continuous = False
+                            if branchDone == True: branchesDone.append(currBranch)
+                        elif currBranch == "Pan":
+                            inBranch = True
+                            branchDone = False
+                            runeCount = 0
+                            j = i
+                            while inBranch and (j < len(game.notesList)) and (not branchDone):
+                                testBranch = game.notesList[j][1].split(":")[0]
+                                testLevel = int(game.notesList[j][1].split(":")[1])
+                                if (testBranch == currBranch) and (game.notesList[j][2].find("rune of Zot") != -1): 
+                                    runeCount += 1
+                                    if runeCount == 5: branchDone = True 
+                                elif (testBranch == currBranch) or (testBranch == "Abyss") or (testBranch == "Zig"): j += 1
+                                elif len(game.notesList[j][1].split(":")) == 1: j += 1
+                                else:
+                                    inBranch = False
+                                    continuous = False
+                            if branchDone == True: branchesDone.append(currBranch)
+                        else: i += 1
+                else: i += 1
+            if continuous: return[True, "Complete!"]        
+            
+    return [False, ""] 
 
 def _6_Pious1(gameCollection):
     # Champion a god
