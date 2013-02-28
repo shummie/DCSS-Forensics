@@ -11,12 +11,16 @@ gameInfo class:
 --Piety level of the god at death/escape is captured
 --minor formatting fix for end information (added space before "(" if necessary)
 
-
 htmlOutput:
 --New file: allGamesDump.html
 ----Contains a dump of almost all possible variables stored for each gameInfo object (within reason) (might be missing some newer ones)
 --New file: achievementsDetailed.html
 ----Achivements implemented!
+
+logging file:
+--New file: dcssForensics.log
+----Created in the same directory that the script is run from.
+----Displays various output for debugging purposes
 
 Achievements!
 --Achievements module has been revamped. Achievements is now active and in a testing state.
