@@ -409,11 +409,11 @@ def _4_Explorer2(gameCollection):
                             j = i
                             while inBranch and (j < len(game.notesList)) and (not branchDone):
                                 testBranch = game.notesList[j][1].split(":")[0]
-                                testLevel = int(game.notesList[j][1].split(":")[1])
                                 if game.notesList[j][2] == "Got an icy rune of Zot": branchDone = True
                                 elif (testBranch == "Abyss") or (testBranch == "Zig"): j += 1
                                 elif len(game.notesList[j][1].split(":")) == 1: j += 1
                                 elif (testBranch == currBranch):
+                                    testLevel = int(game.notesList[j][1].split(":")[1])
                                     if testLevel > deepestLevel: 
                                         deepestLevel = testLevel
                                         j += 1
@@ -432,11 +432,11 @@ def _4_Explorer2(gameCollection):
                             j = i
                             while inBranch and (j < len(game.notesList)) and (not branchDone):
                                 testBranch = game.notesList[j][1].split(":")[0]
-                                testLevel = int(game.notesList[j][1].split(":")[1])
-                                if game.notesList[j][2] == "Got an bone rune of Zot": branchDone = True
+                                if game.notesList[j][2] == "Got a bone rune of Zot": branchDone = True
                                 elif (testBranch == "Abyss") or (testBranch == "Zig"): j += 1
                                 elif len(game.notesList[j][1].split(":")) == 1: j += 1
                                 elif (testBranch == currBranch):
+                                    testLevel = int(game.notesList[j][1].split(":")[1])
                                     if testLevel > deepestLevel: 
                                         deepestLevel = testLevel
                                         j += 1
@@ -455,11 +455,11 @@ def _4_Explorer2(gameCollection):
                             j = i
                             while inBranch and (j < len(game.notesList)) and (not branchDone):
                                 testBranch = game.notesList[j][1].split(":")[0]
-                                testLevel = int(game.notesList[j][1].split(":")[1])
                                 if game.notesList[j][2] == "Got an iron rune of Zot": branchDone = True
                                 elif (testBranch == "Abyss") or (testBranch == "Zig"): j += 1
                                 elif len(game.notesList[j][1].split(":")) == 1: j += 1
                                 elif (testBranch == currBranch):
+                                    testLevel = int(game.notesList[j][1].split(":")[1])
                                     if testLevel > deepestLevel: 
                                         deepestLevel = testLevel
                                         j += 1
@@ -478,11 +478,11 @@ def _4_Explorer2(gameCollection):
                             j = i
                             while inBranch and (j < len(game.notesList)) and (not branchDone):
                                 testBranch = game.notesList[j][1].split(":")[0]
-                                testLevel = int(game.notesList[j][1].split(":")[1])
                                 if game.notesList[j][2] == "Got an obsidian rune of Zot": branchDone = True
                                 elif (testBranch == "Abyss") or (testBranch == "Zig"): j += 1
                                 elif len(game.notesList[j][1].split(":")) == 1: j += 1
                                 elif (testBranch == currBranch):
+                                    testLevel = int(game.notesList[j][1].split(":")[1])
                                     if testLevel > deepestLevel: 
                                         deepestLevel = testLevel
                                         j += 1
@@ -501,7 +501,6 @@ def _4_Explorer2(gameCollection):
                             j = i
                             while inBranch and (j < len(game.notesList)) and (not branchDone):
                                 testBranch = game.notesList[j][1].split(":")[0]
-                                testLevel = int(game.notesList[j][1].split(":")[1])
                                 if (testBranch == currBranch) and (game.notesList[j][2].find("rune of Zot") != -1): 
                                     runeCount += 1
                                     if runeCount == 5: branchDone = True 
@@ -735,11 +734,11 @@ def _5_Explorer3(gameCollection):
                             j = i
                             while inBranch and (j < len(game.notesList)) and (not branchDone):
                                 testBranch = game.notesList[j][1].split(":")[0]
-                                testLevel = int(game.notesList[j][1].split(":")[1])
                                 if game.notesList[j][2] == "Got an icy rune of Zot": branchDone = True
                                 elif (testBranch == "Abyss") or (testBranch == "Zig"): j += 1
                                 elif len(game.notesList[j][1].split(":")) == 1: j += 1
                                 elif (testBranch == currBranch):
+                                    testLevel = int(game.notesList[j][1].split(":")[1])
                                     if testLevel > deepestLevel: 
                                         deepestLevel = testLevel
                                         j += 1
@@ -758,11 +757,11 @@ def _5_Explorer3(gameCollection):
                             j = i
                             while inBranch and (j < len(game.notesList)) and (not branchDone):
                                 testBranch = game.notesList[j][1].split(":")[0]
-                                testLevel = int(game.notesList[j][1].split(":")[1])
-                                if game.notesList[j][2] == "Got an bone rune of Zot": branchDone = True
+                                if game.notesList[j][2] == "Got a bone rune of Zot": branchDone = True
                                 elif (testBranch == "Abyss") or (testBranch == "Zig"): j += 1
                                 elif len(game.notesList[j][1].split(":")) == 1: j += 1
                                 elif (testBranch == currBranch):
+                                    testLevel = int(game.notesList[j][1].split(":")[1])
                                     if testLevel > deepestLevel: 
                                         deepestLevel = testLevel
                                         j += 1
@@ -781,11 +780,11 @@ def _5_Explorer3(gameCollection):
                             j = i
                             while inBranch and (j < len(game.notesList)) and (not branchDone):
                                 testBranch = game.notesList[j][1].split(":")[0]
-                                testLevel = int(game.notesList[j][1].split(":")[1])
                                 if game.notesList[j][2] == "Got an iron rune of Zot": branchDone = True
                                 elif (testBranch == "Abyss") or (testBranch == "Zig"): j += 1
                                 elif len(game.notesList[j][1].split(":")) == 1: j += 1
                                 elif (testBranch == currBranch):
+                                    testLevel = int(game.notesList[j][1].split(":")[1])
                                     if testLevel > deepestLevel: 
                                         deepestLevel = testLevel
                                         j += 1
@@ -804,11 +803,11 @@ def _5_Explorer3(gameCollection):
                             j = i
                             while inBranch and (j < len(game.notesList)) and (not branchDone):
                                 testBranch = game.notesList[j][1].split(":")[0]
-                                testLevel = int(game.notesList[j][1].split(":")[1])
                                 if game.notesList[j][2] == "Got an obsidian rune of Zot": branchDone = True
                                 elif (testBranch == "Abyss") or (testBranch == "Zig"): j += 1
                                 elif len(game.notesList[j][1].split(":")) == 1: j += 1
                                 elif (testBranch == currBranch):
+                                    testLevel = int(game.notesList[j][1].split(":")[1])
                                     if testLevel > deepestLevel: 
                                         deepestLevel = testLevel
                                         j += 1
@@ -827,7 +826,6 @@ def _5_Explorer3(gameCollection):
                             j = i
                             while inBranch and (j < len(game.notesList)) and (not branchDone):
                                 testBranch = game.notesList[j][1].split(":")[0]
-                                testLevel = int(game.notesList[j][1].split(":")[1])
                                 if (testBranch == currBranch) and (game.notesList[j][2].find("rune of Zot") != -1): 
                                     runeCount += 1
                                     if runeCount == 5: branchDone = True 
