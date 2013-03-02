@@ -614,10 +614,13 @@ def _5_Explorer3(gameCollection):
                             branchDone = False
                             j = i
                             objectiveCount = 0
+                            reachedEnd = False
                             while inBranch and (j < len(game.notesList)) and (not branchDone):
                                 testBranch = game.notesList[j][1].split(":")[0]
                                 if game.notesList[j][2] == "Got a silver rune of Zot": objectiveCount += 1
-                                elif game.notesList[j][1] == "Crypt:5": objectiveCount += 1
+                                elif (not reachedEnd) and (game.notesList[j][1] == "Crypt:5"): 
+                                    objectiveCount += 1
+                                    reachedEnd = True
                                 elif game.notesList[j][2] == "Got a golden rune of Zot": objectiveCount += 1
                                 elif (testBranch == currBranch) or (testBranch == "Abyss") or (testBranch == "Crypt") or (testBranch == "Tomb") or (testBranch == "Zig"): j += 1
                                 elif len(game.notesList[j][1].split(":")) == 1: j += 1
@@ -631,21 +634,25 @@ def _5_Explorer3(gameCollection):
                             branchDone = False
                             j = i
                             objectiveCount = 0
+                            reachedEnd = False
                             while inBranch and (j < len(game.notesList)) and (not branchDone):
                                 testBranch = game.notesList[j][1].split(":")[0]
-                                if game.notesList[j][1] == "Lair:8": objectiveCount += 1
+                                if (not reachedEnd) and (game.notesList[j][1] == "Lair:8"): 
+                                    objectiveCount += 1
+                                    reachedEnd = True
                                 elif game.notesList[j][2] == "Got a slimy rune of Zot": objectiveCount += 1
                                 elif game.notesList[j][2] == "Got a decaying rune of Zot": objectiveCount += 1
                                 elif game.notesList[j][2] == "Got a serpentine rune of Zot": objectiveCount += 1
                                 elif game.notesList[j][2] == "Got a barnacled rune of Zot": objectiveCount += 1
                                 elif game.notesList[j][2] == "Got a gossamer rune of Zot": objectiveCount += 1
-                                elif ((testBranch == currBranch) or (testBranch == "Abyss") or (testBranch == "Slime") or (testBranch == "Snake") or 
+                                
+                                if ((testBranch == currBranch) or (testBranch == "Abyss") or (testBranch == "Slime") or (testBranch == "Snake") or 
                                     (testBranch == "Swamp") or (testBranch == "Spider") or (testBranch == "Shoals") or (testBranch == "Zig")): j += 1
                                 elif len(game.notesList[j][1].split(":")) == 1: j += 1
-                                if objectiveCount == 4: branchDone = True
                                 else: 
                                     inBranch = False
                                     continuous = False 
+                                if objectiveCount == 4: branchDone = True
                             if branchDone == True: branchesDone.append(currBranch)
                         elif currBranch == "Orc":
                             inBranch = True
@@ -656,7 +663,7 @@ def _5_Explorer3(gameCollection):
                                 testBranch = game.notesList[j][1].split(":")[0]
                                 if game.notesList[j][1] == "Orc:4": objectiveCount += 1
                                 elif game.notesList[j][1] == "Elf:3": objectiveCount += 1
-                                elif (testBranch == currBranch) or (testBranch == "Abyss") or (testBranch == "Elf") or (testBranch == "Zig"): j += 1
+                                if (testBranch == currBranch) or (testBranch == "Abyss") or (testBranch == "Elf") or (testBranch == "Zig"): j += 1
                                 elif len(game.notesList[j][1].split(":")) == 1: j += 1
                                 else: 
                                     inBranch = False
@@ -717,15 +724,16 @@ def _5_Explorer3(gameCollection):
                                 testBranch = game.notesList[j][1].split(":")[0]
                                 if game.notesList[j][2] == "Killed Geryon": objectiveCount += 1
                                 elif game.notesList[j][2] == "Got an icy rune of Zot": objectiveCount += 1
-                                elif game.notesList[j][2] == "Got an bone rune of Zot": objectiveCount += 1
+                                elif game.notesList[j][2] == "Got a bone rune of Zot": objectiveCount += 1
                                 elif game.notesList[j][2] == "Got an iron rune of Zot": objectiveCount += 1
                                 elif game.notesList[j][2] == "Got an obsidian rune of Zot": objectiveCount += 1
-                                elif ((testBranch == currBranch) or (testBranch == "Abyss") or (testBranch == "Geh") or (testBranch == "Coc") or 
+                                if ((testBranch == currBranch) or (testBranch == "Abyss") or (testBranch == "Geh") or (testBranch == "Coc") or 
                                     (testBranch == "Dis") or (testBranch == "Tar") or (testBranch == "Zig")): j += 1
                                 elif len(game.notesList[j][1].split(":")) == 1: j += 1
                                 else: 
                                     inBranch = False
                                     continuous = False 
+                                if objectiveCount == 5: branchDone = True
                             if branchDone == True: branchesDone.append(currBranch)
                         elif currBranch == "Coc":
                             inBranch = True
