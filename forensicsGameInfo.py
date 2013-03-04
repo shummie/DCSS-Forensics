@@ -206,7 +206,7 @@ class gameInfo:
         wordIndex += 1
         while lineSplit[wordIndex] != "the":
             self.name += " " + lineSplit[wordIndex]
-            lineIndex += 1
+            wordIndex += 1
 
         wordIndex += 1
         self.title = lineSplit[wordIndex]
