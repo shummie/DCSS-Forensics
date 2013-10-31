@@ -22,7 +22,6 @@ dSpecies = {
     "Human" : "Hu",
     "High Elf" : "HE",
     "Deep Elf" : "DE",
-    "Sludge Elf" : "SE",
     "Deep Dwarf" : "DD",
     "Hill Orc" : "HO",
     "Merfolk" : "Mf",
@@ -34,6 +33,7 @@ dSpecies = {
     "Ogre" : "Og",
     "Troll" : "Tr",
     "Minotaur" : "Mi",
+    "Gargoyle" : "Gr",
     "Tengu" : "Te",
     "Draconian" : "Dr",
     "Demigod" : "Dg",
@@ -48,7 +48,8 @@ dSpecies = {
     "Ogre-mage" : "OM",
     "Grey Elf" : "GE",
     "Gnome" : "Gn",
-    "Mountain Dwarf" : "MD"
+    "Mountain Dwarf" : "MD",
+    "Sludge Elf" : "SE"
     }
 
 ### Background Mapping Dictionary ###
@@ -63,7 +64,6 @@ dBackground = {
     "Abyssal Knight" : "AK",
     "Chaos Knight" : "CK",
     "Death Knight" : "DK",
-    "Priest" : "Pr",
     "Healer" : "He",
     "Skald" : "Sk",
     "Enchanter" : "En",
@@ -84,7 +84,8 @@ dBackground = {
     "Wanderer" : "Wn",
     "Paladin" : "Pa",
     "Reaver" : "Re",
-    "Thief" : "Th"
+    "Thief" : "Th",
+    "Priest" : "Pr"
     }
 
 ### Branches List ###
@@ -152,18 +153,18 @@ dSpeciesTableIndex = {
     "Human" : 0,
     "High Elf" : 1,
     "Deep Elf" : 2,
-    "Sludge Elf" : 3,
-    "Deep Dwarf" : 4,
-    "Hill Orc" : 5,
-    "Merfolk" : 6,
-    "Halfling" : 7,
-    "Kobold" : 8,
-    "Spriggan" : 9,
-    "Naga" : 10,
-    "Centaur" : 11,
-    "Ogre" : 12,
-    "Troll" : 13,
-    "Minotaur" : 14,
+    "Deep Dwarf" : 3,
+    "Hill Orc" : 4,
+    "Merfolk" : 5,
+    "Halfling" : 6,
+    "Kobold" : 7,
+    "Spriggan" : 8,
+    "Naga" : 9,
+    "Centaur" : 10,
+    "Ogre" : 11,
+    "Troll" : 12,
+    "Minotaur" : 13,
+    "Gargoyle" : 14, 
     "Tengu" : 15,
     "Draconian" : 16,
     "Demigod" : 17,
@@ -178,13 +179,14 @@ dSpeciesTableIndex = {
     "Ogre-mage" : 26,
     "Grey Elf" : 27,
     "Gnome" : 28,
-    "Mountain Dwarf" : 29
+    "Mountain Dwarf" : 29,
+    "Sludge Elf" : 30
     }
 
-dSpeciesShortTableList = ["Hu", "HE", "DE", "SE", "DD", "HO", "Mf", "Ha", "Ko",
-                          "Sp", "Na", "Ce", "Og", "Tr", "Mi", "Te", "Dr", "Dg",
+dSpeciesShortTableList = ["Hu", "HE", "DE", "DD", "HO", "Mf", "Ha", "Ko",
+                          "Sp", "Na", "Ce", "Og", "Tr", "Mi", "Gr", "Te", "Dr", "Dg",
                           "Ds", "Mu", "Gh", "Vp", "Fe", "Op", "HD", "El", "OM",
-                          "GE", "Gn", "MD"]
+                          "GE", "Gn", "MD", "SE"]
 
 
 dBackgroundTableIndex = {
@@ -197,34 +199,34 @@ dBackgroundTableIndex = {
     "Abyssal Knight" : 6,
     "Chaos Knight" : 7,
     "Death Knight" : 8,
-    "Priest" : 9,
-    "Healer" : 10,
-    "Skald" : 11,
-    "Enchanter" : 12,
-    "Transmuter" : 13,
-    "Arcane Marksman" : 14,
-    "Stalker" : 15,
-    "Warper" : 16,
-    "Wizard" : 17,
-    "Conjurer" : 18,
-    "Summoner" : 19,
-    "Necromancer" : 20,
-    "Fire Elementalist" : 21,
-    "Ice Elementalist" : 22,
-    "Air Elementalist" : 23,
-    "Earth Elementalist" : 24,
-    "Venom Mage" : 25,
-    "Artificer" : 26,
-    "Wanderer" : 27,
-    "Paladin" : 28,
-    "Reaver" : 29,
-    "Thief" : 30
+    "Healer" : 9,
+    "Skald" : 10,
+    "Enchanter" : 11,
+    "Transmuter" : 12,
+    "Arcane Marksman" : 13,
+    "Stalker" : 14,
+    "Warper" : 15,
+    "Wizard" : 16,
+    "Conjurer" : 17,
+    "Summoner" : 18,
+    "Necromancer" : 19,
+    "Fire Elementalist" : 20,
+    "Ice Elementalist" : 21,
+    "Air Elementalist" : 22,
+    "Earth Elementalist" : 23,
+    "Venom Mage" : 24,
+    "Artificer" : 25,
+    "Wanderer" : 26,
+    "Paladin" : 27,
+    "Reaver" : 28,
+    "Thief" : 29,
+    "Priest" : 30
     }
 
 dBackgroundShortTableList = ["Fi", "Gl", "Mo", "Hu", "As", "Be", "AK", "CK",
-                             "DK", "Pr", "He", "Sk", "En", "Tm", "AM", "St",
+                             "DK", "He", "Sk", "En", "Tm", "AM", "St",
                              "Wr", "Wz", "Cj", "Su", "Ne", "FE", "IE", "AE",
-                             "EE", "VM", "Ar", "Wn", "Pa", "Re", "Th"]
+                             "EE", "VM", "Ar", "Wn", "Pa", "Re", "Th", "Pr"]
 
 
 ## Unique List (Note: Updated as of v0.11)
